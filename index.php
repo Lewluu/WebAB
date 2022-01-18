@@ -1,8 +1,9 @@
 <?php
 
-#copy content from index html
-$index_html=file_get_contents("src/html/index.html");
+require 'src/include/HtmlElement.php';
 
-echo $index_html;
+#copy content from index html
+$html_index=new HtmlElement('src/elements/index.html');
+$html_index->getHTML();
 
 ?>
