@@ -1,0 +1,33 @@
+
+#interface{
+    display: flex;
+    flex-direction: row;
+}
+
+#tool-section{
+
+}
+
+#too_panel_1{
+    display: flex;
+    flex-direction: column;
+    border-style:double;
+    border-width: 1px;
+}
+
+#combined_panel{
+    display: flex;
+    flex-direction: column;
+}
+
+#main_panel{
+    border-style:double;
+    border-width: 1px;
+}
+
+#tool_panel_2{
+    display: flex;
+    flex-direction: row;
+    border-style:double;
+    border-width: 1px;
+}
