@@ -14,24 +14,25 @@ body{
     border-style: double;
     border-width: 1px;
     margin:0.5%;
+    text-align: center;
 }
 
 .tool-section p{
     text-align: center;
-    line-height: 100px;
+    /*line-height: 100px; */
 }
 
 #tool_panel_1{
     display: flex;
     flex-direction: column;
-    /* border-style: double;
-    border-width: 1px; */
     margin:0.25%;
-    width: 15%;
+    width: 18vw;
+    min-width: 175px;
 }
 
 #tool_panel_1 .tool-section{
-    height: 100%;
+    padding-top: 6vh;
+    padding-bottom: 6vh;
 }
 
 #combined_panel{
@@ -50,14 +51,12 @@ body{
 #tool_panel_2{
     display: flex;
     flex-direction: row;
-    /* border-style: double;
-    border-width: 1px; */
-    margin:0.3%;
-    margin-top: auto;
     align-content: center;
-    height: 15%;
+    min-width: 1000px;
 }
 
 #tool_panel_2 .tool-section{
+    padding-top: 3vh;
+    padding-bottom: 3vh;
     width: 100%;
 }
