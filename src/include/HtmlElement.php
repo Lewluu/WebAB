@@ -1,16 +1,18 @@
 <?php
 
 include 'StyleElement.php';
+include 'ScriptElement.php';
 
 class HtmlElement{
     //attributes
     private $html_data;
     private $html_path;
     private StyleElement $style;
+    private ScriptElement $script;
     //methods
     function __construct(){
     }
-    function setHTML($path){
+    function loadHTML($path){
         $this->html_data=file_get_contents($path);
         $this->html_path=$path;
         // $this->html_data=$path;
@@ -34,6 +36,9 @@ class HtmlElement{
         fclose($file_w);
         fclose($file_r);
         unlink("temp_file.html");
+    }
+    function setScript(ScriptElement $script){
+        
     }
     function getSyle(){
         return $this->style->getStyle();
