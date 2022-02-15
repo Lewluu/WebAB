@@ -38,10 +38,30 @@ class HtmlElement{
         unlink("temp_file.html");
     }
     function setScript(ScriptElement $script){
-        
+        $this->script=$script;
+        $file_w=fopen("temp_file.html","w");
+        $file_r=fopen($this->html_path,"r");
+        $line_nr=1;
+        while($line=fgets($file_r)){
+            if($line_nr!=11){
+                fputs($file_w,$line);
+                if($line_nr==12)
+                    fputs($file_w,$script->getScript());
+            }
+            $line_nr++;
+        }
+
+        $this->html_data=file_get_contents("temp_file.html");
+
+        fclose($file_w);
+        fclose($file_r);
+        unlink("temp_file.html");
     }
     function getSyle(){
         return $this->style->getStyle();
+    }
+    function getScript(){
+        return $this->script->getScript();
     }
     function getHTML(){
         // include $this->html_data;
