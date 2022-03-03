@@ -3,7 +3,7 @@
 include 'src/include/HtmlElement.php';
 
 #for this project i'll be making a personal framework in php
-#using the same personal framework for the UI template
+#using the same personal framework for the UI template, good practice
 
 #copy content from index html
 $html_index=new HtmlElement();
