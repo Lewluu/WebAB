@@ -3,12 +3,10 @@
 class StyleElement{
     //attributes
     private $css_data;
-    private $css_path;
     //methods
     function __construct(){   
     }
     function loadStyle($path){
-        $this->css_path=$path;
         $this->css_data=file_get_contents($path);
     }
     function getStyle(){
