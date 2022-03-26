@@ -76,15 +76,13 @@ body{
 }
 
 .tool-section-menu-img{
-    margin: auto;
     margin-right: 40%;
     margin-left: 2%;
 }
 
 .tool-section-menu-img img{
-    /* margin-right: 75%; */
     width: 100%;
-    /*margin-right: 50%; */
+    height: 100%;
 }
 
 .arrow-rotate{
