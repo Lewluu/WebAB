@@ -13,5 +13,9 @@ function HelloWorld(){
 function arrowOnClick(){
     //var el=document.getElementById("arrow-rotate");
     var el=document.getElementsByClassName("arrow-rotate");
-    el[0].style.transform="rotate(90deg)";
+    if(el[0].style.transform!="rotate(90deg)")
+        el[0].style.transform="rotate(90deg)";
+    else
+        el[0].style.transform="rotate(0deg)";
+    console.log(el[0].style.transform);
 }
