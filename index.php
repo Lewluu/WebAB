@@ -5,8 +5,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
-        <link rel="stylesheet" href="src/css/style.css?v=1">
         <style>
+            <?php include 'src/css/style.css' ?>
         </style>
         <script src="src/scripts/script.js"></script>
         <script>
@@ -18,7 +18,10 @@
         <div id="interface">
             <div id="tool_panel_1">
                 <div class="tool-section">
-                    <P>LAYOUTS</P>
+                    <div class="tool-section-menu">
+                        <p>LAYOUTS</p>
+                        <img src="src/icons/arrow.png">
+                    </div>
                     <p>Add Layout:</p>
                     <!-- <div class="layout-draggable" draggable="true">
                     </div> -->
