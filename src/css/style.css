@@ -88,15 +88,8 @@ body{
 }
 
 .arrow-rotate{
-    animation: arrow_rotation_animation 2s;
+    transition-duration: 0.5s;
 }
-
-@keyframes arrow_rotation_animation{
-    0% {transform: rotate(0deg);}
-    50% {transform: rotate(90deg);}
-    100% {transform: rotate(90deg);}
-}
-
 .layout-draggable{
     width: 175px;
     height: 50px;
