@@ -66,17 +66,24 @@ body{
 }
 
 .tool-section-menu{
+    width: 100%;
     display: flex;
     flex-direction: row;
 }
 
 .tool-section-menu p{
     margin: auto;
-    margin-left: 25%;
+    width: 100%;
+    text-align: right;
+    /* width: 50%; */
+    /* margin-left: 25%;  */
 }
 
 .tool-section-menu-img{
-    margin-right: 40%;
+    /* margin-right: 40%;
+    margin-left: 2%; */
+    width: 10%;
+    margin-right: 35%;
     margin-left: 2%;
 }
 
@@ -88,6 +95,11 @@ body{
 .arrow-rotate{
     transition-duration: 0.5s;
 }
+
+.tool-section-display{
+    display: none;
+}
+
 .layout-draggable{
     width: 175px;
     height: 50px;

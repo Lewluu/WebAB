@@ -8,7 +8,7 @@
         <style>
             <?php include 'src/css/style.css' ?>
         </style>
-        <?php echo '<script src="src/scripts/script.js?v=0"></script>' ?>
+        <?php echo '<script src="src/scripts/script.js?v=1"></script>' ?>
         <script>
         </script>
     <body>
@@ -21,33 +21,56 @@
                     <div class="tool-section-menu">
                         <p>LAYOUTS</p>
                         <div class="tool-section-menu-img">
-                            <img onclick="arrowOnClick()" src="src/icons/arrow.png" class="arrow-rotate">
+                            <img onclick="arrowOnClick(0)" src="src/icons/arrow.png" class="arrow-rotate">
                         </div>
                     </div>
-                    <p>Add Layout:</p>
-                    <!-- <div class="layout-draggable" draggable="true">
-                    </div> -->
+                    <div class="tool-section-display">
+                        <p>Add Layout:</p>
+                        <!-- <div class="layout-draggable" draggable="true">
+                        </div> -->
                     <p>Add Layout Element:</p>
+                    </div>
                 </div>
                 <div class="tool-section">
-                    <p>STYLING</p>
-                    <p>No element/elements selected</p>
-                    <p>Color:</p>
-                    <p>Font style: </p>
-                    <p>Rotation: </p>
-                    <p>Animation: </p>
-                    <p>Type of position: </p>
+                    <div class="tool-section-menu">
+                        <p>STYILING</p>
+                        <div class="tool-section-menu-img">
+                            <img onclick="arrowOnClick(1)" src="src/icons/arrow.png" class="arrow-rotate">
+                        </div>
+                    </div>
+                    <div class="tool-section-display">
+                        <p>No element/elements selected</p>
+                        <p>Color:</p>
+                        <p>Font style: </p>
+                        <p>Rotation: </p>
+                        <p>Animation: </p>
+                        <p>Type of position: </p>
+                    </div>
                 </div>
                 <div class="tool-section">
-                    <p>TEMPLATES</p>
-                    <p>Element templates:</p>
-                    <p>Whole templates:</p>
+                    <div class="tool-section-menu">
+                        <p>TEMPLATES</p>
+                        <div class="tool-section-menu-img">
+                            <img onclick="arrowOnClick(2)" src="src/icons/arrow.png" class="arrow-rotate">
+                        </div>
+                    </div>
+                    <div class="tool-section-display">
+                        <p>Element templates:</p>
+                        <p>Whole templates:</p>
+                    </div>
                 </div>
                 <div class="tool-section">
-                    <p>MENU</p>
-                    <p>Refresh</p>
-                    <p>Upload</p>
-                    <p>Export</p>
+                    <div class="tool-section-menu">
+                        <p>MENU</p>
+                        <div class="tool-section-menu-img">
+                            <img onclick="arrowOnClick(3)" src="src/icons/arrow.png" class="arrow-rotate">
+                        </div>
+                    </div>
+                    <div class="tool-section-display">
+                        <p>Refresh</p>
+                        <p>Upload</p>
+                        <p>Export</p>
+                    </div>
                 </div>
             </div>
             <div id="combined_panel">
