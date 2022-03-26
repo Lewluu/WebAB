@@ -8,7 +8,7 @@
         <style>
             <?php include 'src/css/style.css' ?>
         </style>
-        <script src="src/scripts/script.js"></script>
+        <?php echo '<script src="src/scripts/script.js?v=0"></script>' ?>
         <script>
         </script>
     <body>
@@ -21,7 +21,7 @@
                     <div class="tool-section-menu">
                         <p>LAYOUTS</p>
                         <div class="tool-section-menu-img">
-                            <img src="src/icons/arrow.png">
+                            <img onclick="arrowOnClick()" src="src/icons/arrow.png" class="arrow-rotate">
                         </div>
                     </div>
                     <p>Add Layout:</p>

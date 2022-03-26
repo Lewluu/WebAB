@@ -9,3 +9,9 @@ function DragStart(e){
 function HelloWorld(){
     console.log("Hello world!");
 }
+
+function arrowOnClick(){
+    //var el=document.getElementById("arrow-rotate");
+    var el=document.getElementsByClassName("arrow-rotate");
+    el[0].style.transform="rotate(90deg)";
+}
