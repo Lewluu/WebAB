@@ -88,12 +88,12 @@ body{
 }
 
 .arrow-rotate{
-    animation: arrow_rotaion_animation 5s;
+    animation: arrow_rotation_animation 2s;
 }
 
-@keyframe arrow_rotation_animation{
+@keyframes arrow_rotation_animation{
     0% {transform: rotate(0deg);}
-    50% {transform: rotate(45deg);}
+    50% {transform: rotate(90deg);}
     100% {transform: rotate(90deg);}
 }
 
