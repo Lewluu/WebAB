@@ -20,7 +20,9 @@
                 <div class="tool-section">
                     <div class="tool-section-menu">
                         <p>LAYOUTS</p>
-                        <img src="src/icons/arrow.png">
+                        <div class="tool-section-menu-img">
+                            <img src="src/icons/arrow.png">
+                        </div>
                     </div>
                     <p>Add Layout:</p>
                     <!-- <div class="layout-draggable" draggable="true">

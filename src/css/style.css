@@ -68,19 +68,19 @@ body{
 .tool-section-menu{
     display: flex;
     flex-direction: row;
-    margin-left: auto;
 }
 
 .tool-section-menu p{
-    margin-left: auto;
+    margin: auto;
+    margin-left: 25%;
 }
 
-.tool-section-menu img{
-    /* margin: auto; */
-    width: 5%;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-right: auto;
+.tool-section-menu-img{
+}
+
+.tool-section-menu-img img{
+    width: 15%;
+    margin-right: 75%;
 }
 
 .layout-draggable{
