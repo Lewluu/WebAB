@@ -98,6 +98,10 @@
                 <p>Project name:
                     <input type="text" name="project_name">
                 </p>
+                <p>Project owner:
+                    <input type="text" name="project_owner">
+                </p>
+                <input type="submit" name="submit_project" value="Sumbit">
             </form>
         </div>
     </body>
