@@ -124,7 +124,7 @@ body{
     border-width: 2px;
     border-color: black;
     width: 35vw;
-    height: 35vh;
+    height: 30vh;
     min-height: 250px;
     margin: auto;
     text-align: center;
@@ -146,3 +146,6 @@ body{
     cursor: pointer;
 }
 
+.popup-new-project form{
+    margin-top: 9%;
+}
