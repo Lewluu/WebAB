@@ -94,7 +94,7 @@
         <div class="popup-new-project">
             <img onclick="closePopUp(0)" src="src/icons/close.png">
             <p>CREATE NEW PROJECT</p>
-            <form >
+            <form action="src/include/create_project.php" method="POST">
                 <p>Project name:</p>
                 <input type="text" name="project_name">
                 <p>Project owner:</p>
