@@ -67,11 +67,11 @@
                         </div>
                     </div>
                     <div class="tool-section-display">
-                        <p>Refresh</p>
-                        <div class="new-project-option"><p>New</p></div>
-                        <p>Upload</p>
-                        <p>Export</p>
-                        <p>Delete</p>
+                        <div onclick="optionOnClick(1)" class="menu-project-option"><p>Refresh</p></div>
+                        <div onclick="optionOnClick(2)" class="menu-project-option"><p>New</p></div>
+                        <div onclick="optionOnClick(3)" class="menu-project-option"><p>Upload</p></div>
+                        <div onclick="optionOnClick(4)" class="menu-project-option"><p>Export</p></div>
+                        <div onclick="optionOnClick(5)" class="menu-project-option"><p>Delete</p></div>
                     </div>
                 </div>
             </div>
@@ -90,6 +90,10 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="popup-new-project">
+            <img class="closePopUp(0)" src="src/icons/close.png">
+            <p>Create new project</p>
         </div>
     </body>
 </html>

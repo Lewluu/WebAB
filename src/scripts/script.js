@@ -23,3 +23,29 @@ function arrowOnClick(arrow_nr){
         tools[arrow_nr].style="display:none";
     }
 }
+
+function optionOnClick(option){
+    var option_pressed=document.getElementsByClassName("menu-project-option");
+    switch(option){
+        case 1:
+            break;
+        case 2:
+            var popup_window=document.getElementsByClassName("popup-new-project");
+            popup_window[0].style="display:block";
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            break;
+        default: break;
+    }
+}
+
+function closePopUp(popup_nr){
+    if(popup_nr==0){
+        var popup_window=document.getElementsByClassName("popup-new-project");
+        popup_window[0].style="display:none";
+    }
+}
