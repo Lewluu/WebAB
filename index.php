@@ -9,8 +9,7 @@
             <?php include 'src/css/style.css' ?>
         </style>
         <?php echo '<script src="src/scripts/script.js?v=1"></script>' ?>
-        <script>
-        </script>
+    </head>
     <body>
         <script>
             HelloWorld();
