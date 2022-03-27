@@ -9,7 +9,7 @@ class HtmlObject{
     //methods
     function __construct(){
     }
-    function createHtml($path,$file_name,$title){
+    function createFile($path,$file_name,$title){
         $html_file=fopen($path.'/'.$file_name,"w");
 
         fwrite($html_file,"<!DOCTYPE html>");
