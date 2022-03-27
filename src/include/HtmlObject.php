@@ -1,15 +1,9 @@
 <?php
 
-include 'StyleElement.php';
-include 'ScriptElement.php';
+include 'FileObject.php';
 
-class HtmlObject{
-    //attributes
-    private $html_data;
-    //methods
-    function __construct(){
-    }
-    function createFile($path,$file_name,$title){
+class HtmlObject extends FileObject{
+    public function createFile($path,$file_name,$title){
         $html_file=fopen($path.'/'.$file_name,"w");
 
         fwrite($html_file,"<!DOCTYPE html>");
@@ -19,23 +13,21 @@ class HtmlObject{
         fwrite($html_file,"<meta charset='UTF-8'>");
         fwrite($html_file,"<meta name='viewport' content='width=device-width',initial-scale=1.0>");
         fwrite($html_file,"<meta='description' content=''>");
-        // the next lines should include the path to css and js files, but they'll be passed to other methods
-        // so it'll the end of head tag and begining of body tag
+        fwrite($html_file,"<link rel='stylesheet' type='text/css' href='src/css/style.css'>");
+        fwrite($html_file,"<script src='src/scripts/script.js'></script>");
         fwrite($html_file,"</head>");
         fwrite($html_file,"<body>");
         fwrite($html_file,"</body>");
         fwrite($html_file,"</html>");
 
-        //$this->html_data=file_get_contents($path);
+        fclose($html_file);
     }
-    function getHTML(){
-        // include $this->html_data;
-        return $this->html_data;
+    public function getData(){
+            
     }
-    function getHTML_code(){
-        return htmlspecialchars($this->html_data);
+    public function getCode(){
+            
     }
 }
-
 
 ?>

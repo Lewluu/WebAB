@@ -1,19 +1,18 @@
 <?php
 
-class StyleElement{
-    //attributes
-    private $css_data;
-    //methods
-    function __construct(){   
+include 'FileObject.php';
+
+class StyleObject extends FileObject{
+    public function createFile($path,$file_name,$title){
+        $css_file=fopen($path.'/'.$file_name,"w");
+
+        fclose($css_file);
     }
-    function loadStyle($path){
-        $this->css_data=file_get_contents($path);
+    public function getData(){
+            
     }
-    function getStyle(){
-        return $this->css_data;
-    }
-    function getStyle_code(){
-        return htmlspecialchars($this->css_data);
+    public function getCode(){
+            
     }
 }
 

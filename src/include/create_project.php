@@ -1,5 +1,9 @@
 <?php
 
+include 'HtmlObject.php';
+include 'StyleObject.php';
+include 'ScriptObject.php';
+
 if(!empty($_POST)){
     $prj_name=$_POST['project_name'];
     $prj_owner=$_POST['project_owner'];
@@ -15,14 +19,23 @@ if(!empty($_POST)){
 
     chdir($curr_path.'/out/'.$prj_name);
 
-    $html_file=fopen("index.html","w");
-    fclose($html_file);
+    $html=new HtmlObject();
+    $html->createFile(getcwd(),"index.html","Test");
 
-    $css_file=fopen("src/css/style.css","w");
-    fclose($css_file);
+    $css=new StyleObject();
+    $css->createFile("src/css","style.css",null);
 
-    $js_file=fopen("src/scripts/script.js","w");
-    fclose($js_file);
+    $js=new ScriptObject();
+    $js->createFile("src/scripts","script.js",null);
+
+    // $html_file=fopen("index.html","w");
+    // fclose($html_file);
+
+    // $css_file=fopen("src/css/style.css","w");
+    // fclose($css_file);
+
+    // $js_file=fopen("src/scripts/script.js","w");
+    // fclose($js_file);
 }
 
 ?>

@@ -1,19 +1,18 @@
 <?php
 
-class ScriptElement{
-    //attributes
-    private $script_data;
-    //methods
-    function __construct(){    
+include 'FileObject.php';
+
+class ScriptObject extends FileObject{
+    public function createFile($path,$file_name,$title){
+        $js_file=fopen($path.'/'.$file_name,"w");
+
+        fclose($js_file);
     }
-    function loadScript($path){
-        $this->script_data=file_get_contents($path);
+    public function getData(){
+            
     }
-    function getScript(){
-        return $this->script_data;
-    }
-    function getScript_code(){
-        return htmlspecialchars($this->script_data);
+    public function getCode(){
+            
     }
 }
 
