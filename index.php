@@ -92,8 +92,13 @@
             </div>
         </div>
         <div class="popup-new-project">
-            <img class="closePopUp(0)" src="src/icons/close.png">
+            <img onclick="closePopUp(0)" src="src/icons/close.png">
             <p>Create new project</p>
+            <form>
+                <p>Project name:
+                    <input type="text" name="project_name">
+                </p>
+            </form>
         </div>
     </body>
 </html>
