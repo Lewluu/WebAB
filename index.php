@@ -93,14 +93,13 @@
         </div>
         <div class="popup-new-project">
             <img onclick="closePopUp(0)" src="src/icons/close.png">
-            <p>Create new project</p>
-            <form>
-                <p>Project name:
-                    <input type="text" name="project_name">
-                </p>
-                <p>Project owner:
-                    <input type="text" name="project_owner">
-                </p>
+            <p>CREATE NEW PROJECT</p>
+            <form >
+                <p>Project name:</p>
+                <input type="text" name="project_name">
+                <p>Project owner:</p>
+                <input type="text" name="project_owner">
+                <p></p>
                 <input type="submit" name="submit_project" value="Sumbit">
             </form>
         </div>
