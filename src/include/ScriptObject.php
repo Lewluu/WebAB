@@ -1,6 +1,6 @@
 <?php
 
-include 'FileObject.php';
+include_once 'FileObject.php';
 
 class ScriptObject extends FileObject{
     public function createFile($path,$file_name,$title){
