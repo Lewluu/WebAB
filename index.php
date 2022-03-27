@@ -68,8 +68,10 @@
                     </div>
                     <div class="tool-section-display">
                         <p>Refresh</p>
+                        <div class="new-project-option"><p>New</p></div>
                         <p>Upload</p>
                         <p>Export</p>
+                        <p>Delete</p>
                     </div>
                 </div>
             </div>

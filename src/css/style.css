@@ -92,6 +92,10 @@ body{
     height: 100%;
 }
 
+.tool-section-menu-img img:hover{
+    cursor: pointer;
+}
+
 .arrow-rotate{
     transition-duration: 0.5s;
 }
@@ -108,4 +112,12 @@ body{
     border-width: 2px;
     border-color: orange;
     margin: auto;
+}
+
+.new-project-option{
+
+}
+
+.new-project-option:hover{
+    
 }
