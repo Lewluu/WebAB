@@ -91,13 +91,17 @@
         <div class="popup-new-project">
             <img onclick="closePopUp(0)" src="src/icons/close.png">
             <p>CREATE NEW PROJECT</p>
-            <form>
+            <form class="new-project-form">
                 <p>Project name:</p>
-                <input type="text" name="project_name">
+                <input type="text" name="project_name" class="form-data">
                 <p>Project owner:</p>
-                <input type="text" name="project_owner">
+                <input type="text" name="project_owner" class="form-data">
                 <p></p>
-                <input type="submit" name="submit_project" value="Submit">
+                <div>
+                    <button onclick="createProject()" type="button" name="submit_new_project_button" class="new-project-submit-button">
+                        Submit
+                    </button>
+                </div>
             </form>
         </div>
     </body>

@@ -1,19 +1,21 @@
-$(document).ready(function(){
-    $("#new_project_submit").submit(function(){
-        $(document).load("src/include/create_project.php");
-    });
-});
+function createProject(){
+    var form_element=document.getElementsByClassName("form-data");
+    var form_data=new FormData();
+    for(var count=0;count<form_element.length;count++){
+        form_data.append(form_element[count].name,form_element[count].value);
+    }
+    document.getElementsByClassName("new-project-submit-button")[0].disabled=true;
 
-// function createProject(){
-//     var xmlhttprequest=new XMLHttpRequest();
-//     xmlhttprequest.onreadystatechange=function(){
-//         if(this.readyState==4 && this.status==200){
-//             //nothing happens
-//         }
-//         xmlhttprequest.open("POST","src/include/create_project.php",true);
-//         xmlhttprequest.send();
-//     }
-// }
+    var xmlhttp=new XMLHttpRequest();
+    xmlhttp.open("POST","src/include/create_project.php");
+    xmlhttp.send(form_data);
+    xmlhttp.onreadystatechange=function(){
+        if(this.readyState==4 && this.status==200){
+            document.getElementsByClassName("new-project-submit-button")[0].disabled=false;
+            document.getElementsByClassName("new-project-form")[0].reset();
+        }
+    }
+}
 
 function arrowOnClick(arrow_nr){
     //var el=document.getElementById("arrow-rotate");
