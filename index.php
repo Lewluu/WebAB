@@ -9,7 +9,8 @@
             <?php include 'src/css/style.css' ?>
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <?php echo '<script src="src/scripts/script.js?v=1"></script>' ?>
+        ///<reference path="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" />
+        <?php echo '<script src="src/scripts/script.js"></script>' ?>
     </head>
     <body>
         <div id="interface">
