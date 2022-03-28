@@ -1,14 +1,19 @@
-const item = document.querySelector('.layout-draggable');
+$(document).ready(function(){
+    $("#new_project_submit").submit(function(){
+        $(document).load("src/include/create_project.php");
+    });
+});
 
-item.addEventListener('dragstart', DragStart);
-
-function DragStart(e){
-    console.log("Drag starts...");
-}
-
-function HelloWorld(){
-    console.log("Hello world!");
-}
+// function createProject(){
+//     var xmlhttprequest=new XMLHttpRequest();
+//     xmlhttprequest.onreadystatechange=function(){
+//         if(this.readyState==4 && this.status==200){
+//             //nothing happens
+//         }
+//         xmlhttprequest.open("POST","src/include/create_project.php",true);
+//         xmlhttprequest.send();
+//     }
+// }
 
 function arrowOnClick(arrow_nr){
     //var el=document.getElementById("arrow-rotate");

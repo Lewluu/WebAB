@@ -8,12 +8,10 @@
         <style>
             <?php include 'src/css/style.css' ?>
         </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <?php echo '<script src="src/scripts/script.js?v=1"></script>' ?>
     </head>
     <body>
-        <script>
-            HelloWorld();
-        </script>
         <div id="interface">
             <div id="tool_panel_1">
                 <div class="tool-section">
@@ -93,13 +91,13 @@
         <div class="popup-new-project">
             <img onclick="closePopUp(0)" src="src/icons/close.png">
             <p>CREATE NEW PROJECT</p>
-            <form action="src/include/create_project.php" method="POST">
+            <form>
                 <p>Project name:</p>
                 <input type="text" name="project_name">
                 <p>Project owner:</p>
                 <input type="text" name="project_owner">
                 <p></p>
-                <input type="submit" name="submit_project" value="Sumbit">
+                <input type="submit" name="submit_project" value="Submit">
             </form>
         </div>
     </body>
