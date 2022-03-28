@@ -1,3 +1,4 @@
+/// <reference path="../../typings/globals/jquery/index.d.ts" />
 
 function createProject(){
     var form_element=document.getElementsByClassName("form-data");
