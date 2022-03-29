@@ -9,7 +9,6 @@
             <?php include 'src/css/style.css' ?>
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        ///<reference path="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" />
         <?php echo '<script src="src/scripts/script.js"></script>' ?>
     </head>
     <body>
@@ -94,15 +93,11 @@
             <p>CREATE NEW PROJECT</p>
             <form class="new-project-form">
                 <p>Project name:</p>
-                <input type="text" name="project_name" class="form-data">
+                <input type="text" name="project_name">
                 <p>Project owner:</p>
-                <input type="text" name="project_owner" class="form-data">
+                <input type="text" name="project_owner">
                 <p></p>
-                <div>
-                    <button onclick="createProject()" type="button" name="submit_new_project_button" class="new-project-submit-button">
-                        Submit
-                    </button>
-                </div>
+                <input type="submit" name="project_submit">
             </form>
         </div>
     </body>
