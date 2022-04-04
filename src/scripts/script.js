@@ -8,6 +8,7 @@ $(document).ready(function(){
             url: "src/include/create_project.php",
             data: $(".new-project-form").serialize(),
             success: function(){
+                $(".popup-new-project").css("display","none");
                 alert("Project was created!");
             },
             error: function(){
@@ -57,7 +58,7 @@ function optionOnClick(option){
             break;
         case 2:
             var popup_window=document.getElementsByClassName("popup-new-project");
-            popup_window[0].style="display:block";
+            popup_window[0].style="display:block;";
             break;
         case 3:
             break;
