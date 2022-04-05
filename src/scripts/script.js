@@ -3,19 +3,25 @@
 $(document).ready(function(){
     $(".new-project-form").on("submit",function(e){
         e.preventDefault();
+        var form_val={};
+        var form_data=$(".new-project-form").serializeArray();
+        $.each(form_data,function(i,field){
+            form_val[field.name]=field.value;
+        });
         $.ajax({
             type: "POST",
             url: "src/include/create_project.php",
-            data: $(".new-project-form").serialize(),
+            data: form_data,
             success: function(){
                 $(".popup-new-project").css("display","none");
-                alert("Project was created!");
+                alert("Project "+form_val["project_name"]+" was created!");
             },
             error: function(){
                 alert("Project creation failed!");
             }
         });
     });
+    $(".iframe-panel").attr("src","src/out/test_project/index.html");
 });
 
 // function createProject(){
