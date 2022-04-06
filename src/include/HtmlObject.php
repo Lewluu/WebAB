@@ -17,6 +17,7 @@ class HtmlObject extends FileObject{
         fwrite($html_file,"\t \t <script src='src/scripts/script.js'></script> \n");
         fwrite($html_file,"\t </head> \n");
         fwrite($html_file,"\t <body> \n");
+        fwrite($html_file,"\t \t <h2>Hello from new project!</h2>");
         fwrite($html_file,"\t</body> \n");
         fwrite($html_file,"</html> \n");
 

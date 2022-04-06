@@ -9,7 +9,7 @@
             <?php include 'src/css/style.css' ?>
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <?php echo '<script src="src/scripts/script.js?v=1"></script>' ?>
+        <?php echo '<script src="src/scripts/script.js?v=0"></script>' ?>
     </head>
     <body>
         <div id="interface">
@@ -66,7 +66,7 @@
                     <div class="tool-section-display">
                         <div onclick="optionOnClick(1)" class="menu-project-option"><p>Refresh</p></div>
                         <div onclick="optionOnClick(2)" class="menu-project-option"><p>New</p></div>
-                        <div onclick="optionOnClick(3)" class="menu-project-option"><p>Upload</p></div>
+                        <div class="menu-project-option"><p>Upload</p></div>
                         <div onclick="optionOnClick(4)" class="menu-project-option"><p>Export</p></div>
                         <div onclick="optionOnClick(5)" class="menu-project-option"><p>Delete</p></div>
                     </div>
@@ -92,7 +92,7 @@
             </div>
         </div>
         <div class="popup-new-project">
-            <img onclick="closePopUp(0)" src="src/icons/close.png">
+            <img onclick="closePopUp(1)" src="src/icons/close.png">
             <p>CREATE NEW PROJECT</p>
             <form class="new-project-form">
                 <p>Project name:</p>
@@ -101,6 +101,14 @@
                 <input type="text" name="project_owner">
                 <p></p>
                 <input type="submit" name="project_submit">
+            </form>
+        </div>
+        <div class="popup-upload-project">
+            <img onclick="closePopUp(2)" src="src/icons/close.png">
+            <p>UPLOAD FROM LOCAL</p>
+            <form class="upload-project-form">
+                <textarea class="projects-list"></textarea><br>
+                <input type="submit" name="upload_submit">
             </form>
         </div>
     </body>

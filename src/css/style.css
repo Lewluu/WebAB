@@ -155,3 +155,36 @@ body{
 .popup-new-project form{
     /* margin-top: 9%; */
 }
+
+
+.popup-upload-project{
+    background-color:salmon;
+    border-style: double;
+    border-width: 2px;
+    border-color: black;
+    width: 35vw;
+    height: 30vh;
+    min-height: 250px;
+    margin: auto;
+    text-align: center;
+    position:absolute;
+    top:0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: none;
+}
+
+.popup-upload-project img{
+    width: 2%;
+    margin-top: 1%;
+    margin-left: 96%;
+}
+
+.popup-upload-project img:hover{
+    cursor: pointer;
+}
+
+.popup-upload-project form{
+    /* margin-top: 9%; */
+}

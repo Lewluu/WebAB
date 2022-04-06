@@ -14,6 +14,7 @@ $(document).ready(function(){
             data: form_data,
             success: function(){
                 $(".popup-new-project").css("display","none");
+                loadProject(form_val["project_name"]);
                 alert("Project "+form_val["project_name"]+" was created!");
             },
             error: function(){
@@ -21,27 +22,46 @@ $(document).ready(function(){
             }
         });
     });
-    $(".iframe-panel").attr("src","src/out/test_project/index.html");
+
+    //menu project options
+    var options=document.getElementsByClassName("menu-project-option");
+    $(options[2]).on("click",function(e){
+        e.preventDefault();
+        openPopUp(3);
+        var projects=[];
+        $.getJSON("src/include/upload_project.php",function(data){
+            projects=data;
+            for(var i=0;i<projects.length;i++)
+                console.log(projects[i]);
+        });
+    })
 });
 
-// function createProject(){
-//     var form_element=document.getElementsByClassName("form-data");
-//     var form_data=new FormData();
-//     for(var count=0;count<form_element.length;count++){
-//         form_data.append(form_element[count].name,form_element[count].value);
-//     }
-//     document.getElementsByClassName("new-project-submit-button")[0].disabled=true;
+function loadProject(projectName){
+    var path="src/out/"+projectName+"/index.html";
+    $(".iframe-panel").attr("src",path);
+}
 
-//     var xmlhttp=new XMLHttpRequest();
-//     xmlhttp.open("POST","src/include/create_project.php");
-//     xmlhttp.send(form_data);
-//     xmlhttp.onreadystatechange=function(){
-//         if(this.readyState==4 && this.status==200){
-//             document.getElementsByClassName("new-project-submit-button")[0].disabled=false;
-//             document.getElementsByClassName("new-project-form")[0].reset();
-//         }
-//     }
-// }
+function openPopUp(option){
+    var popup_window;
+    switch(option){
+        case 1:
+            break;
+        case 2:
+            popup_window=document.getElementsByClassName("popup-new-project");
+            popup_window[0].style="display:block;";
+            break;
+        case 3:
+            popup_window=document.getElementsByClassName("popup-upload-project");
+            popup_window[0].style="display:block";
+            break;
+        case 4:
+            break;
+        case 5:
+            break;
+        default: break;
+    }
+}
 
 function arrowOnClick(arrow_nr){
     //var el=document.getElementById("arrow-rotate");
@@ -58,15 +78,17 @@ function arrowOnClick(arrow_nr){
 }
 
 function optionOnClick(option){
-    var option_pressed=document.getElementsByClassName("menu-project-option");
+    var popup_window;
     switch(option){
         case 1:
             break;
         case 2:
-            var popup_window=document.getElementsByClassName("popup-new-project");
+            popup_window=document.getElementsByClassName("popup-new-project");
             popup_window[0].style="display:block;";
             break;
         case 3:
+            popup_window=document.getElementsByClassName("popup-upload-project");
+            popup_window[0].style="display:block";
             break;
         case 4:
             break;
@@ -77,8 +99,16 @@ function optionOnClick(option){
 }
 
 function closePopUp(popup_nr){
-    if(popup_nr==0){
-        var popup_window=document.getElementsByClassName("popup-new-project");
-        popup_window[0].style="display:none";
+    switch(popup_nr){
+        case 1:
+            var popup_window=document.getElementsByClassName("popup-new-project");
+            popup_window[0].style="display:none";
+            break;
+        case 2:
+            var popup_window=document.getElementsByClassName("popup-upload-project");
+            popup_window[0].style="display:none";
+            break;
+        default:
+            break;
     }
 }
