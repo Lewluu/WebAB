@@ -127,7 +127,7 @@ body{
 .popup-new-project{
     background-color:salmon;
     border-style: double;
-    border-width: 2px;
+    border-width: 1px;
     border-color: black;
     width: 35vw;
     height: 30vh;
@@ -160,7 +160,7 @@ body{
 .popup-upload-project{
     background-color:salmon;
     border-style: double;
-    border-width: 2px;
+    border-width: 1px;
     border-color: black;
     width: 35vw;
     height: 35vh;
@@ -208,6 +208,6 @@ body{
 
 .projects-list-box p:hover{
     cursor: pointer;
-    background-color: violet;
+    background-color:rgb(237, 175, 245);
     transition: 1s;
 }
