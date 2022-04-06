@@ -1,6 +1,23 @@
 /// <reference path="../../typings/globals/jquery/index.d.ts" />
 
 $(document).ready(function(){
+    //menu project options
+    var options=document.getElementsByClassName("menu-project-option");
+    var projects=[];
+    $(options[2]).on("click",function(e){
+        e.preventDefault();
+        openPopUp(3);
+        $.getJSON("src/include/upload_project.php",function(data){
+            var html_content=String();
+            projects=data;
+            for(var i=0;i<projects.length;i++){
+                html_content+="<p>"+projects[i]+"</p>"
+            }
+            $(".projects-list-box").html(html_content);
+        });
+    })
+
+    //new project form
     $(".new-project-form").on("submit",function(e){
         e.preventDefault();
         var form_val={};
@@ -22,19 +39,16 @@ $(document).ready(function(){
             }
         });
     });
-
-    //menu project options
-    var options=document.getElementsByClassName("menu-project-option");
-    $(options[2]).on("click",function(e){
+    //upload project form
+    $(".upload-project-form").on("submit",function(e){
         e.preventDefault();
-        openPopUp(3);
-        var projects=[];
-        $.getJSON("src/include/upload_project.php",function(data){
-            projects=data;
-            for(var i=0;i<projects.length;i++)
-                console.log(projects[i]);
+        $.ajax({
+            success: function(){
+            },
+            error: function(){
+            }
         });
-    })
+    });
 });
 
 function loadProject(projectName){

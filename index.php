@@ -9,7 +9,7 @@
             <?php include 'src/css/style.css' ?>
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <?php echo '<script src="src/scripts/script.js?v=0"></script>' ?>
+        <?php echo '<script src="src/scripts/script.js?v=1"></script>' ?>
     </head>
     <body>
         <div id="interface">
@@ -107,7 +107,7 @@
             <img onclick="closePopUp(2)" src="src/icons/close.png">
             <p>UPLOAD FROM LOCAL</p>
             <form class="upload-project-form">
-                <textarea class="projects-list"></textarea><br>
+                <div class="projects-list-box"></div>
                 <input type="submit" name="upload_submit">
             </form>
         </div>

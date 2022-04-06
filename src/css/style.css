@@ -163,8 +163,8 @@ body{
     border-width: 2px;
     border-color: black;
     width: 35vw;
-    height: 30vh;
-    min-height: 250px;
+    height: 35vh;
+    min-height: 300px;
     margin: auto;
     text-align: center;
     position:absolute;
@@ -187,4 +187,27 @@ body{
 
 .popup-upload-project form{
     /* margin-top: 9%; */
+}
+
+.projects-list-box{
+    background-color: white;
+    width: 50%;
+    margin: auto;
+    border-style: double;
+    border-width: 1px;
+    border-color: black;
+    margin-bottom: 2%;
+}
+
+.projects-list-box p{
+    width:75%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2%;
+}
+
+.projects-list-box p:hover{
+    cursor: pointer;
+    background-color: violet;
+    transition: 1s;
 }
