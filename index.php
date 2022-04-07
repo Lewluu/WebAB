@@ -64,11 +64,11 @@
                         </div>
                     </div>
                     <div class="tool-section-display">
-                        <div onclick="optionOnClick(1)" class="menu-project-option"><p>Refresh</p></div>
-                        <div onclick="optionOnClick(2)" class="menu-project-option"><p>New</p></div>
+                        <div class="menu-project-option"><p>Refresh</p></div>
+                        <div class="menu-project-option"><p>New</p></div>
                         <div class="menu-project-option"><p>Upload</p></div>
-                        <div onclick="optionOnClick(4)" class="menu-project-option"><p>Export</p></div>
-                        <div onclick="optionOnClick(5)" class="menu-project-option"><p>Delete</p></div>
+                        <div class="menu-project-option"><p>Export</p></div>
+                        <div class="menu-project-option"><p>Delete</p></div>
                     </div>
                 </div>
             </div>
@@ -92,7 +92,7 @@
             </div>
         </div>
         <div class="popup-new-project">
-            <img onclick="closePopUp(1)" src="src/icons/close.png">
+            <img onclick="closePopUp(2)" src="src/icons/close.png">
             <p>CREATE NEW PROJECT</p>
             <form class="new-project-form">
                 <p>Project name:</p>
@@ -104,7 +104,7 @@
             </form>
         </div>
         <div class="popup-upload-project">
-            <img onclick="closePopUp(2)" src="src/icons/close.png">
+            <img onclick="closePopUp(3)" src="src/icons/close.png">
             <p>UPLOAD FROM LOCAL</p>
             <form class="upload-project-form">
                 <div class="projects-list-box"></div>

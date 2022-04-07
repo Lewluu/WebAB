@@ -4,18 +4,33 @@ $(document).ready(function(){
     //menu project options
     var options=document.getElementsByClassName("menu-project-option");
     var projects=[];
+    var sp;
+    $(options[1]).on("click",function(e){
+        e.preventDefault();
+        openPopUp(2);
+        //close all others popups
+        closePopUp(3);
+    });
     $(options[2]).on("click",function(e){
         e.preventDefault();
         openPopUp(3);
+        //close all others popups
+        closePopUp(2);
         $.getJSON("src/include/upload_project.php",function(data){
             var html_content=String();
             projects=data;
             for(var i=0;i<projects.length;i++){
-                html_content+="<p>"+projects[i]+"</p>"
+                html_content+="<p class='project-selected'>"+projects[i]+"</p>"
             }
             $(".projects-list-box").html(html_content);
+            //selecting existing projects
+            var tsp=document.getElementsByClassName("project-selected");
+            $(tsp[0]).on("click",function(e){
+                //colecting selected data
+                sp=tsp[0].innerHTML;
+            });
         });
-    })
+    });
 
     //new project form
     $(".new-project-form").on("submit",function(e){
@@ -39,11 +54,13 @@ $(document).ready(function(){
             }
         });
     });
+
     //upload project form
     $(".upload-project-form").on("submit",function(e){
         e.preventDefault();
         $.ajax({
             success: function(){
+                console.log(sp);
             },
             error: function(){
             }
@@ -91,34 +108,13 @@ function arrowOnClick(arrow_nr){
     }
 }
 
-function optionOnClick(option){
-    var popup_window;
-    switch(option){
-        case 1:
-            break;
-        case 2:
-            popup_window=document.getElementsByClassName("popup-new-project");
-            popup_window[0].style="display:block;";
-            break;
-        case 3:
-            popup_window=document.getElementsByClassName("popup-upload-project");
-            popup_window[0].style="display:block";
-            break;
-        case 4:
-            break;
-        case 5:
-            break;
-        default: break;
-    }
-}
-
 function closePopUp(popup_nr){
     switch(popup_nr){
-        case 1:
+        case 2:
             var popup_window=document.getElementsByClassName("popup-new-project");
             popup_window[0].style="display:none";
             break;
-        case 2:
+        case 3:
             var popup_window=document.getElementsByClassName("popup-upload-project");
             popup_window[0].style="display:none";
             break;
