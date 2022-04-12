@@ -1,21 +1,27 @@
 /// <reference path="../../typings/globals/jquery/index.d.ts" />
 
 $(document).ready(function(){
-    //menu project options
+    //getting project main menu options, then handling the forms 
     var options=document.getElementsByClassName("menu-project-option");
     var projects=[];
     var sp;
+
+    //new project option
     $(options[1]).on("click",function(e){
         e.preventDefault();
         openPopUp(2);
         //close all others popups
         closePopUp(3);
+        closePopUp(5);
     });
+
+    //upload project option
     $(options[2]).on("click",function(e){
         e.preventDefault();
         openPopUp(3);
         //close all others popups
         closePopUp(2);
+        closePopUp(5);
         $.getJSON("src/include/upload_project.php",function(data){
             var html_content=String();
             projects=data;
@@ -39,6 +45,36 @@ $(document).ready(function(){
         });
     });
 
+    //delete project option
+    $(options[4]).on("click",function(e){
+        e.preventDefault();
+        openPopUp(5);
+        //close all others popups
+        closePopUp(2);
+        closePopUp(3);
+        $.getJSON("src/include/upload_project.php",function(data){
+            var html_content=String();
+            projects=data;
+            for(var i=0;i<projects.length;i++){
+                html_content+="<p class='project-from-directory'>"+projects[i]+"</p>"
+            }
+            $(".projects-list-box").html(html_content);
+            //selecting existing projects
+            var tsp=document.getElementsByClassName("project-from-directory");
+            $(tsp).each(function(){
+                $(this).on("click",function(e){
+                    //copy the content of selected project into 'sp' variable
+                    sp=$(this).html();
+                    //removing bg for unselected projects and updating bg for selected
+                    $(tsp).addClass("unselected-project");
+                    $(tsp).removeClass("selected-project");
+                    $(this).removeClass("unselected-project");
+                    $(this).addClass("selected-project");
+                });
+            });
+        });
+    })
+    
     //new project form
     $(".new-project-form").on("submit",function(e){
         e.preventDefault();
@@ -73,6 +109,17 @@ $(document).ready(function(){
             }
         });
     });
+    
+    //delete project form
+    $(".delete-project-form").on("submit",function(e){
+        e.preventDefault();
+        $.ajax({
+            success:function(){
+            },
+            error:function(){
+            }
+        });
+    })
 });
 
 function loadProject(projectName){
@@ -96,6 +143,8 @@ function openPopUp(option){
         case 4:
             break;
         case 5:
+            popup_window=document.getElementsByClassName("popup-delete-project");
+            popup_window[0].style="display:block";
             break;
         default: break;
     }
@@ -123,6 +172,10 @@ function closePopUp(popup_nr){
             break;
         case 3:
             var popup_window=document.getElementsByClassName("popup-upload-project");
+            popup_window[0].style="display:none";
+            break;
+        case 5:
+            var popup_window=document.getElementsByClassName("popup-delete-project");
             popup_window[0].style="display:none";
             break;
         default:

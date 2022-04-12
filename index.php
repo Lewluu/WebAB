@@ -111,5 +111,13 @@
                 <input type="submit" name="upload_submit">
             </form>
         </div>
+        <div class="popup-delete-project">
+            <img onclick="closePopUp(5)" src="src/icons/close.png">
+            <form class="delete-project-form">
+                <div class="projects-list-box"></div>
+                <input type="checkbox" name="delete_all">Select all<br>
+                <input type="submit" name="delete_submit">
+            </form>
+        </div>
     </body>
 </html>

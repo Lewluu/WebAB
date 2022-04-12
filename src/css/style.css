@@ -130,6 +130,8 @@ body{
     border-width: 1px;
     border-color: black;
     width: 35vw;
+    max-width: 27%;
+    min-width: 350px;
     height: 30vh;
     min-height: 250px;
     margin: auto;
@@ -152,10 +154,9 @@ body{
     cursor: pointer;
 }
 
-.popup-new-project form{
-    /* margin-top: 9%; */
+.new-project-form input[type=submit]{
+    margin-top: 1%;
 }
-
 
 .popup-upload-project{
     background-color:salmon;
@@ -187,8 +188,38 @@ body{
     cursor: pointer;
 }
 
-.upload-project-form input{
+.upload-project-form input[type=submit]{
     margin-top: 2%;
+}
+
+.popup-delete-project{
+    background-color:salmon;
+    border-style: double;
+    border-width: 1px;
+    border-color: black;
+    width: 35vw;
+    max-width: 27%;
+    min-width: 350px;
+    height: 35vh;
+    min-height: 300px;
+    margin: auto;
+    text-align: center;
+    position:absolute;
+    top:0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: none;
+}
+
+.popup-delete-project img{
+    width: 2%;
+    margin-top: 1%;
+    margin-left: 96%;
+}
+
+.popup-delete-project img:hover{
+    cursor: pointer;
 }
 
 .projects-list-box{
