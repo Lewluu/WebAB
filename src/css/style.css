@@ -163,6 +163,8 @@ body{
     border-width: 1px;
     border-color: black;
     width: 35vw;
+    max-width: 27%;
+    min-width: 350px;
     height: 35vh;
     min-height: 300px;
     margin: auto;
@@ -185,18 +187,21 @@ body{
     cursor: pointer;
 }
 
-.popup-upload-project form{
-    /* margin-top: 9%; */
+.upload-project-form input{
+    margin-top: 2%;
 }
 
 .projects-list-box{
     background-color: white;
-    width: 50%;
+    width: 65%;
     margin: auto;
     border-style: double;
     border-width: 1px;
     border-color: black;
     margin-bottom: 2%;
+    overflow-y: auto;
+    max-height: 20vh;
+    min-height: 150px;
 }
 
 .projects-list-box p{
@@ -210,4 +215,12 @@ body{
     cursor: pointer;
     background-color:rgb(237, 175, 245);
     transition: 1s;
+}
+
+.selected-project{
+    background-color:rgb(237, 175, 245);
+}
+
+.unselected-project{
+    background-color: none
 }

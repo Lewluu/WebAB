@@ -20,14 +20,21 @@ $(document).ready(function(){
             var html_content=String();
             projects=data;
             for(var i=0;i<projects.length;i++){
-                html_content+="<p class='project-selected'>"+projects[i]+"</p>"
+                html_content+="<p class='project-from-directory'>"+projects[i]+"</p>"
             }
             $(".projects-list-box").html(html_content);
             //selecting existing projects
-            var tsp=document.getElementsByClassName("project-selected");
-            $(tsp[0]).on("click",function(e){
-                //colecting selected data
-                sp=tsp[0].innerHTML;
+            var tsp=document.getElementsByClassName("project-from-directory");
+            $(tsp).each(function(){
+                $(this).on("click",function(e){
+                    //copy the content of selected project into 'sp' variable
+                    sp=$(this).html();
+                    //removing bg for unselected projects and updating bg for selected
+                    $(tsp).addClass("unselected-project");
+                    $(tsp).removeClass("selected-project");
+                    $(this).removeClass("unselected-project");
+                    $(this).addClass("selected-project");
+                });
             });
         });
     });
