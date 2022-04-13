@@ -103,7 +103,7 @@ $(document).ready(function(){
         e.preventDefault();
         $.ajax({
             success: function(){
-                console.log(sp);
+                console.log("Loading project: "+sp);
             },
             error: function(){
             }
@@ -113,12 +113,33 @@ $(document).ready(function(){
     //delete project form
     $(".delete-project-form").on("submit",function(e){
         e.preventDefault();
-        $.ajax({
-            success:function(){
-            },
-            error:function(){
-            }
+        var form_val={};
+        var form_data=$(".delete-project-form").serializeArray();
+        $.each(form_data,function(i,field){
+            form_val[field.name]=field.value;
         });
+        $.post("src/include/delete_project.php",
+            {
+                project_name:sp
+            },
+            function(data){
+                console.log(data);
+            }
+        );
+        // $.getJSON("src/include/delete_project.php",function(data){
+        //     console.log(data);
+        // });
+        console.log("Deleting project: "+sp);
+        // $.ajax({
+        //     type: "POST",
+        //     url: "src/include/delete_project.php",
+        //     data: ,
+        //     success:function(){
+        //         console.log("Deleting project: "+sp);
+        //     },
+        //     error:function(){
+        //     }
+        // });
     })
 });
 

@@ -222,6 +222,10 @@ body{
     cursor: pointer;
 }
 
+.delete-project-form input[type=submit]{
+    margin-top: 1%;
+}
+
 .projects-list-box{
     background-color: white;
     width: 65%;

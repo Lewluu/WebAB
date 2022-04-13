@@ -9,7 +9,7 @@
             <?php include 'src/css/style.css' ?>
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <?php echo '<script src="src/scripts/script.js?v=1"></script>' ?>
+        <?php echo '<script src="src/scripts/script.js?v=2"></script>' ?>
     </head>
     <body>
         <div id="interface">
@@ -114,6 +114,7 @@
         <div class="popup-delete-project">
             <img onclick="closePopUp(5)" src="src/icons/close.png">
             <form class="delete-project-form">
+                <p>DELETE PROJECT</p>
                 <div class="projects-list-box"></div>
                 <input type="checkbox" name="delete_all">Select all<br>
                 <input type="submit" name="delete_submit">
