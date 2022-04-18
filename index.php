@@ -116,7 +116,7 @@
             <form class="delete-project-form">
                 <p>DELETE PROJECT</p>
                 <div class="projects-list-box"></div>
-                <input type="checkbox" name="delete_all">Select all<br>
+                <input type="checkbox" class="delete-all" name="delete_all">Select all<br>
                 <input type="submit" name="delete_submit">
             </form>
         </div>

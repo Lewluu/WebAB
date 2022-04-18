@@ -73,8 +73,29 @@ $(document).ready(function(){
                 });
             });
         });
-    })
-    
+    });
+    var delete_all=false;
+    $(".delete-all").change(function(){
+        if(delete_all==false){
+            delete_all=true;
+            var tsp=document.getElementsByClassName("project-from-directory");
+            $(tsp).each(function(){
+                $(this).removeClass("unselected-project");
+                $(this).addClass("selected-project");
+            });
+            console.log("All projects SELECTED for delete!");
+        }
+        else{
+            delete_all=false;
+            var tsp=document.getElementsByClassName("project-from-directory");
+            $(tsp).each(function(){
+                $(this).removeClass("selected-project");
+                $(this).addClass("unselected-project");
+            });
+            console.log("All projects UNSELECTED for delete!");
+        }
+    });
+
     //new project form
     $(".new-project-form").on("submit",function(e){
         e.preventDefault();
@@ -105,7 +126,6 @@ $(document).ready(function(){
             success: function(){
                 console.log("Loading project: "+sp);
                 loadProject(sp);
-                closePopUp(3);
             },
             error: function(){
             }
@@ -115,23 +135,39 @@ $(document).ready(function(){
     //delete project form
     $(".delete-project-form").on("submit",function(e){
         e.preventDefault();
-        var form_val={};
-        var form_data=$(".delete-project-form").serializeArray();
-        $.each(form_data,function(i,field){
-            form_val[field.name]=field.value;
-        });
-        $.post("src/include/delete_project.php",
-            {
-                project_name:sp
-            },
-            function(data){
-                console.log(data);
-                alert("Project: "+sp+" has been deleted!");
-                closePopUp(5);
+        
+        var tsp=document.getElementsByClassName("project-from-directory");
+        var sp_array=[];
+        $(tsp).each(function(){
+            if($(this).hasClass("selected-project")){
+                sp_array.push($(this).html());
             }
-        );
-        console.log("Deleting project: "+sp);
-    })
+        });
+        for(var i=0;i<sp_array.length;i++){
+            $.post("src/include/delete_project.php",
+                {
+                    project_name:sp_array[i]
+                },
+                function(data){
+                    console.log(data);
+                    // alert("Project: "+sp+" has been deleted!");
+                }
+            );
+            console.log("Deleting project: "+sp_array[i]);
+        }
+        // e.preventDefault();
+        // $.post("src/include/delete_project.php",
+        //     {
+        //         project_name:sp
+        //     },
+        //     function(data){
+        //         console.log(data);
+        //         alert("Project: "+sp+" has been deleted!");
+        //         closePopUp(5);
+        //     }
+        // );
+        // console.log("Deleting project: "+sp);
+    });
 });
 
 function removePanelProject(){
