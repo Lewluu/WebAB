@@ -10,22 +10,16 @@ $prj_name=$_POST['project_name'];
 $curr_path=getcwd();
 $curr_path=substr($curr_path,0,-8);
 $curr_path=$curr_path.'\\out\\'.$prj_name;
+$path_array=[$curr_path.'\src\pages',$curr_path.'\src\css',$curr_path.'\src\scripts',$curr_path.'\src',$curr_path];
 
-if(is_dir($curr_path)){
-    $files=array_diff(scandir($curr_path.'/src'),array('.','..'));
-    $files_array=[];
-
-    for($i=0;$i<sizeof($files);$i++){
-        $files_array[$i]=$files[$i+2];
-    }
-    echo json_encode($files_array);
-
-    $message="Project: ".$prj_name." deleted successfuly!";
-}
-else{
-    $message=$curr_path." directory doesn't exist!<br>";
+function deleteDir($path){
+    array_map('unlink',glob("$path\*.*"));
+    rmdir($path);
 }
 
-echo json_encode($message);
+for($i=0;$i<sizeof($path_array);$i++)
+    deleteDir($path_array[$i]);
+
+echo json_encode($curr_path." has been deleted!");
 
 ?>
