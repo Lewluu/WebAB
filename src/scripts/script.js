@@ -150,28 +150,27 @@ $(document).ready(function(){
                 },
                 function(data){
                     console.log(data);
-                    // alert("Project: "+sp+" has been deleted!");
                 }
             );
             console.log("Deleting project: "+sp_array[i]);
         }
-        // e.preventDefault();
-        // $.post("src/include/delete_project.php",
-        //     {
-        //         project_name:sp
-        //     },
-        //     function(data){
-        //         console.log(data);
-        //         alert("Project: "+sp+" has been deleted!");
-        //         closePopUp(5);
-        //     }
-        // );
-        // console.log("Deleting project: "+sp);
+        closePopUp(5);
+        if(sp_array.length>1){
+            $(".iframe-panel").remove("src");
+        }
+        else{
+            if($(".iframe-panel").attr("src").includes(sp_array[0])){
+                $(".iframe-panel").removeAttr("src");
+            }
+        }
     });
 });
 
-function removePanelProject(){
-    $(".iframe-panel").attr(src,"");
+function removePanelProject(project){
+    if(project=="all")
+        $(".iframe-panel").removeAttr("src"); 
+    // $(".
+    console.log($(".iframe-panel").attr("src"));
 }
 
 function loadProject(projectName){
