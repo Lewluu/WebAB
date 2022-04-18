@@ -88,7 +88,7 @@ $(document).ready(function(){
             url: "src/include/create_project.php",
             data: form_data,
             success: function(){
-                $(".popup-new-project").css("display","none");
+                closePopUp(2);
                 loadProject(form_val["project_name"]);
                 alert("Project "+form_val["project_name"]+" was created!");
             },
@@ -104,6 +104,8 @@ $(document).ready(function(){
         $.ajax({
             success: function(){
                 console.log("Loading project: "+sp);
+                loadProject(sp);
+                closePopUp(3);
             },
             error: function(){
             }
@@ -124,24 +126,17 @@ $(document).ready(function(){
             },
             function(data){
                 console.log(data);
+                alert("Project: "+sp+" has been deleted!");
+                closePopUp(5);
             }
         );
-        // $.getJSON("src/include/delete_project.php",function(data){
-        //     console.log(data);
-        // });
         console.log("Deleting project: "+sp);
-        // $.ajax({
-        //     type: "POST",
-        //     url: "src/include/delete_project.php",
-        //     data: ,
-        //     success:function(){
-        //         console.log("Deleting project: "+sp);
-        //     },
-        //     error:function(){
-        //     }
-        // });
     })
 });
+
+function removePanelProject(){
+    $(".iframe-panel").attr(src,"");
+}
 
 function loadProject(projectName){
     var path="src/out/"+projectName+"/index.html";

@@ -20,7 +20,7 @@ if(!empty($_POST)){
     chdir($curr_path.'/out/'.$prj_name);
 
     $html=new HtmlObject();
-    $html->createFile(getcwd(),"index.html","Test");
+    $html->createFile(getcwd(),"index.html",$prj_name);
 
     $css=new StyleObject();
     $css->createFile("src/css","style.css",null);
