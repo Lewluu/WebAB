@@ -5,6 +5,7 @@ $(document).ready(function(){
     var options=document.getElementsByClassName("menu-project-option");
     var projects=[];
     var sp;
+    var iframe_element=$("#iframe_panel").contents().find(".layout1-editable");
 
     //new project option
     $(options[1]).on("click",function(e){
@@ -99,6 +100,7 @@ $(document).ready(function(){
     //new project form
     $(".new-project-form").on("submit",function(e){
         e.preventDefault();
+        iframe_element=$("#iframe_panel").contents().find(".layout1-editable");
         var form_val={};
         var form_data=$(".new-project-form").serializeArray();
         $.each(form_data,function(i,field){
@@ -122,6 +124,7 @@ $(document).ready(function(){
     //upload project form
     $(".upload-project-form").on("submit",function(e){
         e.preventDefault();
+        iframe_element=$("#iframe_panel").contents().find(".layout1-editable");
         $.ajax({
             success: function(){
                 console.log("Loading project: "+sp);
@@ -166,14 +169,17 @@ $(document).ready(function(){
     });
 
     //iframe editor
-    $(".remove-layout").on("click",function(){
-        editIframe();
+    $(".tool-section-menu").on("click",function(){
+        iframe_element=$("#iframe_panel").contents().find(".layout1-editable");
+        console.log(iframe_element.html());
     });
+    // $(".remove-layout").on("click",function(){
+    //     editIframe();
+    //     console.log(iframe_element.html());
+    // });
 });
 
 function editIframe(){
-    var element=$("#iframe_panel").contents().find(".layout1-editable");
-    element.css("background-color","red");
 }
 
 function removePanelProject(project){

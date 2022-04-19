@@ -17,9 +17,9 @@ class HtmlObject extends FileObject{
         fwrite($html_file,"\t \t <script src='src/scripts/script.js'></script> \n");
         fwrite($html_file,"\t </head> \n");
         fwrite($html_file,"\t <body> \n");
-        fwrite($html_file,"\t \t <div class='layout1-editable'>");
-        fwrite($html_file,"\t \t \t <h2 contenteditable='true'>Hello from <i>".$title."</i> project!</h2>");
-        fwrite($html_file,"\t \t </div>");
+        fwrite($html_file,"\t \t <div class='layout1-editable'> \n");
+        fwrite($html_file,"\t \t \t <h2 contenteditable='true'>Hello from <i>".$title."</i> project!</h2> \n");
+        fwrite($html_file,"\t \t </div> \n");
         fwrite($html_file,"\t</body> \n");
         fwrite($html_file,"</html> \n");
 
