@@ -173,7 +173,7 @@ $(document).ready(function(){
 
 function editIframe(){
     var element=$("#iframe_panel").contents().find(".layout1-editable");
-    console.log(element.css("background-color","red"));
+    element.css("background-color","red");
 }
 
 function removePanelProject(project){
