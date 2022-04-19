@@ -156,26 +156,36 @@ $(document).ready(function(){
         }
         closePopUp(5);
         if(sp_array.length>1){
-            $(".iframe-panel").remove("src");
+            $("#iframe_panel").remove("src");
         }
         else{
-            if($(".iframe-panel").attr("src").includes(sp_array[0])){
-                $(".iframe-panel").removeAttr("src");
+            if($("#iframe_panel").attr("src").includes(sp_array[0])){
+                $("#iframe_panel").removeAttr("src");
             }
         }
     });
+
+    //iframe editor
+    $(".remove-layout").on("click",function(){
+        editIframe();
+    });
 });
+
+function editIframe(){
+    var element=$("#iframe_panel").contents().find(".layout1-editable");
+    console.log(element.css("background-color","red"));
+}
 
 function removePanelProject(project){
     if(project=="all")
-        $(".iframe-panel").removeAttr("src"); 
+        $("#iframe_panel").removeAttr("src"); 
     // $(".
-    console.log($(".iframe-panel").attr("src"));
+    console.log($("#iframe_panel").attr("src"));
 }
 
 function loadProject(projectName){
     var path="src/out/"+projectName+"/index.html";
-    $(".iframe-panel").attr("src",path);
+    $("#iframe_panel").attr("src",path);
 }
 
 function openPopUp(option){

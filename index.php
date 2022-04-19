@@ -9,7 +9,7 @@
             <?php include 'src/css/style.css' ?>
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <?php echo '<script src="src/scripts/script.js?v=3"></script>' ?>
+        <?php echo '<script src="src/scripts/script.js?v=4"></script>' ?>
     </head>
     <body>
         <div id="interface">
@@ -22,10 +22,11 @@
                         </div>
                     </div>
                     <div class="tool-section-display">
-                        <p>Add Layout:</p>
+                        <p class="add-layout">Add Layout:</p>
                         <div class="layout-draggable" draggable="true">
                         </div>
-                    <p>Add Layout Element:</p>
+                        <p>Add Layout Element:</p>
+                        <p class="remove-layout">REMOVE LAYOUT</p>
                     </div>
                 </div>
                 <div class="tool-section">
@@ -74,7 +75,7 @@
             </div>
             <div id="combined_panel">
                 <div id="main_panel">
-                    <iframe class="iframe-panel" name="iframe_project">
+                    <iframe id="iframe_panel" name="iframe_project">
 
                     </iframe>
                 </div>

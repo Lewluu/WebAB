@@ -31,6 +31,14 @@ body{
     min-width: 175px;
 }
 
+.add-layout{
+
+}
+
+.remove-layout:hover{
+    cursor: pointer;
+}
+
 #tool_panel_1 .tool-section{
     padding-top: 6vh;
     padding-bottom: 6vh;
@@ -52,7 +60,7 @@ body{
     background-color: rgb(237, 175, 245);
 }
 
-.iframe-panel{
+#iframe_panel{
     width: 100%;
     height: 100%;
     border-style: none;
