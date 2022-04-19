@@ -173,10 +173,9 @@ $(document).ready(function(){
         iframe_element=$("#iframe_panel").contents().find(".layout1-editable");
         console.log(iframe_element.html());
     });
-    // $(".remove-layout").on("click",function(){
-    //     editIframe();
-    //     console.log(iframe_element.html());
-    // });
+    iframe_element.on("click",function(){
+        console.log(iframe_element.html());
+    })
 });
 
 function editIframe(){
