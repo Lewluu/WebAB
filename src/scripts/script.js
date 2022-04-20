@@ -161,7 +161,7 @@ $(document).ready(function(){
         }
         closePopUp(5);
         if(sp_array.length>1){
-            $("#iframe_panel").remove("src");
+            $("#iframe_panel").removeAttr("src");
         }
         else{
             if($("#iframe_panel").attr("src").includes(sp_array[0])){

@@ -9,7 +9,7 @@
             <?php include 'src/css/style.css' ?>
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="src/scripts/script.js?v=9"></script>
+        <script src="src/scripts/script.js?v=11"></script>
     </head>
     <body>
         <div id="interface">
