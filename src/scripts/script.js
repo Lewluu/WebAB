@@ -5,7 +5,6 @@ $(document).ready(function(){
     var options=document.getElementsByClassName("menu-project-option");
     var projects=[];
     var sp;
-    var iframe_element=$("#iframe_panel").contents().find(".layout1-editable");
 
     //new project option
     $(options[1]).on("click",function(e){
@@ -46,8 +45,13 @@ $(document).ready(function(){
         });
     });
 
+    //edit project option
+    $(options[3]).on("click",function(){
+        editIframe();
+    });
+
     //delete project option
-    $(options[4]).on("click",function(e){
+    $(options[5]).on("click",function(e){
         e.preventDefault();
         openPopUp(5);
         //close all others popups
@@ -100,7 +104,6 @@ $(document).ready(function(){
     //new project form
     $(".new-project-form").on("submit",function(e){
         e.preventDefault();
-        iframe_element=$("#iframe_panel").contents().find(".layout1-editable");
         var form_val={};
         var form_data=$(".new-project-form").serializeArray();
         $.each(form_data,function(i,field){
@@ -124,7 +127,6 @@ $(document).ready(function(){
     //upload project form
     $(".upload-project-form").on("submit",function(e){
         e.preventDefault();
-        iframe_element=$("#iframe_panel").contents().find(".layout1-editable");
         $.ajax({
             success: function(){
                 console.log("Loading project: "+sp);
@@ -167,18 +169,26 @@ $(document).ready(function(){
             }
         }
     });
-
-    //iframe editor
-    $(".tool-section-menu").on("click",function(){
-        iframe_element=$("#iframe_panel").contents().find(".layout1-editable");
-        console.log(iframe_element.html());
-    });
-    iframe_element.on("click",function(){
-        console.log(iframe_element.html());
-    })
 });
 
 function editIframe(){
+    var iframe_element;
+    iframe_element=$("#iframe_panel").contents().find(".layout1-editable");
+    iframe_element.hover(function(){
+        $(this).css("cursor","pointer");
+    });
+    iframe_element.attr("contenteditable","true");
+    iframe_element.css("border-style","double");
+    iframe_element.css("border-width","2px");
+    iframe_element.css("border-color","rgb(137, 238, 183)");
+    iframe_element.css("background-color","rgb(210, 253, 230)");
+    iframe_element.css("resize","both");
+    iframe_element.css("overflow","hidden");
+    console.log(iframe_element.html());
+}
+
+function clearEdit(){
+
 }
 
 function removePanelProject(project){
