@@ -1,10 +1,13 @@
 /// <reference path="../../typings/globals/jquery/index.d.ts" />
+import {LewDebug} from '/modules.js'
 
 $(document).ready(function(){
     //getting project main menu options, then handling the forms 
     var options=document.getElementsByClassName("menu-project-option");
     var projects=[];
     var sp;
+    
+    //init included files
 
     //new project option
     $(options[1]).on("click",function(e){
