@@ -1,5 +1,4 @@
-
-class LewDebug{
+export class LewDebug{
     static _debug_section;
     static init(){
         var panel=$("#combined_panel .tool-section");
@@ -14,5 +13,3 @@ class LewDebug{
         _debug_section.html(html_new);
     }
 }
-
-export {LewDebug};
