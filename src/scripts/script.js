@@ -1,5 +1,8 @@
 /// <reference path="../../typings/globals/jquery/index.d.ts" />
-import LewDebug from 'modules.js'
+var module='src/scripts/modules';
+require([module],function(moduleFunc){
+    LewDebug.init();
+});
 
 $(document).ready(function(){
     //getting project main menu options, then handling the forms 
