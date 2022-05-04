@@ -40,7 +40,10 @@
                     </div>
                     <div class="tool-section-display">
                         <p>No element/elements selected</p>
+                        <p>Size:</p>
+                        <p>Position:</p>
                         <p>Color:</p>
+                        <p>Border:</p>
                         <p>Font style: </p>
                         <p>Rotation: </p>
                         <p>Animation: </p>

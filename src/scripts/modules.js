@@ -10,3 +10,11 @@ class LewDebug{
         this._debug_section.html(html_new);
     }
 }
+
+class LewSubLayout{
+    
+}
+
+class LewLayout{
+
+}
