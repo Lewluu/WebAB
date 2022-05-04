@@ -6,7 +6,7 @@ class LewDebug{
     }
     static addHtml(html_data){
         var html_current=this._debug_section.html();
-        var html_new=html_current+"<p>"+(this._line_nr++)+". "+html_data+"</p>";
+        var html_new=html_current+"<p>"+(this._line_nr++)+" ---&nbsp;&nbsp;&nbsp;"+html_data+"</p>";
         this._debug_section.html(html_new);
     }
 }

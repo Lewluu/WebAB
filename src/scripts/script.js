@@ -92,7 +92,6 @@ $(document).ready(function(){
                 $(this).removeClass("unselected-project");
                 $(this).addClass("selected-project");
             });
-            // console.log("All projects SELECTED for delete!");
             LewDebug.addHtml("All projects SELECTED for delete!");
         }
         else{
@@ -102,7 +101,6 @@ $(document).ready(function(){
                 $(this).removeClass("selected-project");
                 $(this).addClass("unselected-project");
             });
-            // console.log("All projects UNSELECTED for delete!");
             LewDebug.addHtml("All projects UNSELECTED for delete!");
         }
     });
@@ -135,7 +133,6 @@ $(document).ready(function(){
         e.preventDefault();
         $.ajax({
             success: function(){
-                // console.log("Loading project: "+sp);
                 LewDebug.addHtml("Loading project: "+sp);
                 loadProject(sp);
             },
@@ -164,7 +161,6 @@ $(document).ready(function(){
                     console.log(data);
                 }
             );
-            //console.log("Deleting project: "+sp_array[i]);
             LewDebug.addHtml("Deleting project: "+sp_array[i]);
         }
         closePopUp(5);
@@ -192,8 +188,6 @@ function editIframe(){
     iframe_element.css("background-color","rgb(210, 253, 230)");
     iframe_element.css("resize","both");
     iframe_element.css("overflow","hidden");
-    // console.log(iframe_element.html());
-    LewDebug.addHtml(iframe_element.html());
 }
 
 function clearEdit(){
@@ -235,7 +229,6 @@ function openPopUp(option){
 }
 
 function arrowOnClick(arrow_nr){
-    //var el=document.getElementById("arrow-rotate");
     var menu_arrow=document.getElementsByClassName("arrow-rotate");
     var tools=document.getElementsByClassName("tool-section-display");
     if(menu_arrow[arrow_nr].style.transform!="rotate(90deg)"){
