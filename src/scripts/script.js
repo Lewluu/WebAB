@@ -192,7 +192,8 @@ function editIframe(){
     iframe_element.css("background-color","rgb(210, 253, 230)");
     iframe_element.css("resize","both");
     iframe_element.css("overflow","hidden");
-    console.log(iframe_element.html());
+    // console.log(iframe_element.html());
+    LewDebug.addHtml(iframe_element.html());
 }
 
 function clearEdit(){
@@ -202,8 +203,7 @@ function clearEdit(){
 function removePanelProject(project){
     if(project=="all")
         $("#iframe_panel").removeAttr("src"); 
-    // $(".
-    console.log($("#iframe_panel").attr("src"));
+    LewDebug.addHtml($("#iframe_panel").attr("src"));
 }
 
 function loadProject(projectName){
