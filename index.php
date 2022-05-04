@@ -10,7 +10,7 @@
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="src/scripts/require.js"></script>
-        <script src="src/scripts/script.js?v=14"></script>
+        <script type="module" src="src/scripts/script.js?v=15"></script>
         <script type="module" src="src/scripts/modules.js?v=2"></script>
     </head>
     <body>

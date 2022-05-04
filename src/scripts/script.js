@@ -1,8 +1,7 @@
 /// <reference path="../../typings/globals/jquery/index.d.ts" />
-var module='src/scripts/modules';
-require([module],function(moduleFunc){
-    LewDebug.init();
-});
+
+import {LewDebug} from "./modules.js";
+
 
 $(document).ready(function(){
     //getting project main menu options, then handling the forms 
@@ -11,6 +10,16 @@ $(document).ready(function(){
     var sp;
     
     //init included files
+    LewDebug.init();
+
+    // var module='src/scripts/modules';
+    // let debug;
+    // require([module],function(moduleFunc){
+    //     //nothing happens here?
+    //     debug=new LewDebug();
+    //     debug.init();
+    // });
+    // debug.init();
 
     //new project option
     $(options[1]).on("click",function(e){
