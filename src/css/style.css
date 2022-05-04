@@ -23,6 +23,21 @@ body{
     /*line-height: 100px; */
 }
 
+.debug-output{
+    background-color: white;
+    width: 95%;
+    margin: auto;
+    overflow-y:auto;
+    min-height: 75px;
+    max-height: 250px;
+    resize: vertical;
+}
+
+.debug-output p{
+    text-align: left;
+    padding: 2%;
+}
+
 #tool_panel_1{
     display: flex;
     flex-direction: column;

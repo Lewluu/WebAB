@@ -9,9 +9,9 @@
             <?php include 'src/css/style.css' ?>
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="src/scripts/require.js"></script>
-        <script type="module" src="src/scripts/script.js?v=15"></script>
-        <script type="module" src="src/scripts/modules.js?v=2"></script>
+        <!-- <script src="src/scripts/require.js"></script> -->
+        <script src="src/scripts/modules.js"></script>
+        <script src="src/scripts/script.js?v=1"></script>
     </head>
     <body>
         <div id="interface">
@@ -91,6 +91,7 @@
                     </div>
                     <div class="tool-section">
                         <p>Section 3 - Debug</p>
+                        <div class="debug-output"></div>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,5 @@
 /// <reference path="../../typings/globals/jquery/index.d.ts" />
 
-import {LewDebug} from "./modules.js";
-
 
 $(document).ready(function(){
     //getting project main menu options, then handling the forms 
@@ -11,15 +9,6 @@ $(document).ready(function(){
     
     //init included files
     LewDebug.init();
-
-    // var module='src/scripts/modules';
-    // let debug;
-    // require([module],function(moduleFunc){
-    //     //nothing happens here?
-    //     debug=new LewDebug();
-    //     debug.init();
-    // });
-    // debug.init();
 
     //new project option
     $(options[1]).on("click",function(e){
@@ -103,7 +92,8 @@ $(document).ready(function(){
                 $(this).removeClass("unselected-project");
                 $(this).addClass("selected-project");
             });
-            console.log("All projects SELECTED for delete!");
+            // console.log("All projects SELECTED for delete!");
+            LewDebug.addHtml("All projects SELECTED for delete!");
         }
         else{
             delete_all=false;
@@ -112,7 +102,8 @@ $(document).ready(function(){
                 $(this).removeClass("selected-project");
                 $(this).addClass("unselected-project");
             });
-            console.log("All projects UNSELECTED for delete!");
+            // console.log("All projects UNSELECTED for delete!");
+            LewDebug.addHtml("All projects UNSELECTED for delete!");
         }
     });
 
@@ -144,7 +135,8 @@ $(document).ready(function(){
         e.preventDefault();
         $.ajax({
             success: function(){
-                console.log("Loading project: "+sp);
+                // console.log("Loading project: "+sp);
+                LewDebug.addHtml("Loading project: "+sp);
                 loadProject(sp);
             },
             error: function(){
@@ -172,7 +164,8 @@ $(document).ready(function(){
                     console.log(data);
                 }
             );
-            console.log("Deleting project: "+sp_array[i]);
+            //console.log("Deleting project: "+sp_array[i]);
+            LewDebug.addHtml("Deleting project: "+sp_array[i]);
         }
         closePopUp(5);
         if(sp_array.length>1){
