@@ -177,11 +177,23 @@ $(document).ready(function(){
 
 function editIframe(){
     var iframe_element;
+    var css_arr= [
+        "border-style",
+        "border-width",
+        "border-color",
+        "background-color",
+        "overflow"
+    ];
+    var attr_arr = [
+        "resize",
+        "contenteditable"
+    ];
+
     iframe_element = $("#iframe_panel").contents().find(".layout1-editable");
     
     if(iframe_element.hasClass("layout1-editable-true")){
         iframe_element.removeClass("layotu1-editable-true");
-        clearEdit(".layout1-editable");
+        clearEdit(".layout1-editable", css_arr, attr_arr);
 
         return;
     }
@@ -202,15 +214,22 @@ function editIframe(){
     iframe_element.css("overflow","hidden");
 }
 
-function clearEdit(element){
-    var el = document.querySelector("iframe").contentWindow.document.querySelector(".layout1-editable");
-    var prop = window.getComputedStyle(el, null);
+function clearEdit(element, css_arr, attr_arr){
+    var iframe_element;
+    iframe_element = $("#iframe_panel").contents().find(element);
 
-    for(var i=0;i<prop.length;i++){
-        LewDebug.log(prop.getPropertyValue(prop[i]));
+    iframe_element.hover(function(){
+        $(this).css("cursor","default");
+    });
+
+    for(var i=0;i<css_arr.length;i++){
+        iframe_element.css(css_arr[i], "");
+    }
+    for(var i=0;i<attr_arr.length;i++){
+        iframe_element.attr(attr_arr[i], "false");
     }
 
-    // LewDebug.log(attrs.length);
+    iframe_element.removeClass("layout1-editable-true");
 }
 
 function removePanelProject(project){
