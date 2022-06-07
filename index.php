@@ -21,7 +21,7 @@
                     <div class="tool-section-menu">
                         <p>LAYOUTS</p>
                         <div class="tool-section-menu-img">
-                            <img onclick="arrowOnClick(0)" src="src/icons/arrow.png" class="arrow-rotate">
+                            <img src="src/icons/arrow.png" class="arrow-rotate">
                         </div>
                     </div>
                     <div class="tool-section-display">
@@ -36,7 +36,7 @@
                     <div class="tool-section-menu">
                         <p>STYILING</p>
                         <div class="tool-section-menu-img">
-                            <img onclick="arrowOnClick(1)" src="src/icons/arrow.png" class="arrow-rotate">
+                            <img src="src/icons/arrow.png" class="arrow-rotate">
                         </div>
                     </div>
                     <div class="tool-section-display">
@@ -55,7 +55,7 @@
                     <div class="tool-section-menu">
                         <p>TEMPLATES</p>
                         <div class="tool-section-menu-img">
-                            <img onclick="arrowOnClick(2)" src="src/icons/arrow.png" class="arrow-rotate">
+                            <img src="src/icons/arrow.png" class="arrow-rotate">
                         </div>
                     </div>
                     <div class="tool-section-display">
@@ -67,7 +67,7 @@
                     <div class="tool-section-menu">
                         <p>MENU</p>
                         <div class="tool-section-menu-img">
-                            <img onclick="arrowOnClick(3)" src="src/icons/arrow.png" class="arrow-rotate">
+                            <img src="src/icons/arrow.png" class="arrow-rotate">
                         </div>
                     </div>
                     <div class="tool-section-display">

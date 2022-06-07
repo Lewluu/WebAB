@@ -2,17 +2,34 @@
 
 
 $(document).ready(function(){
-    //getting project main menu options, then handling the forms 
-    var options=document.getElementsByClassName("menu-project-option");
+    // getting project main menu options, then handling the forms 
+    var options = document.getElementsByClassName("menu-project-option");
+    var arrows = document.getElementsByClassName("arrow-rotate");
+    var tool_sections = document.getElementsByClassName("tool-section-display");
     var projects=[];
     var sp;
     
-    //init included files
+    // init included files
     LewDebug.init();
 
-    //layouts options
+    // layouts options
+    Lew.initLayoutSection();
 
-    //new project option
+    // arrows scroll
+    $(arrows).each(function(index){
+        $(this).on("click", function(){
+            if(Lew.getRotation($(this)) != 90){
+                $(this).css("transform", "rotate(90deg)");
+                $(tool_sections[index]).css("display", "block");
+            }
+            else{
+                $(this).css("transform", "rotate(0deg)");
+                $(tool_sections[index]).css("display", "none");
+            }
+        });
+    });
+
+    // new project option
     $(options[1]).on("click",function(e){
         e.preventDefault();
         openPopUp(2);
@@ -21,7 +38,7 @@ $(document).ready(function(){
         closePopUp(5);
     });
 
-    //upload project option
+    // upload project option
     $(options[2]).on("click",function(e){
         e.preventDefault();
         openPopUp(3);
@@ -51,12 +68,12 @@ $(document).ready(function(){
         });
     });
 
-    //edit project option
+    // edit project option
     $(options[3]).on("click",function(){
         editIframe();
     });
 
-    //delete project option
+    // delete project option
     $(options[5]).on("click",function(e){
         e.preventDefault();
         openPopUp(5);
@@ -107,7 +124,7 @@ $(document).ready(function(){
         }
     });
 
-    //new project form
+    // new project form
     $(".new-project-form").on("submit",function(e){
         e.preventDefault();
         var form_val={};
@@ -130,7 +147,7 @@ $(document).ready(function(){
         });
     });
 
-    //upload project form
+    // upload project form
     $(".upload-project-form").on("submit",function(e){
         e.preventDefault();
         $.ajax({
@@ -143,7 +160,7 @@ $(document).ready(function(){
         });
     });
     
-    //delete project form
+    // delete project form
     $(".delete-project-form").on("submit",function(e){
         e.preventDefault();
         
@@ -194,13 +211,13 @@ function editIframe(){
     iframe_element = $("#iframe_panel").contents().find(".layout-editable-1");
     
     if(iframe_element.hasClass("layout-editable-1-true")){
-        iframe_element.removeClass("layotu1-editable-1-true");
-        clearEdit(".layout1-editable", css_arr, attr_arr);
+        iframe_element.removeClass("layout-editable-1-true");
+        clearEdit(".layout-editable-1", css_arr, attr_arr);
 
         return;
     }
     else{
-        iframe_element.addClass("layout1-editable-1-true");
+        iframe_element.addClass("layout-editable-1-true");
     }
 
     iframe_element.hover(function(){
@@ -268,18 +285,22 @@ function openPopUp(option){
     }
 }
 
-function arrowOnClick(arrow_nr){
-    var menu_arrow=document.getElementsByClassName("arrow-rotate");
-    var tools=document.getElementsByClassName("tool-section-display");
-    if(menu_arrow[arrow_nr].style.transform!="rotate(90deg)"){
-        menu_arrow[arrow_nr].style.transform="rotate(90deg)";
-        tools[arrow_nr].style="display:block";
-    }
-    else{
-        menu_arrow[arrow_nr].style.transform="rotate(0deg)";
-        tools[arrow_nr].style="display:none";
-    }
-}
+// function arrowOnClick(arrow_nr){
+//     var menu_arrow=document.getElementsByClassName("arrow-rotate");
+//     var tools=document.getElementsByClassName("tool-section-display");
+//     if(menu_arrow[arrow_nr].style.transform!="rotate(90deg)"){
+//         menu_arrow[arrow_nr].style.transform="rotate(90deg)";
+//         tools[arrow_nr].style="display:block";
+//     }
+//     else{
+//         menu_arrow[arrow_nr].style.transform="rotate(0deg)";
+//         tools[arrow_nr].style="display:none";
+//     }
+
+//     if(arrow_nr == 0){
+//         Lew.searchForLayouts();
+//     }
+// }
 
 function closePopUp(popup_nr){
     switch(popup_nr){
