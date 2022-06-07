@@ -1,4 +1,5 @@
-
-function editLayout(){
-    
-}
+var Lew = {
+    initLayoutSection: function(){
+        
+    }
+};

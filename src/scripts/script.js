@@ -10,6 +10,8 @@ $(document).ready(function(){
     //init included files
     LewDebug.init();
 
+    //layouts options
+
     //new project option
     $(options[1]).on("click",function(e){
         e.preventDefault();
@@ -189,16 +191,16 @@ function editIframe(){
         "contenteditable"
     ];
 
-    iframe_element = $("#iframe_panel").contents().find(".layout1-editable");
+    iframe_element = $("#iframe_panel").contents().find(".layout-editable-1");
     
-    if(iframe_element.hasClass("layout1-editable-true")){
-        iframe_element.removeClass("layotu1-editable-true");
+    if(iframe_element.hasClass("layout-editable-1-true")){
+        iframe_element.removeClass("layotu1-editable-1-true");
         clearEdit(".layout1-editable", css_arr, attr_arr);
 
         return;
     }
     else{
-        iframe_element.addClass("layout1-editable-true");
+        iframe_element.addClass("layout1-editable-1-true");
     }
 
     iframe_element.hover(function(){
@@ -229,7 +231,7 @@ function clearEdit(element, css_arr, attr_arr){
         iframe_element.attr(attr_arr[i], "false");
     }
 
-    iframe_element.removeClass("layout1-editable-true");
+    iframe_element.removeClass("layout-editable-1-true");
 }
 
 function removePanelProject(project){

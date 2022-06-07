@@ -16,10 +16,21 @@ class LewSubLayout{
 }
 
 class LewLayout{
-    static setLayout(element_layout){
+    init(){
+        this._element_layout = "";
+    }
+    setLayout(element_layout){
         this._element_layout = element_layout;
     }
-    static getSelectedLayout(){
+    deleteLayout(){
+        if(this._element_layout != ""){
+            $(this._element_layout).remove();
+        }
+        else{
+            LewDebug.log("No layout selected!");
+        }
+    }
+    getSelectedLayout(){
         return this._element_layout;
     }
 }
