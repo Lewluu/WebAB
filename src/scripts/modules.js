@@ -16,5 +16,10 @@ class LewSubLayout{
 }
 
 class LewLayout{
-
+    static setLayout(element_layout){
+        this._element_layout = element_layout;
+    }
+    static getSelectedLayout(){
+        return this._element_layout;
+    }
 }
