@@ -71,6 +71,7 @@ $(document).ready(function(){
     // edit project option
     $(options[3]).on("click",function(){
         editIframe();
+        Lew.searchForLayouts();
     });
 
     // delete project option

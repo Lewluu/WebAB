@@ -1,12 +1,30 @@
 var Lew = {
+    layouts_arr: [],
+    iframe_is_editable: false,
     initLayoutSection: function(){
-        LewDebug.log("Initializing layout section ...");
     },
     searchForLayouts: function(){
-        $("#iframe_panel .layout-editable-1").each(function(){
-            LewDebug.log("Found one ...");
-        });
+        var iframe_el_arr = $("#iframe_panel").contents().find(".layout-editable");
+        var layout_arr_temp = [];
+        $(iframe_el_arr).each(function(index){
+            let layout = new LewLayout();
+            var layout_name = ".layout-editable-" + String(index + 1);
+
+            layout.setLayout(layout_name);
+
+            layout_arr_temp.push(layout);
+        })
+        this.layouts_arr = layout_arr_temp;
     },
+    editIframe: function(){
+
+        this.iframe_is_editable = true;
+    },
+    clearEdit: function(){
+
+        this.iframe_is_editable = false;
+    }
+    ,
     getRotation: function(obj){
         var matrix = 
         obj.css("-webkit-transform") ||
