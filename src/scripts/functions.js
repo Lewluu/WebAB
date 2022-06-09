@@ -6,6 +6,7 @@ var Lew = {
     searchForLayouts: function(){
         var iframe_el_arr = $("#iframe_panel").contents().find(".layout-editable");
         var layout_arr_temp = [];
+
         $(iframe_el_arr).each(function(index){
             let layout = new LewLayout();
             var layout_name = ".layout-editable-" + String(index + 1);
@@ -17,10 +18,24 @@ var Lew = {
         this.layouts_arr = layout_arr_temp;
     },
     editIframe: function(){
+        var iframe = document.getElementById("iframe_panel");
+
+        $(iframe).css("border-style","double");
+        $(iframe).css("border-width","2px");
+        $(iframe).css("border-color","rgb(137, 238, 183)");
+
+        for(var i=0;i<this.layouts_arr.length;i++){
+            LewDebug.log(this.layouts_arr[i].getSelectedLayout());
+        }
 
         this.iframe_is_editable = true;
     },
     clearEdit: function(){
+        var iframe = document.getElementById("iframe_panel");
+
+        $(iframe).css("border-style","");
+        $(iframe).css("border-width","");
+        $(iframe).css("border-color","");
 
         this.iframe_is_editable = false;
     }

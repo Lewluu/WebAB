@@ -18,6 +18,7 @@ class LewSubLayout{
 class LewLayout{
     init(){
         this._element_layout = "";
+        this._is_editable = false;
     }
     setLayout(element_layout){
         this._element_layout = element_layout;

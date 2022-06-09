@@ -6,8 +6,9 @@ $(document).ready(function(){
     var options = document.getElementsByClassName("menu-project-option");
     var arrows = document.getElementsByClassName("arrow-rotate");
     var tool_sections = document.getElementsByClassName("tool-section-display");
-    var projects=[];
+    var projects = [];
     var sp;
+    var project_is_selected = false;
     
     // init included files
     LewDebug.init();
@@ -70,8 +71,13 @@ $(document).ready(function(){
 
     // edit project option
     $(options[3]).on("click",function(){
-        editIframe();
         Lew.searchForLayouts();
+
+        if(!project_is_selected)    return;
+        if(!(Lew.iframe_is_editable))
+            Lew.editIframe();
+        else
+            Lew.clearEdit();
     });
 
     // delete project option
@@ -155,6 +161,9 @@ $(document).ready(function(){
             success: function(){
                 LewDebug.log("Loading project: "+sp);
                 loadProject(sp);
+                $(document.getElementById("iframe_panel")).css("background-color","white");
+
+                project_is_selected = true;
             },
             error: function(){
             }
