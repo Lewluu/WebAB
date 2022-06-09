@@ -34,4 +34,10 @@ class LewLayout{
     getSelectedLayout(){
         return this._element_layout;
     }
+    setEditable(value){
+        this._is_editable = value;
+    }
+    isEditable(){
+        return this._is_editable;
+    }
 }

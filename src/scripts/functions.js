@@ -24,9 +24,41 @@ var Lew = {
         $(iframe).css("border-width","2px");
         $(iframe).css("border-color","rgb(137, 238, 183)");
 
-        for(var i=0;i<this.layouts_arr.length;i++){
-            LewDebug.log(this.layouts_arr[i].getSelectedLayout());
-        }
+        var css_arr = [
+            "border-style",
+            "border-width",
+            "border-color",
+            "background-color",
+            "overflow"
+        ];
+        var attr_arr = [
+            "resize",
+            "contenteditable"
+        ];
+
+        $(this.layouts_arr).each(function(){
+            var layout = this;
+
+            var iframe_element =
+                $("#iframe_panel").contents().find(layout.getSelectedLayout());
+
+            $(iframe_element).hover(function(){
+                $(iframe_element).css("cursor", "pointer");
+            });
+            iframe_element.on("click", function(){
+                if(!layout.isEditable()){
+                    iframe_element.attr("contenteditable","true");
+                    iframe_element.css("border-style","double");
+                    iframe_element.css("border-width","2px");
+                    iframe_element.css("border-color","rgb(137, 238, 183)");
+                    iframe_element.css("background-color","rgb(210, 253, 230)");
+                    iframe_element.css("resize","both");
+                    iframe_element.css("overflow","hidden");
+
+                    layout.setEditable(true);
+                }
+            });
+        });
 
         this.iframe_is_editable = true;
     },
