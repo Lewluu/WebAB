@@ -10,9 +10,9 @@
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <!-- <script src="src/scripts/require.js"></script> -->
-        <script src="src/scripts/functions.js"></script>
-        <script src="src/scripts/modules.js?v=1"></script>
-        <script src="src/scripts/script.js"></script>
+        <script src="src/scripts/functions.js?v=2"></script>
+        <script src="src/scripts/modules.js?v=2"></script>
+        <script src="src/scripts/script.js?v=1"></script>
     </head>
     <body>
         <div id="interface">
@@ -29,6 +29,7 @@
                         <div class="layout-draggable" draggable="true">
                         </div>
                         <p>Add Layout Element:</p>
+                        <p class="selected-layout">Selected layout:</p>
                         <p class="remove-layout">REMOVE LAYOUT</p>
                     </div>
                 </div>
