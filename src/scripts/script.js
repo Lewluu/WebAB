@@ -9,6 +9,7 @@ $(document).ready(function(){
     var projects = [];
     var sp;
     var project_is_selected = false;
+    var layouts_searched = false;
     
     // init included files
     LewDebug.init();
@@ -71,7 +72,11 @@ $(document).ready(function(){
 
     // edit project option
     $(options[3]).on("click",function(){
-        Lew.searchForLayouts();
+        if(!layouts_searched){
+            Lew.searchForLayouts();
+
+            layouts_searched = true;
+        }
 
         if(!project_is_selected)    return;
         if(!(Lew.iframe_is_editable))

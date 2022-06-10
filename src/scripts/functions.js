@@ -24,18 +24,6 @@ var Lew = {
         $(iframe).css("border-width","2px");
         $(iframe).css("border-color","rgb(137, 238, 183)");
 
-        var css_arr = [
-            "border-style",
-            "border-width",
-            "border-color",
-            "background-color",
-            "overflow"
-        ];
-        var attr_arr = [
-            "resize",
-            "contenteditable"
-        ];
-
         $(this.layouts_arr).each(function(){
             this.Edit();
         });
@@ -48,6 +36,10 @@ var Lew = {
         $(iframe).css("border-style","");
         $(iframe).css("border-width","");
         $(iframe).css("border-color","");
+
+        $(this.layouts_arr).each(function(){
+            this.Unedit();
+        });
 
         this.iframe_is_editable = false;
     }
