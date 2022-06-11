@@ -9,8 +9,9 @@ var Lew = {
 
         $(iframe_el_arr).each(function(index){
             let layout = new LewLayout();
-            var layout_name = ".layout-editable-" + String(index + 1);
+            layout.init();
 
+            var layout_name = ".layout-editable-" + String(index + 1);
             layout.setLayout(layout_name);
 
             layout_arr_temp.push(layout);

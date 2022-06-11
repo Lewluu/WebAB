@@ -35,9 +35,6 @@ class LewLayout{
         return this._element_layout;
     }
     Edit(){
-        if(!this._is_editable)  this._is_editable = true;
-        else    return;
-
         var iframe_element =
             $("#iframe_panel").contents().find(this._element_layout);
         
@@ -56,17 +53,29 @@ class LewLayout{
             iframe_element.css("background-color","rgb(210, 253, 230)");
             iframe_element.css("overflow","hidden");
 
-            var sel_layoyt = document.getElementsByClassName("selected-layout");
-            var curr_html = $(sel_layoyt).html();
-            $(sel_layoyt).html(curr_html + "<p>" + el_layout + "</p>");
+            var sel_layout = document.getElementsByClassName("selected-layout");
+            var sel_layout_str = $(sel_layout).html();
+            if(!sel_layout_str.includes(el_layout)){
+                var curr_html = $(sel_layout).html();
+                $(sel_layout).html(
+                    curr_html + 
+                    "<div class='selected-layout-el'> <p>" + 
+                    el_layout + 
+                    "</p> <img src='src/icons/close.png'> </div>"
+                    );
+            }
         });
     }
     Unedit(){
-        if(this._is_editable)   this._is_editable = false;
-        else    return;
-
         var iframe_element =
             $("#iframe_panel").contents().find(this._element_layout);
+        
+        // deleting selected layouts
+        var sel_layout = document.getElementsByClassName("selected-layout");
+        var curr_html = $(sel_layout).html();
+        var new_html = 
+            curr_html.replace("<div class='selected-layout-el'> <p>" + this._element_layout + "</p> </div>", "");
+        $(sel_layout).html(new_html);
         
         // remove event on click
         iframe_element.unbind();
