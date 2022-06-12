@@ -9,13 +9,30 @@ var Lew = {
 
         $(iframe_el_arr).each(function(index){
             let layout = new LewLayout();
+            
             layout.init();
+            layout.setLayoutNumber(index + 1);
 
             var layout_name = ".layout-editable-" + String(index + 1);
             layout.setLayout(layout_name);
 
             layout_arr_temp.push(layout);
-        })
+
+            var sel_layout = document.getElementsByClassName("selected-layout");
+            var sel_layout_str = $(sel_layout).html();
+            if(!sel_layout_str.includes(layout_name)){
+                var curr_html = $(sel_layout).html();
+                $(sel_layout).html(
+                    curr_html + 
+                    "<div class='selected-layout-el selected-layout-el-"
+                     + String(index + 1) + 
+                     "' style='display:none'> <p>" + 
+                    layout_name + 
+                    "</p> <img style='display:none' src='src/icons/close.png'> </div>"
+                    );
+            }
+        });
+
         this.layouts_arr = layout_arr_temp;
     },
     editIframe: function(){

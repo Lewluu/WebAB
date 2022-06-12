@@ -18,10 +18,14 @@ class LewSubLayout{
 class LewLayout{
     init(){
         this._element_layout = "";
+        this._layout_nr;
         this._is_editable = false;
     }
     setLayout(element_layout){
         this._element_layout = element_layout;
+    }
+    setLayoutNumber(value){
+        this._layout_nr = value;
     }
     deleteLayout(){
         if(this._element_layout != ""){
@@ -40,10 +44,9 @@ class LewLayout{
         
         iframe_element.hover(function(){
             $(this).css("cursor", "pointer");
-            // iframe_element.css("background-color","rgb(210, 253, 230)");
         });
 
-        var el_layout = this._element_layout;
+        var layout_nr_temp = this._layout_nr;
         iframe_element.on("click", function(){
             iframe_element.attr("contenteditable","true");
             iframe_element.css("resize","both");
@@ -52,18 +55,12 @@ class LewLayout{
             iframe_element.css("border-color","rgb(137, 238, 183)");
             iframe_element.css("background-color","rgb(210, 253, 230)");
             iframe_element.css("overflow","hidden");
-
-            var sel_layout = document.getElementsByClassName("selected-layout");
-            var sel_layout_str = $(sel_layout).html();
-            if(!sel_layout_str.includes(el_layout)){
-                var curr_html = $(sel_layout).html();
-                $(sel_layout).html(
-                    curr_html + 
-                    "<div class='selected-layout-el'> <p>" + 
-                    el_layout + 
-                    "</p> <img src='src/icons/close.png'> </div>"
-                    );
-            }
+            
+            $(".selected-layout-el-" + String(layout_nr_temp)).css("display", "flex");
+            $(".selected-layout-el-" + String(layout_nr_temp) + " > img").css("display", "flex");
+            $(".selected-layout-el-" + String(layout_nr_temp) + " > img").hover(function(){
+                $(this).css("cursor", "pointer");
+            }); 
         });
     }
     Unedit(){

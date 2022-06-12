@@ -300,23 +300,6 @@ function openPopUp(option){
     }
 }
 
-// function arrowOnClick(arrow_nr){
-//     var menu_arrow=document.getElementsByClassName("arrow-rotate");
-//     var tools=document.getElementsByClassName("tool-section-display");
-//     if(menu_arrow[arrow_nr].style.transform!="rotate(90deg)"){
-//         menu_arrow[arrow_nr].style.transform="rotate(90deg)";
-//         tools[arrow_nr].style="display:block";
-//     }
-//     else{
-//         menu_arrow[arrow_nr].style.transform="rotate(0deg)";
-//         tools[arrow_nr].style="display:none";
-//     }
-
-//     if(arrow_nr == 0){
-//         Lew.searchForLayouts();
-//     }
-// }
-
 function closePopUp(popup_nr){
     switch(popup_nr){
         case 2:
