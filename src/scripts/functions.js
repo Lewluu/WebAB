@@ -44,6 +44,7 @@ var Lew = {
 
         $(this.layouts_arr).each(function(){
             this.Edit();
+            this.Update();
         });
 
         this.iframe_is_editable = true;

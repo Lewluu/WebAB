@@ -20,6 +20,7 @@ class LewLayout{
         this._element_layout = "";
         this._layout_nr;
         this._is_editable = false;
+        this._is_updated = false;
     }
     setLayout(element_layout){
         this._element_layout = element_layout;
@@ -37,6 +38,35 @@ class LewLayout{
     }
     getSelectedLayout(){
         return this._element_layout;
+    }
+    Update(){
+        if(!this._is_updated){
+            var layout_nr_temp = this._layout_nr;
+            var layout_el_temp = this._element_layout;
+
+            $(".selected-layout-el-" + String(layout_nr_temp) + " > img").hover(function(){
+                $(this).css("cursor", "pointer");
+            }); 
+            $(".selected-layout-el-" + String(layout_nr_temp) + " > img").on("click", function(){
+                var iframe_element =
+                $("#iframe_panel").contents().find(layout_el_temp);
+        
+                // remove selected layouts
+                $(".selected-layout-el-" + String(layout_nr_temp)).css("display", "none");
+                $(".selected-layout-el-" + String(layout_nr_temp ) + " > img").css("display", "none");
+
+                iframe_element.attr("contenteditable", "false");
+                iframe_element.css("resize", "false");
+                iframe_element.css("border-style","");
+                iframe_element.css("border-width","");
+                iframe_element.css("border-color","");
+                iframe_element.css("background-color","");
+                iframe_element.css("overflow","");
+            });
+
+            this._is_updated = true;
+        }
+        else    return;
     }
     Edit(){
         var iframe_element =
@@ -58,22 +88,16 @@ class LewLayout{
             
             $(".selected-layout-el-" + String(layout_nr_temp)).css("display", "flex");
             $(".selected-layout-el-" + String(layout_nr_temp) + " > img").css("display", "flex");
-            $(".selected-layout-el-" + String(layout_nr_temp) + " > img").hover(function(){
-                $(this).css("cursor", "pointer");
-            }); 
         });
     }
     Unedit(){
         var iframe_element =
             $("#iframe_panel").contents().find(this._element_layout);
         
-        // deleting selected layouts
-        var sel_layout = document.getElementsByClassName("selected-layout");
-        var curr_html = $(sel_layout).html();
-        var new_html = 
-            curr_html.replace("<div class='selected-layout-el'> <p>" + this._element_layout + "</p> </div>", "");
-        $(sel_layout).html(new_html);
-        
+        // remove selected layouts
+        $(".selected-layout-el-" + String(this._layout_nr)).css("display", "none");
+        $(".selected-layout-el-" + String(this._layout_nr) + " > img").css("display", "none");
+
         // remove event on click
         iframe_element.unbind();
 
