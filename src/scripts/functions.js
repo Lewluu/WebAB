@@ -33,6 +33,8 @@ var Lew = {
             }
         });
 
+        LewDebug.log("Searched for layouts. Found: " + String(layout_arr_temp.length));
+
         this.layouts_arr = layout_arr_temp;
     },
     editIframe: function(){
@@ -61,6 +63,21 @@ var Lew = {
         });
 
         this.iframe_is_editable = false;
+    },
+    removeLayouts: function(){
+        var layout_arr_temp = this.layouts_arr;
+        var found_layouts = false;
+
+        $(this.layouts_arr).each(function(){
+            if(this.removeLayout()){
+                layout_arr_temp.pop(this);
+                found_layouts = true;
+            }
+        });
+
+        this.layouts_arr = layout_arr_temp;
+
+        return found_layouts;
     }
     ,
     getRotation: function(obj){

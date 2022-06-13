@@ -17,6 +17,11 @@ $(document).ready(function(){
     // layouts options
     Lew.initLayoutSection();
 
+    // remove layouts option
+    $(".remove-layout").on("click", function(){
+        if(Lew.removeLayouts()) layouts_searched = false; 
+    });
+
     // arrows scroll
     $(arrows).each(function(index){
         $(this).on("click", function(){
@@ -167,6 +172,8 @@ $(document).ready(function(){
                 LewDebug.log("Loading project: "+sp);
                 loadProject(sp);
                 $(document.getElementById("iframe_panel")).css("background-color","white");
+
+                layouts_searched = false;
 
                 project_is_selected = true;
             },

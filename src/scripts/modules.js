@@ -18,7 +18,7 @@ class LewSubLayout{
 class LewLayout{
     init(){
         this._element_layout = "";
-        this._layout_nr;
+        this._layout_nr = 0;
         this._is_editable = false;
         this._is_updated = false;
     }
@@ -28,13 +28,23 @@ class LewLayout{
     setLayoutNumber(value){
         this._layout_nr = value;
     }
-    deleteLayout(){
-        if(this._element_layout != ""){
-            $(this._element_layout).remove();
+    removeLayout(){
+        var sel_layout = document.getElementsByClassName(
+            "selected-layout-el-" + String(this._layout_nr)
+            );
+            
+        if($(sel_layout).css("display") == "flex"){
+            var iframe_element = $("#iframe_panel").contents().find(this._element_layout);
+
+            LewDebug.log("<b>" + $(sel_layout).text() + "</b> removed ...");
+
+            iframe_element.remove();
+            $(sel_layout).remove();
+
+            return true;
         }
-        else{
-            LewDebug.log("No layout selected!");
-        }
+
+        return false;
     }
     getSelectedLayout(){
         return this._element_layout;
@@ -48,6 +58,8 @@ class LewLayout{
                 $(this).css("cursor", "pointer");
             }); 
             $(".selected-layout-el-" + String(layout_nr_temp) + " > img").on("click", function(){
+                LewDebug.log("<b>" + layout_el_temp + "</b> unselected ...");
+
                 var iframe_element =
                 $("#iframe_panel").contents().find(layout_el_temp);
         
@@ -77,7 +89,10 @@ class LewLayout{
         });
 
         var layout_nr_temp = this._layout_nr;
+        var layout_el_temp = this._element_layout;
         iframe_element.on("click", function(){
+            LewDebug.log("<b>" + layout_el_temp + "</b> selected ...");
+
             iframe_element.attr("contenteditable","true");
             iframe_element.css("resize","both");
             iframe_element.css("border-style","double");
@@ -91,6 +106,8 @@ class LewLayout{
         });
     }
     Unedit(){
+        LewDebug.log("<b>" + this._element_layout + "</b> unselected ...");
+
         var iframe_element =
             $("#iframe_panel").contents().find(this._element_layout);
         
@@ -112,6 +129,8 @@ class LewLayout{
         iframe_element.css("border-color","");
         iframe_element.css("background-color","");
         iframe_element.css("overflow","");
+
+        this._is_editable = false;
     }
     isEditable(){
         return this._is_editable;
