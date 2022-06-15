@@ -98,9 +98,9 @@ $(document).ready(function(){
                 
                 e.preventDefault();
 
-                var data_html = $("#iframe_panel").html();
+                var data_html = document.getElementById("iframe_panel").outerHTML;
                 LewDebug.log(data_html);
-                
+
                 $.ajax({
                     type: "POST",
                     url: "src/include/save_project.php",
