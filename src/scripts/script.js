@@ -90,8 +90,44 @@ $(document).ready(function(){
             Lew.clearEdit();
     });
 
+    // save project option
+    $(options[4]).on("click", function(e){
+        if(project_is_selected){
+            if(!Lew.iframe_is_editable){
+                LewDebug.log("Saving project: <b>" + sp + "</b>");
+                
+                e.preventDefault();
+
+                var data_html = $("#iframe_panel").html();
+                LewDebug.log(data_html);
+                
+                $.ajax({
+                    type: "POST",
+                    url: "src/include/save_project.php",
+                    data: {
+                        project_name: sp,
+                        project_html: data_html
+                    },
+                    success: function(data){
+                        alert("Successfully saved project: " + sp);
+                        LewDebug.log(data);
+                    },
+                    error: function(){
+                        alert("Failed to save project: " + sp);
+                    }
+                });
+            }
+            else{
+                LewDebug.log("Content is currently editable. Couldn't save ...");
+            }
+        }
+        else{
+            LewDebug.log("Please selected a project first ...");
+        }
+    });
+
     // delete project option
-    $(options[5]).on("click",function(e){
+    $(options[6]).on("click",function(e){
         e.preventDefault();
         openPopUp(5);
         //close all others popups

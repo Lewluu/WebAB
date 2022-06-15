@@ -11,8 +11,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <!-- <script src="src/scripts/require.js"></script> -->
         <script src="src/scripts/functions.js"></script>
-        <script src="src/scripts/modules.js?v=1"></script>
-        <script src="src/scripts/script.js?v=2"></script>
+        <script src="src/scripts/modules.js"></script>
+        <script src="src/scripts/script.js"></script>
     </head>
     <body>
         <div id="interface">
@@ -78,6 +78,7 @@
                         <div class="menu-project-option"><p>New</p></div>
                         <div class="menu-project-option"><p>Upload</p></div>
                         <div class="menu-project-option"><p>Edit</p></div>
+                        <div class="menu-project-option"><p>Save</p></div>
                         <div class="menu-project-option"><p>Export</p></div>
                         <div class="menu-project-option"><p>Delete</p></div>
                     </div>

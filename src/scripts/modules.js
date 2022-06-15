@@ -106,8 +106,6 @@ class LewLayout{
         });
     }
     Unedit(){
-        LewDebug.log("<b>" + this._element_layout + "</b> unselected ...");
-
         var iframe_element =
             $("#iframe_panel").contents().find(this._element_layout);
         
