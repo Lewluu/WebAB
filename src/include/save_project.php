@@ -9,10 +9,11 @@ if(empty($_POST)){
 
 $project_name = $_POST["project_name"];
 $project_html = $_POST["project_html"];
+json_encode($project_html);
 
 $html_obj = new HtmlObject();
-$html_obj->generateSavedFile(getcwd(), "test_save.html", $project_html);
+$html_obj->generateSavedFile(getcwd(), "test_save.html", "test",$project_html);
 
-echo json_encode("Hello from save_project.php !");
+echo ($project_html);
 
 ?>

@@ -28,10 +28,13 @@ class HtmlObject extends FileObject{
 
         fclose($html_file);
     }
-    public function generateSavedFile($path, $file_name, $content){
+    public function generateSavedFile($path, $file_name, $title, $content){
         $html_file=fopen($path.'/'.$file_name,"w");
 
+        fwrite($html_file,"<!DOCTYPE html> \n");
+        fwrite($html_file,"<html lang='en'> \n");
         fwrite($html_file, $content);
+        fwrite($html_file,"</html> \n");
 
         fclose($html_file);
     }

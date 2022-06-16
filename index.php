@@ -12,7 +12,7 @@
         <!-- <script src="src/scripts/require.js"></script> -->
         <script src="src/scripts/functions.js"></script>
         <script src="src/scripts/modules.js"></script>
-        <script src="src/scripts/script.js"></script>
+        <script src="src/scripts/script.js?v=1"></script>
     </head>
     <body>
         <div id="interface">
