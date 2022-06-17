@@ -11,6 +11,7 @@ $(document).ready(function(){
     
     // init included files
     LewDebug.init();
+    LewDebug.setupInterface();
 
     // layouts options
     Lew.initLayoutSection();

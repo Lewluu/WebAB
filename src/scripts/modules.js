@@ -4,6 +4,44 @@ class LewDebug{
         this._line_nr=1;
         console.log("Debug module initiated!");
     }
+    static setupInterface(){
+        var pos1 = 0;
+        var pos2 = 0;
+        var pos3 = 0;
+        var pos4 = 0;
+
+        var el = document.getElementById("debug_section");
+        el.onmousedown = dragMouseDownFunc;
+
+        function dragMouseDownFunc(e){
+            e = e || window.event;
+            e.preventDefault();
+            
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+
+            document.onmouseup = closeDragElFunc;
+            document.onmousemove = elDragFunc;
+        }
+
+        function elDragFunc(e){
+            e = e || window.event;
+            e.preventDefault();
+
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+
+            el.style.top = (el.offsetTop - pos2) + "px";
+            el.style.left = (el.offsetLeft - pos1) + "px";
+        }
+
+        function closeDragElFunc(e){
+            document.onmouseup = null;
+            document.onmousemove = null;
+        }
+    }
     static log(html_data){
         var html_current = $(this._debug_section).html();
         var html_new = html_current + "<p>" + (this._line_nr++) + " ---&nbsp;&nbsp;&nbsp;" + html_data + "</p>";

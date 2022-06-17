@@ -24,10 +24,16 @@ body{
 }
 
 #debug_section{
+    background-color:burlywood;
     position:absolute;
-    margin-top: -25%;
-    margin-left: 50%;
+    top: 500px;
+    left: 1350px;
     width: 25%;
+    border-style: double;
+    border-width: 1px;
+    border-color: black;
+    z-index: 3;
+    cursor: move;
 }
 
 .debug-output{
