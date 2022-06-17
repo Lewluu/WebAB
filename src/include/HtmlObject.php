@@ -34,7 +34,7 @@ class HtmlObject extends FileObject{
         fwrite($html_file,"<!DOCTYPE html> \n");
         fwrite($html_file,"<html lang='en'> \n");
         fwrite($html_file, $content);
-        fwrite($html_file,"</html> \n");
+        fwrite($html_file,"\n</html>\n");
 
         fclose($html_file);
     }

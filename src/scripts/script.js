@@ -8,8 +8,6 @@ $(document).ready(function(){
     var tool_sections = document.getElementsByClassName("tool-section-display");
     var projects = [];
     var sp;
-    var project_is_selected = false;
-    var layouts_searched = false;
     
     // init included files
     LewDebug.init();
@@ -19,7 +17,7 @@ $(document).ready(function(){
 
     // remove layouts option
     $(".remove-layout").on("click", function(){
-        if(Lew.removeLayouts()) layouts_searched = false; 
+        if(Lew.removeLayouts()) Lew.layouts_searched = false; 
     });
 
     // arrows scroll
@@ -77,13 +75,13 @@ $(document).ready(function(){
 
     // edit project option
     $(options[3]).on("click",function(){
-        if(!layouts_searched){
+        if(!Lew.layouts_searched){
             Lew.searchForLayouts();
 
-            layouts_searched = true;
+            Lew.layouts_searched = true;
         }
 
-        if(!project_is_selected)    return;
+        if(!Lew.project_is_selected)    return;
         if(!(Lew.iframe_is_editable))
             Lew.editIframe();
         else
@@ -92,7 +90,7 @@ $(document).ready(function(){
 
     // save project option
     $(options[4]).on("click", function(e){
-        if(project_is_selected){
+        if(Lew.project_is_selected){
             if(!Lew.iframe_is_editable){
                 LewDebug.log("Saving project: <b>" + sp + "</b>");
                 
@@ -190,7 +188,7 @@ $(document).ready(function(){
             data: form_data,
             success: function(){
                 closePopUp(2);
-                loadProject(form_val["project_name"]);
+                Lew.loadProject(form_val["project_name"]);
                 alert("Project "+form_val["project_name"]+" was created!");
             },
             error: function(){
@@ -205,12 +203,10 @@ $(document).ready(function(){
         $.ajax({
             success: function(){
                 LewDebug.log("Loading project: "+sp);
-                loadProject(sp);
-                $(document.getElementById("iframe_panel")).css("background-color","white");
+                Lew.loadProject(sp);
 
-                layouts_searched = false;
-
-                project_is_selected = true;
+                Lew.layouts_searched = false;
+                Lew.project_is_selected = true;
             },
             error: function(){
             }
@@ -250,69 +246,6 @@ $(document).ready(function(){
         }
     });
 });
-
-function editIframe(){
-    var iframe_element;
-    var css_arr= [
-        "border-style",
-        "border-width",
-        "border-color",
-        "background-color",
-        "overflow"
-    ];
-    var attr_arr = [
-        "resize",
-        "contenteditable"
-    ];
-
-    iframe_element = $("#iframe_panel").contents().find(".layout-editable-1");
-    
-    if(iframe_element.hasClass("layout-editable-1-true")){
-        iframe_element.removeClass("layout-editable-1-true");
-        clearEdit(".layout-editable-1", css_arr, attr_arr);
-
-        return;
-    }
-    else{
-        iframe_element.addClass("layout-editable-1-true");
-    }
-
-    iframe_element.hover(function(){
-        $(this).css("cursor","pointer");
-    });
-
-    iframe_element.attr("contenteditable","true");
-    iframe_element.css("border-style","double");
-    iframe_element.css("border-width","2px");
-    iframe_element.css("border-color","rgb(137, 238, 183)");
-    iframe_element.css("background-color","rgb(210, 253, 230)");
-    iframe_element.css("resize","both");
-    iframe_element.css("overflow","hidden");
-}
-
-function clearEdit(element, css_arr, attr_arr){
-    var iframe_element;
-    iframe_element = $("#iframe_panel").contents().find(element);
-
-    iframe_element.hover(function(){
-        $(this).css("cursor","default");
-    });
-
-    for(var i=0;i<css_arr.length;i++){
-        iframe_element.css(css_arr[i], "");
-    }
-    for(var i=0;i<attr_arr.length;i++){
-        iframe_element.attr(attr_arr[i], "false");
-    }
-
-    iframe_element.removeClass("layout-editable-1-true");
-}
-
-function removePanelProject(project){
-    if(project=="all")
-        $("#iframe_panel").removeAttr("src"); 
-    LewDebug.log($("#iframe_panel").attr("src"));
-}
 
 function loadProject(projectName){
     var path="src/out/"+projectName+"/index.html";

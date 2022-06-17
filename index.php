@@ -10,9 +10,9 @@
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <!-- <script src="src/scripts/require.js"></script> -->
-        <script src="src/scripts/functions.js"></script>
+        <script src="src/scripts/functions.js?v=1"></script>
         <script src="src/scripts/modules.js"></script>
-        <script src="src/scripts/script.js?v=1"></script>
+        <script src="src/scripts/script.js?v=2"></script>
     </head>
     <body>
         <div id="interface">
@@ -27,6 +27,8 @@
                     <div class="tool-section-display">
                         <p class="add-layout">Add Layout:</p>
                         <div class="layout-draggable" draggable="true">
+                        </div>
+                        <div class="layout-droppable" draggable="true">
                         </div>
                         <p>Add Layout Element:</p>
                         <p>Selected layout:</p>

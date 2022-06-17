@@ -1,8 +1,59 @@
 var Lew = {
     layouts_arr: [],
     iframe_is_editable: false,
+    project_is_selected: false,
+    layouts_searched: false,
+    iframe_droppable: "",
+    is_dropable: false,
+    layout_draggable: "",
     initLayoutSection: function(){
+        this.layout_draggable = document.querySelector(".layout-draggable");
+
+        this.layout_draggable.addEventListener('dragstart', this.dragStartFunc);
     },
+    dragStartFunc(e){
+        e.dataTransfer.setData("text/plain", e.target.classList);
+
+        LewDebug.log("Layout selected for dragging ...");
+
+        // for removing display
+        // setTimeout(()=>{
+        //     $(".layout-draggable").css("display", "none");
+        // }, 1000);
+    },
+    setDroppable(){
+        this.iframe_droppable = document.querySelector(".layout-droppable");
+
+        this.iframe_droppable.addEventListener('dragenter', this.dragEnterFunc);
+        this.iframe_droppable.addEventListener('dragover', this.dragOverFunc);
+        this.iframe_droppable.addEventListener('dragleave', this.dragLeaveFunc);
+        this.iframe_droppable.addEventListener('drop', this.dropFunc);
+
+        this.is_dropable = true;
+    },
+    dragEnterFunc(e){
+        e.preventDefault();
+
+        LewDebug.log("Layout entered ...");
+    },
+    dragOverFunc(e){
+        e.preventDefault();
+
+        LewDebug.log("Layout is dragged over ...");
+    },
+    dragLeaveFunc(e){
+        LewDebug.log("Layout leaved ...");
+    },
+    dropFunc(e){
+        LewDebug.log("Layout dropped ...");
+    },
+    loadProject: function(projectName){
+        var path="./src/out/" + projectName + "/index.html";
+        $("#iframe_panel").attr("src",path);
+
+        $(document.getElementById("iframe_panel")).css("background-color","white");
+    }
+    ,
     searchForLayouts: function(){
         var iframe_el_arr = $("#iframe_panel").contents().find(".layout-editable");
         var layout_arr_temp = [];
@@ -50,6 +101,8 @@ var Lew = {
         });
 
         this.iframe_is_editable = true;
+
+        this.setDroppable();
     },
     clearEdit: function(){
         var iframe = document.getElementById("iframe_panel");
