@@ -11,7 +11,7 @@ class LewDebug{
         var pos4 = 0;
 
         var el = document.getElementById("debug_section");
-        el.onmousedown = dragMouseDownFunc;
+        document.getElementById(el.id + "_header").onmousedown = dragMouseDownFunc;
 
         function dragMouseDownFunc(e){
             e = e || window.event;

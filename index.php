@@ -100,7 +100,9 @@
                         <p>Section 2 - Back-End</p>
                     </div>
                     <div id="debug_section">
-                        <p>Section 3 - Debug</p>
+                        <div id="debug_section_header">
+                            <p>Section 3 - Debug</p>
+                        </div>
                         <div class="debug-output"></div>
                     </div>
                 </div>

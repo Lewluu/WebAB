@@ -33,6 +33,9 @@ body{
     border-width: 1px;
     border-color: black;
     z-index: 3;
+}
+
+#debug_section p{
     cursor: move;
 }
 
