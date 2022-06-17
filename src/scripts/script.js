@@ -248,11 +248,6 @@ $(document).ready(function(){
     });
 });
 
-function loadProject(projectName){
-    var path="src/out/"+projectName+"/index.html";
-    $("#iframe_panel").attr("src",path);
-}
-
 function openPopUp(option){
     var popup_window;
     switch(option){
