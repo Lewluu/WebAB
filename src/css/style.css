@@ -23,6 +23,13 @@ body{
     /*line-height: 100px; */
 }
 
+#debug_section{
+    position:absolute;
+    margin-top: -25%;
+    margin-left: 50%;
+    width: 25%;
+}
+
 .debug-output{
     background-color: white;
     width: 95%;

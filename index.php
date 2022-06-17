@@ -99,7 +99,7 @@
                     <div class="tool-section">
                         <p>Section 2 - Back-End</p>
                     </div>
-                    <div class="tool-section">
+                    <div id="debug_section">
                         <p>Section 3 - Debug</p>
                         <div class="debug-output"></div>
                     </div>
