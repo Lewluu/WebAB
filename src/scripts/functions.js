@@ -11,6 +11,21 @@ var Lew = {
         this.layout_draggable = document.querySelector(".layout-draggable");
 
         this.layout_draggable.addEventListener('dragstart', this.dragStartFunc);
+
+        $(".layout-draggable").draggable({
+            iframeFix: true,
+            revert: "invalid",
+            iframeFix:true,
+        });
+
+        $("#iframe_panel").droppable({
+            drop: function(){
+                LewDebug.log("dropped ...")
+            },
+            hoverClass: function(){
+                LewDebug.log("dragging over ...");
+            }
+        });
     },
     dragStartFunc(e){
         e.dataTransfer.setData("text/plain", e.target.classList);
@@ -18,7 +33,7 @@ var Lew = {
         LewDebug.log("Layout selected for dragging ...");
     },
     setDroppable(){
-        this.iframe_droppable = document.querySelector("#main_panel");
+        this.iframe_droppable = document.querySelector("#iframe_panel");
 
         this.iframe_droppable.addEventListener('dragenter', this.dragEnterFunc);
         this.iframe_droppable.addEventListener('dragover', this.dragOverFunc);

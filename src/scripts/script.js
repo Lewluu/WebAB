@@ -289,3 +289,18 @@ function closePopUp(popup_nr){
             break;
     }
 }
+
+function onDragStart(ev){
+    ev.dataTransfer.setData("text", ev.target.id);
+    LewDebug.log("draggin this ...");
+}
+
+function allowDropEvFunc(ev){
+    ev.preventDefault();
+    LewDebug.log("dragging here ...")
+}
+
+function onDropFunc(ev){
+    ev.preventDefault();
+    LewDebug.log("dropping here ...");
+}
