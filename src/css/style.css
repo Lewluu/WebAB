@@ -33,16 +33,19 @@ body{
     border-width: 1px;
     border-color: black;
     z-index: 3;
+    /* height: 145px; */
 }
 
-#debug_section p{
+#debug_section_header p{
     cursor: move;
+    text-align: center;
 }
 
 .debug-output{
     background-color: white;
     width: 95%;
     margin: auto;
+    margin-bottom: 3%;
     overflow-y:auto;
     min-height: 75px;
     max-height: 250px;

@@ -6,6 +6,7 @@ var Lew = {
     iframe_droppable: "",
     is_dropable: false,
     layout_draggable: "",
+
     initLayoutSection: function(){
         this.layout_draggable = document.querySelector(".layout-draggable");
 
@@ -15,14 +16,9 @@ var Lew = {
         e.dataTransfer.setData("text/plain", e.target.classList);
 
         LewDebug.log("Layout selected for dragging ...");
-
-        // for removing display
-        // setTimeout(()=>{
-        //     $(".layout-draggable").css("display", "none");
-        // }, 1000);
     },
     setDroppable(){
-        this.iframe_droppable = document.querySelector(".layout-droppable");
+        this.iframe_droppable = document.querySelector("#main_panel");
 
         this.iframe_droppable.addEventListener('dragenter', this.dragEnterFunc);
         this.iframe_droppable.addEventListener('dragover', this.dragOverFunc);
