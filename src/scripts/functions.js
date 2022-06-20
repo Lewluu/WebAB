@@ -13,17 +13,23 @@ var Lew = {
         this.layout_draggable.addEventListener('dragstart', this.dragStartFunc);
 
         $(".layout-draggable").draggable({
-            iframeFix: true,
             revert: "invalid",
+            revertDuration: 250,
             iframeFix:true,
+            drag: function(){
+                // LewDebug.log("Layous: <i>layout_name</i> selected for dragging");
+            }
         });
 
         $("#iframe_panel").droppable({
             drop: function(){
-                LewDebug.log("dropped ...")
+                LewDebug.log("layout dropped in: ")
+            },
+            out: function(){
+                LewDebug.log("layout leaving: ");
             },
             hoverClass: function(){
-                LewDebug.log("dragging over ...");
+                LewDebug.log("layout dragged over: ");
             }
         });
     },
