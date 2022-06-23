@@ -76,15 +76,11 @@ $(document).ready(function(){
 
     // edit project option
     $(options[3]).on("click",function(){
-        if(!Lew.layouts_searched){
-            Lew.searchForLayouts();
-
-            Lew.layouts_searched = true;
-        }
-
         if(!Lew.project_is_selected)    return;
-        if(!(Lew.iframe_is_editable))
+        if(!(Lew.iframe_is_editable)){
             Lew.editIframe();
+            Lew.searchForLayouts();
+        }
         else
             Lew.clearEdit();
     });
@@ -288,19 +284,4 @@ function closePopUp(popup_nr){
         default:
             break;
     }
-}
-
-function onDragStart(ev){
-    ev.dataTransfer.setData("text", ev.target.id);
-    LewDebug.log("draggin this ...");
-}
-
-function allowDropEvFunc(ev){
-    ev.preventDefault();
-    LewDebug.log("dragging here ...")
-}
-
-function onDropFunc(ev){
-    ev.preventDefault();
-    LewDebug.log("dropping here ...");
 }

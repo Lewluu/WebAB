@@ -1,0 +1,9 @@
+.layout-draggable{
+    width: 175px;
+    height: 50px;
+    background-color: none;
+    border-style: double;
+    border-width: 2px;
+    border-color: orange;
+    margin: auto;
+}

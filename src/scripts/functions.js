@@ -23,7 +23,12 @@ var Lew = {
 
         $("#iframe_panel").droppable({
             drop: function(){
-                LewDebug.log("layout dropped in: ")
+                LewDebug.log("layout dropped in: ");
+
+                var iframe_body = $("#iframe_panel").contents().find("body");
+                iframe_body.append(
+                    "<div class='layout-editable' style='width:175px;height:50px;background-color:none;border-style:double;border-width:2px;border-color:orange;'><div>"
+                    );
             },
             out: function(){
                 LewDebug.log("layout leaving: ");
@@ -37,32 +42,6 @@ var Lew = {
         e.dataTransfer.setData("text/plain", e.target.classList);
 
         LewDebug.log("Layout selected for dragging ...");
-    },
-    setDroppable(){
-        this.iframe_droppable = document.querySelector("#iframe_panel");
-
-        this.iframe_droppable.addEventListener('dragenter', this.dragEnterFunc);
-        this.iframe_droppable.addEventListener('dragover', this.dragOverFunc);
-        this.iframe_droppable.addEventListener('dragleave', this.dragLeaveFunc);
-        this.iframe_droppable.addEventListener('drop', this.dropFunc);
-
-        this.is_dropable = true;
-    },
-    dragEnterFunc(e){
-        e.preventDefault();
-
-        LewDebug.log("Layout entered ...");
-    },
-    dragOverFunc(e){
-        e.preventDefault();
-
-        LewDebug.log("Layout is dragged over ...");
-    },
-    dragLeaveFunc(e){
-        LewDebug.log("Layout leaved ...");
-    },
-    dropFunc(e){
-        LewDebug.log("Layout dropped ...");
     },
     loadProject: function(projectName){
         var path="./src/out/" + projectName + "/index.html";
@@ -118,8 +97,6 @@ var Lew = {
         });
 
         this.iframe_is_editable = true;
-
-        this.setDroppable();
     },
     clearEdit: function(){
         var iframe = document.getElementById("iframe_panel");
