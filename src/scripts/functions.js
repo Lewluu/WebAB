@@ -8,10 +8,6 @@ var Lew = {
     layout_draggable: "",
 
     initLayoutSection: function(){
-        this.layout_draggable = document.querySelector(".layout-draggable");
-
-        this.layout_draggable.addEventListener('dragstart', this.dragStartFunc);
-
         $(".layout-draggable").draggable({
             revert: "invalid",
             revertDuration: 250,
@@ -38,6 +34,10 @@ var Lew = {
             }
         });
     },
+    setDragAndDrop(value){
+        $(".layout-draggable").draggable(value);
+    }
+    ,
     dragStartFunc(e){
         e.dataTransfer.setData("text/plain", e.target.classList);
 
@@ -62,6 +62,9 @@ var Lew = {
 
             var layout_name = ".layout-editable-" + String(index + 1);
             layout.setLayout(layout_name);
+
+            // adding new class with index for every layout
+            $(this).addClass(layout_name.replace(".", ""));
 
             layout_arr_temp.push(layout);
 

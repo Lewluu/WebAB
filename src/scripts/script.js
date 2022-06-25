@@ -15,6 +15,7 @@ $(document).ready(function(){
 
     // layouts options
     Lew.initLayoutSection();
+    Lew.setDragAndDrop('disable');
 
     // remove layouts option
     $(".remove-layout").on("click", function(){
@@ -78,11 +79,14 @@ $(document).ready(function(){
     $(options[3]).on("click",function(){
         if(!Lew.project_is_selected)    return;
         if(!(Lew.iframe_is_editable)){
-            Lew.editIframe();
             Lew.searchForLayouts();
+            Lew.editIframe();
+            Lew.setDragAndDrop('enable');
         }
-        else
+        else{
             Lew.clearEdit();
+            Lew.setDragAndDrop('disable');
+        }
     });
 
     // save project option
@@ -201,6 +205,8 @@ $(document).ready(function(){
             success: function(){
                 LewDebug.log("Loading project: "+sp);
                 Lew.loadProject(sp);
+
+                Lew.searchForLayouts();
 
                 Lew.layouts_searched = false;
                 Lew.project_is_selected = true;
