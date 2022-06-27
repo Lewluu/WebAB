@@ -9,7 +9,7 @@ var Lew = {
 
     initLayoutSection: function(){
         $(".layout-draggable").draggable({
-            revert: "invalid",
+            revert: true,
             revertDuration: 250,
             iframeFix:true,
             drag: function(){
@@ -23,8 +23,10 @@ var Lew = {
 
                 var iframe_body = $("#iframe_panel").contents().find("body");
                 iframe_body.append(
-                    "<div class='layout-editable' style='width:175px;height:50px;background-color:none;border-style:double;border-width:2px;border-color:orange;'><div>"
+                    "<div class='layout-editable' style='margin-bottom:0.25%;width:175px;height:50px;background-color:none;border-style:double;border-width:2px;border-color:orange;'></div>"
                     );
+                Lew.searchForLayouts();
+                Lew.editIframe();
             },
             out: function(){
                 LewDebug.log("layout leaving: ");
@@ -83,7 +85,7 @@ var Lew = {
             }
         });
 
-        LewDebug.log("Searched for layouts. Found: " + String(layout_arr_temp.length));
+        LewDebug.log("Current layouts number: " + String(layout_arr_temp.length));
 
         this.layouts_arr = layout_arr_temp;
     },

@@ -94,8 +94,6 @@ class LewLayout{
             var layout_nr_temp = this._layout_nr;
             var layout_el_temp = this._element_layout;
 
-            LewDebug.log(layout_el_temp);
-
             $(".selected-layout-el-" + String(layout_nr_temp) + " > img").hover(function(){
                 $(this).css("cursor", "pointer");
             }); 

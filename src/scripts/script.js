@@ -108,7 +108,6 @@ $(document).ready(function(){
                     },
                     success: function(data){
                         alert("Successfully saved project: " + sp);
-                        LewDebug.log(data);
                     },
                     error: function(){
                         alert("Failed to save project: " + sp);
