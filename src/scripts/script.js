@@ -19,7 +19,14 @@ $(document).ready(function(){
 
     // remove layouts option
     $(".remove-layout").on("click", function(){
-        if(Lew.removeLayouts()) Lew.layouts_searched = false; 
+        if(Lew.removeLayouts()){
+            Lew.layouts_searched = false;
+
+            Lew.clearEdit();
+            Lew.setDragAndDrop('disable');
+
+            // Lew.searchForLayouts();
+        } 
     });
 
     // arrows scroll

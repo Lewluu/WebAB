@@ -13,7 +13,7 @@
         <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
         <script src="src/scripts/functions.js"></script>
         <script src="src/scripts/modules.js"></script>
-        <script src="src/scripts/script.js?v=3"></script>
+        <script src="src/scripts/script.js"></script>
     </head>
     <body>
         <div id="interface">
