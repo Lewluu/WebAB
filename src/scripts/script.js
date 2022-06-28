@@ -107,7 +107,12 @@ $(document).ready(function(){
                         project_html: data_html
                     },
                     success: function(data){
-                        alert("Successfully saved project: " + sp);
+                        if(!data){
+                            alert("Successfully saved project: " + sp);
+                        }
+                        else{
+                            LewDebug.log(data);
+                        }
                     },
                     error: function(){
                         alert("Failed to save project: " + sp);

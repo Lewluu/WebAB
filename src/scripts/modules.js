@@ -156,10 +156,11 @@ class LewLayout{
         // remove event on click
         iframe_element.unbind();
 
-        iframe_element.hover(function(){
-            iframe_element.css("cursor", "default");
-        });
+        // iframe_element.hover(function(){
+        //     iframe_element.css("cursor", "default");
+        // });
 
+        iframe_element.css("cursor", "default");
         iframe_element.attr("contenteditable", "false");
         iframe_element.css("resize", "false");
         iframe_element.css("border-style","");
