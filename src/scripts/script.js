@@ -22,9 +22,10 @@ $(document).ready(function(){
         if(Lew.removeLayouts()){
             Lew.layouts_searched = false;
 
-            Lew.clearEdit();
-            Lew.setDragAndDrop('disable');
+            // Lew.clearEdit();
+            // Lew.setDragAndDrop('disable');
 
+            // Lew.resetLayouts();
             // Lew.searchForLayouts();
         } 
     });
