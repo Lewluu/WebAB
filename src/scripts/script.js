@@ -21,12 +21,8 @@ $(document).ready(function(){
     $(".remove-layout").on("click", function(){
         if(Lew.removeLayouts()){
             Lew.layouts_searched = false;
-
-            // Lew.clearEdit();
-            // Lew.setDragAndDrop('disable');
-
             Lew.resetLayouts();
-            // Lew.searchForLayouts();
+            Lew.searchForLayouts();
         } 
     });
 

@@ -90,11 +90,10 @@ var Lew = {
     },
     resetLayouts: function(){
         var iframe_div = $("#iframe_panel").contents().find("div");
-        $(this.layouts_arr).each(function(){
-            var class_name = String(this.getSelectedLayout()).replace(".","");
-            LewDebug.log(class_name);
+        for(var i=0;i<iframe_div.length+1;i++){
+            var class_name = "layout-editable-" + String(i + 1);
             iframe_div.removeClass(class_name);
-        });
+        }
     },
     editIframe: function(){
         var iframe = document.getElementById("iframe_panel");
