@@ -25,7 +25,7 @@ $(document).ready(function(){
             // Lew.clearEdit();
             // Lew.setDragAndDrop('disable');
 
-            // Lew.resetLayouts();
+            Lew.resetLayouts();
             // Lew.searchForLayouts();
         } 
     });

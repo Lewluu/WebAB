@@ -89,9 +89,11 @@ var Lew = {
         this.layouts_arr = layout_arr_temp;
     },
     resetLayouts: function(){
-        $(this.layouts_arr).each(function(index){
+        var iframe_div = $("#iframe_panel").contents().find("div");
+        $(this.layouts_arr).each(function(){
             var class_name = String(this.getSelectedLayout()).replace(".","");
-            $(this).removeClass(class_name);
+            LewDebug.log(class_name);
+            iframe_div.removeClass(class_name);
         });
     },
     editIframe: function(){
@@ -126,10 +128,6 @@ var Lew = {
         var found_layouts = false;
 
         $(this.layouts_arr).each(function(){
-            // reseting layouts
-            var class_name = String(this.getSelectedLayout()).replace(".","");
-            $("#iframe_panel").contents().find(".layout-editable").removeClass(this.getSelectedLayout());
-
             if(this.removeLayout()){
                 layout_arr_temp.pop(this);
                 found_layouts = true;
