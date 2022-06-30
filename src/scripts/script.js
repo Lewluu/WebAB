@@ -200,6 +200,7 @@ $(document).ready(function(){
             success: function(){
                 closePopUp(2);
                 Lew.loadProject(form_val["project_name"]);
+                sp = form_val["project_name"];
                 alert("Project "+form_val["project_name"]+" was created!");
             },
             error: function(){

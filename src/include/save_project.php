@@ -18,6 +18,9 @@ $working_directory = "..\\out\\".$project_name;
 if(is_dir($working_directory)){
     $html_obj = new HtmlObject();
     $html_obj->generateSavedFile($working_directory, $project_name_temp, "test", $project_html);
+
+    unlink($working_directory."\\index.html");
+    rename($working_directory."\\".$project_name_temp, $working_directory."\\index.html");
 }
 else{
     echo json_encode($working_directory." doesn't exists ...");
