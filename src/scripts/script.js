@@ -23,6 +23,8 @@ $(document).ready(function(){
             Lew.layouts_searched = false;
             Lew.resetLayouts();
             Lew.searchForLayouts();
+            Lew.clearEdit();
+            Lew.editIframe();
         } 
     });
 

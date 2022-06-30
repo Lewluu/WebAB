@@ -94,6 +94,10 @@ var Lew = {
             var class_name = "layout-editable-" + String(i + 1);
             iframe_div.removeClass(class_name);
         }
+        $(this.layouts_arr).each(function(){
+            this.Edit();
+            this.Update();
+        });
     },
     editIframe: function(){
         var iframe = document.getElementById("iframe_panel");
@@ -101,11 +105,6 @@ var Lew = {
         $(iframe).css("border-style","double");
         $(iframe).css("border-width","2px");
         $(iframe).css("border-color","rgb(137, 238, 183)");
-
-        $(this.layouts_arr).each(function(){
-            this.Edit();
-            this.Update();
-        });
 
         this.iframe_is_editable = true;
     },
