@@ -78,14 +78,28 @@ var Lew = {
                     "<div class='layout-editable' style='margin-bottom:0.25%;width:100%;height:75px;display:flex;align-items:center;flex-wrap:wrap;background-color:none;border-style:double;border-width:2px;border-color:orange;'></div>"
                     );
 
+                var layout_temp = $("#iframe_panel").contents().find(".layout-editable-temp");
+    
+                layout_temp.remove();
+
                 Lew.searchForLayouts();
                 Lew.editIframe();
             },
             out: function(){
                 LewDebug.log("layout leaving: ");
+
+                var layout_temp = $("#iframe_panel").contents().find(".layout-editable-temp");
+
+                layout_temp.remove();
             },
             hoverClass: function(){
                 LewDebug.log("layout dragged over: ");
+
+                var layout_temp = $("#iframe_panel").contents().find("body");
+
+                layout_temp.append(
+                    "<div class='layout-editable-temp' style='margin-bottom:0.25%;width:100%;height:75px;display:flex;align-items:center;flex-wrap:wrap;background-color:none;border-style:double;border-width:2px;border-color:blue;'></div>"
+                    );
 
                 var layout_base = $("#iframe_panel").contents().find(".layout-editable");
                 $(layout_base).droppable({
@@ -114,6 +128,8 @@ var Lew = {
                         // removing temporary layout
                         var layout_temp = $("#iframe_panel").contents().find(".sub-layout-editable-temp");
                         layout_temp.remove();
+
+                        $("#iframe_panel").droppable("option", "disabled", "false");
                     }
                 });
             }
