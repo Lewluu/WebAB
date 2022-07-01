@@ -78,6 +78,7 @@ var Lew = {
                     "<div class='layout-editable' style='margin-bottom:0.25%;width:100%;height:75px;display:flex;align-items:center;flex-wrap:wrap;background-color:none;border-style:double;border-width:2px;border-color:orange;'></div>"
                     );
 
+                // removing temporary layout
                 var layout_temp = $("#iframe_panel").contents().find(".layout-editable-temp");
     
                 layout_temp.remove();
@@ -86,17 +87,17 @@ var Lew = {
                 Lew.editIframe();
             },
             out: function(){
-                LewDebug.log("layout leaving: ");
+                LewDebug.log("layout: leaving: ");
 
+                // removing temporary layout
                 var layout_temp = $("#iframe_panel").contents().find(".layout-editable-temp");
-
                 layout_temp.remove();
             },
             hoverClass: function(){
-                LewDebug.log("layout dragged over: ");
+                LewDebug.log("layout: dragged over: ");
 
+                // adding temporary layout
                 var layout_temp = $("#iframe_panel").contents().find("body");
-
                 layout_temp.append(
                     "<div class='layout-editable-temp' style='margin-bottom:0.25%;width:100%;height:75px;display:flex;align-items:center;flex-wrap:wrap;background-color:none;border-style:double;border-width:2px;border-color:blue;'></div>"
                     );
@@ -106,7 +107,11 @@ var Lew = {
                     drop: function(){
                         LewDebug.log("sublayout: dropped in: ");
 
-                        // removing temporary layout
+                         // removing temporary layout, in case of overlapping
+                        var layout_temp = $("#iframe_panel").contents().find(".layout-editable-temp");
+                        layout_temp.remove();
+
+                        // removing temporary sublayout
                         var layout_temp = $("#iframe_panel").contents().find(".sub-layout-editable-temp");
                         layout_temp.remove();
 
@@ -117,19 +122,23 @@ var Lew = {
                     hoverClass: function(){
                         LewDebug.log("sublayout: dragged over: ");
 
-                        $("#iframe_panel").droppable("option", "disabled", "true");
+                        // disabling droping option of iframe for dropping into a layout
+                        $("#iframe_panel").droppable("option", "disabled", true);
 
-                        // adding temporary layout
+                        // adding temporary sublayout
                         layout_base.append(
                             "<div class='sub-layout-editable-temp' style='width: 135px; height: 45px; margin-left:0.5%; margin-top:0.5%; margin-bottom:0.5%; background-color:none;border-style:double;border-width:2px;border-color:blue;'></div>"
                         );
                     },
                     out: function(){
-                        // removing temporary layout
+                        LewDebug.log("sublayout: leaving:");
+
+                        // removing temporary sublayout
                         var layout_temp = $("#iframe_panel").contents().find(".sub-layout-editable-temp");
                         layout_temp.remove();
 
-                        $("#iframe_panel").droppable("option", "disabled", "false");
+                        // enabling iframe droppable again
+                        $("#iframe_panel").droppable("option", "disabled", false);
                     }
                 });
             }
