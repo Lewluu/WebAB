@@ -12,7 +12,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
         <script src="src/scripts/functions.js"></script>
-        <script src="src/scripts/modules.js"></script>
+        <script src="src/scripts/modules.js?v=1"></script>
         <script src="src/scripts/script.js?v=1"></script>
     </head>
     <body>
@@ -30,8 +30,6 @@
                         <div class="layout-draggable" draggable="true">
                         </div>
                         <p>Add Layout Element:</p>
-                        <div class="sub-layout-draggable" draggable="true">
-                        </div>
                         <p>Selected layout:</p>
                         <div class="selected-layout">
                         </div>

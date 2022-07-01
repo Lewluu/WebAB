@@ -51,10 +51,6 @@ class LewDebug{
     }
 }
 
-class LewSubLayout{
-    
-}
-
 class LewLayout{
     init(){
         this._element_layout = "";

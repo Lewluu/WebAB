@@ -17,15 +17,6 @@ var Lew = {
             }
         });
 
-        $(".sub-layout-draggable").draggable({
-            revert: true,
-            revertDuration: 250,
-            iframeFix: true,
-            drag: function(){
-
-            }
-        });
-
         $("#iframe_panel").droppable({
             drop: function(){
                 LewDebug.log("layout: dropped in: ");
