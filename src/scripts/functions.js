@@ -7,7 +7,58 @@ var Lew = {
     is_dropable: false,
     layout_draggable: "",
 
-    initLayoutSection: function(){
+    loadProject: function(projectName){
+        var path="./src/out/" + projectName + "/index.html";
+        $("#iframe_panel").attr("src",path);
+
+        $(document.getElementById("iframe_panel")).css("background-color","white");
+    },
+    searchForLayouts: function(){
+        var iframe_el_arr = $("#iframe_panel").contents().find(".layout-editable");
+        var layout_arr_temp = [];
+
+        $(iframe_el_arr).each(function(index){
+            let layout = new LewLayout();
+            
+            layout.init();
+            layout.setLayoutNumber(index + 1);
+
+            var layout_name = ".layout-editable-" + String(index + 1);
+            layout.setLayout(layout_name);
+
+            // adding new class with index for every layout
+            $(this).addClass(layout_name.replace(".", ""));
+
+            layout_arr_temp.push(layout);
+
+            var sel_layout = document.getElementsByClassName("selected-layout");
+            var sel_layout_str = $(sel_layout).html();
+            if(!sel_layout_str.includes(layout_name)){
+                var curr_html = $(sel_layout).html();
+                $(sel_layout).html(
+                    curr_html + 
+                    "<div class='selected-layout-el selected-layout-el-"
+                     + String(index + 1) + 
+                     "' style='display:none'> <p>" + 
+                    layout_name + 
+                    "</p> <img style='display:none' src='src/icons/close.png'> </div>"
+                    );
+            }
+        });
+
+        LewDebug.log("Current layouts number: " + String(layout_arr_temp.length));
+
+        this.layouts_arr = layout_arr_temp;
+    },
+    resetLayouts: function(){
+        var iframe_div = $("#iframe_panel").contents().find("div");
+        for(var i=0;i<iframe_div.length+1;i++){
+            var class_name = "layout-editable-" + String(i + 1);
+            iframe_div.removeClass(class_name);
+        }
+    },
+    // drag and drop method
+    updateDragAndDrop: function(){
         $(".layout-draggable").draggable({
             revert: true,
             revertDuration: 250,
@@ -71,57 +122,6 @@ var Lew = {
     setDragAndDrop(value){
         $(".layout-draggable").draggable(value);
         $(".sub-layout-draggable").draggable(value);
-    }
-    ,
-    loadProject: function(projectName){
-        var path="./src/out/" + projectName + "/index.html";
-        $("#iframe_panel").attr("src",path);
-
-        $(document.getElementById("iframe_panel")).css("background-color","white");
-    },
-    searchForLayouts: function(){
-        var iframe_el_arr = $("#iframe_panel").contents().find(".layout-editable");
-        var layout_arr_temp = [];
-
-        $(iframe_el_arr).each(function(index){
-            let layout = new LewLayout();
-            
-            layout.init();
-            layout.setLayoutNumber(index + 1);
-
-            var layout_name = ".layout-editable-" + String(index + 1);
-            layout.setLayout(layout_name);
-
-            // adding new class with index for every layout
-            $(this).addClass(layout_name.replace(".", ""));
-
-            layout_arr_temp.push(layout);
-
-            var sel_layout = document.getElementsByClassName("selected-layout");
-            var sel_layout_str = $(sel_layout).html();
-            if(!sel_layout_str.includes(layout_name)){
-                var curr_html = $(sel_layout).html();
-                $(sel_layout).html(
-                    curr_html + 
-                    "<div class='selected-layout-el selected-layout-el-"
-                     + String(index + 1) + 
-                     "' style='display:none'> <p>" + 
-                    layout_name + 
-                    "</p> <img style='display:none' src='src/icons/close.png'> </div>"
-                    );
-            }
-        });
-
-        LewDebug.log("Current layouts number: " + String(layout_arr_temp.length));
-
-        this.layouts_arr = layout_arr_temp;
-    },
-    resetLayouts: function(){
-        var iframe_div = $("#iframe_panel").contents().find("div");
-        for(var i=0;i<iframe_div.length+1;i++){
-            var class_name = "layout-editable-" + String(i + 1);
-            iframe_div.removeClass(class_name);
-        }
     },
     editIframe: function(){
         var iframe = document.getElementById("iframe_panel");

@@ -9,12 +9,12 @@ $(document).ready(function(){
     var projects = [];
     var sp;
     
-    // init included files
+    // debug init
     LewDebug.init();
     LewDebug.setupInterface();
 
-    // layouts options
-    Lew.initLayoutSection();
+    // drag and drop modules
+    Lew.updateDragAndDrop();
     Lew.setDragAndDrop('disable');
 
     // remove layouts option
