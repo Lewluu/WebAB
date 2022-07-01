@@ -41,14 +41,28 @@ var Lew = {
                     drop: function(){
                         LewDebug.log("sublayout: dropped in: ");
 
+                        // removing temporary layout
+                        var layout_temp = $("#iframe_panel").contents().find(".sub-layout-editable-temp");
+                        layout_temp.remove();
+
                         layout_base.append(
-                            "<div class='sub-layout-editable' style='width: 9%; height: 75%; margin-left:0.5%; background-color:none;border-style:double;border-width:2px;border-color:orange;'></div>"
+                            "<div class='sub-layout-editable' style='width: 135px; height: 45px;; margin-left:0.5%; margin-top:0.5%; margin-bottom:0.5%; background-color:none;border-style:double;border-width:2px;border-color:orange;'></div>"
                         );
                     },
                     hoverClass: function(){
                         LewDebug.log("sublayout: dragged over: ");
 
                         $("#iframe_panel").droppable("option", "disabled", "true");
+
+                        // adding temporary layout
+                        layout_base.append(
+                            "<div class='sub-layout-editable-temp' style='width: 135px; height: 45px; margin-left:0.5%; margin-top:0.5%; margin-bottom:0.5%; background-color:none;border-style:double;border-width:2px;border-color:blue;'></div>"
+                        );
+                    },
+                    out: function(){
+                        // removing temporary layout
+                        var layout_temp = $("#iframe_panel").contents().find(".sub-layout-editable-temp");
+                        layout_temp.remove();
                     }
                 });
             }
@@ -59,11 +73,6 @@ var Lew = {
         $(".sub-layout-draggable").draggable(value);
     }
     ,
-    dragStartFunc(e){
-        e.dataTransfer.setData("text/plain", e.target.classList);
-
-        LewDebug.log("Layout selected for dragging ...");
-    },
     loadProject: function(projectName){
         var path="./src/out/" + projectName + "/index.html";
         $("#iframe_panel").attr("src",path);
