@@ -17,14 +17,25 @@ var Lew = {
             }
         });
 
+        $(".sub-layout-draggable").draggable({
+            revert: true,
+            revertDuration: 250,
+            iframeFix: true,
+            drag: function(){
+
+            }
+        });
+
         $("#iframe_panel").droppable({
             drop: function(){
-                LewDebug.log("layout dropped in: ");
+                LewDebug.log("layout: dropped in: ");
 
                 var iframe_body = $("#iframe_panel").contents().find("body");
+
                 iframe_body.append(
-                    "<div class='layout-editable' style='margin-bottom:0.25%;width:175px;height:50px;background-color:none;border-style:double;border-width:2px;border-color:orange;'></div>"
+                    "<div class='layout-editable' style='margin-bottom:0.25%;width:100%;height:75px;display:flex;align-items:center;flex-wrap:wrap;background-color:none;border-style:double;border-width:2px;border-color:orange;'></div>"
                     );
+
                 Lew.searchForLayouts();
                 Lew.editIframe();
             },
@@ -33,11 +44,28 @@ var Lew = {
             },
             hoverClass: function(){
                 LewDebug.log("layout dragged over: ");
+
+                var layout_base = $("#iframe_panel").contents().find(".layout-editable");
+                $(layout_base).droppable({
+                    drop: function(){
+                        LewDebug.log("sublayout: dropped in: ");
+
+                        layout_base.append(
+                            "<div class='sub-layout-editable' style='width: 9%; height: 75%; margin-left:0.5%; background-color:none;border-style:double;border-width:2px;border-color:orange;'></div>"
+                        );
+                    },
+                    hoverClass: function(){
+                        LewDebug.log("sublayout: dragged over: ");
+
+                        $("#iframe_panel").droppable("option", "disabled", "true");
+                    }
+                });
             }
         });
     },
     setDragAndDrop(value){
         $(".layout-draggable").draggable(value);
+        $(".sub-layout-draggable").draggable(value);
     }
     ,
     dragStartFunc(e){
@@ -94,10 +122,6 @@ var Lew = {
             var class_name = "layout-editable-" + String(i + 1);
             iframe_div.removeClass(class_name);
         }
-        $(this.layouts_arr).each(function(){
-            this.Edit();
-            this.Update();
-        });
     },
     editIframe: function(){
         var iframe = document.getElementById("iframe_panel");
@@ -105,6 +129,11 @@ var Lew = {
         $(iframe).css("border-style","double");
         $(iframe).css("border-width","2px");
         $(iframe).css("border-color","rgb(137, 238, 183)");
+
+        $(this.layouts_arr).each(function(){
+            this.Edit();
+            this.Update();
+        });
 
         this.iframe_is_editable = true;
     },

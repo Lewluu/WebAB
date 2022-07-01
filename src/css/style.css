@@ -163,6 +163,16 @@ body{
     margin: auto;
 }
 
+.sub-layout-draggable{
+    width: 135px;
+    height: 35px;
+    background-color: none;
+    border-style: double;
+    border-width: 2px;
+    border-color:orange;
+    margin: auto;
+}
+
 .layout-droppable{
     width: 175px;
     height: 50px;

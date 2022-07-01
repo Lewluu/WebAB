@@ -30,6 +30,8 @@
                         <div class="layout-draggable" draggable="true">
                         </div>
                         <p>Add Layout Element:</p>
+                        <div class="sub-layout-draggable" draggable="true">
+                        </div>
                         <p>Selected layout:</p>
                         <div class="selected-layout">
                         </div>
