@@ -51,12 +51,132 @@ class LewDebug{
     }
 }
 
+class LewSubLayout{
+    init(){
+        this._element_sublayout = "";
+        this._sublayout_nr = 0;
+        this._is_editable = false;
+        this._is_updated = false;
+    }
+    setSubLayout(element_sublayout){
+        this._element_sublayout = element_sublayout;
+    }
+    setSubLayoutNumber(value){
+        this._sublayout_nr = value;
+    }
+    removeSubLayout(){
+        var sel_sublayout = document.getElementsByClassName(
+            "selected-sublayout-el-" + String(this._sublayout_nr)
+            );
+            
+        if($(sel_sublayout).css("display") == "flex"){
+            var iframe_element = $("#iframe_panel").contents().find(this._element_sublayout);
+
+            LewDebug.log("<b>" + $(sel_sublayout).text() + "</b> removed ...");
+
+            iframe_element.remove();
+            $(sel_sublayout).remove();
+
+            return true;
+        }
+
+        return false;
+    }
+    getSelectedSubLayout(){
+        return this._element_sublayout;
+    }
+    Update(){
+        if(!this._is_updated){
+            var sublayout_nr_temp = this._sublayout_nr;
+            var sublayout_el_temp = this._element_sublayout;
+
+            $(".selected-sublayout-el-" + String(sublayout_nr_temp) + " > img").hover(function(){
+                $(this).css("cursor", "pointer");
+            }); 
+            $(".selected-layout-el-" + String(sublayout_nr_temp) + " > img").on("click", function(){
+                LewDebug.log("<b>" + sublayout_el_temp + "</b> unselected ...");
+
+                var iframe_element =
+                $("#iframe_panel").contents().find(sublayout_el_temp);
+        
+                // remove selected layouts
+                $(".selected-sublayout-el-" + String(sublayout_nr_temp)).css("display", "none");
+                $(".selected-sublayout-el-" + String(sublayout_nr_temp ) + " > img").css("display", "none");
+
+                iframe_element.attr("contenteditable", "false");
+                iframe_element.css("resize", "false");
+                iframe_element.css("border-style","");
+                iframe_element.css("border-width","");
+                iframe_element.css("border-color","");
+                iframe_element.css("background-color","");
+                iframe_element.css("overflow","");
+            });
+
+            this._is_updated = true;
+        }
+        else    return;
+    }
+    Edit(){
+        var iframe_element =
+            $("#iframe_panel").contents().find(this._element_sublayout);
+        
+        iframe_element.hover(function(){
+            $(this).css("cursor", "pointer");
+        });
+
+        var sublayout_nr_temp = this._sublayout_nr;
+        var sublayout_el_temp = this._element_sublayout;
+        iframe_element.on("click", function(){
+            LewDebug.log("<b>" + sublayout_el_temp + "</b> selected ...");
+
+            // adding style on edit
+            iframe_element.attr("contenteditable","true");
+            iframe_element.css("resize","both");
+            iframe_element.css("border-style","double");
+            iframe_element.css("border-width","2px");
+            iframe_element.css("border-color","rgb(137, 238, 183)");
+            iframe_element.css("background-color","rgb(210, 253, 230)");
+            iframe_element.css("overflow","hidden");
+            
+            $(".selected-sublayout-el-" + String(sublayout_nr_temp)).css("display", "flex");
+            $(".selected-sublayout-el-" + String(sublayout_nr_temp) + " > img").css("display", "flex");
+        });
+    }
+    Unedit(){
+        var iframe_element =
+            $("#iframe_panel").contents().find(this._element_sublayout);
+        
+        // remove selected layouts
+        $(".selected-sublayout-el-" + String(this._sublayout_nr)).css("display", "none");
+        $(".selected-sublayout-el-" + String(this._sublayout_nr) + " > img").css("display", "none");
+
+        // remove event on click
+        iframe_element.unbind();
+
+        // removing style added on edit
+        iframe_element.css("cursor", "default");
+        iframe_element.attr("contenteditable", "false");
+        iframe_element.css("resize", "false");
+        iframe_element.css("border-style","");
+        iframe_element.css("border-width","");
+        iframe_element.css("border-color","");
+        iframe_element.css("background-color","");
+        iframe_element.css("overflow","");
+
+        this._is_editable = false;
+    }
+    isEditable(){
+        return this._is_editable;
+    }
+}
+
 class LewLayout{
     init(){
         this._element_layout = "";
         this._layout_nr = 0;
         this._is_editable = false;
         this._is_updated = false;
+        this._sublayout_list = [];
     }
     setLayout(element_layout){
         this._element_layout = element_layout;
@@ -84,6 +204,39 @@ class LewLayout{
     }
     getSelectedLayout(){
         return this._element_layout;
+    }
+    addSubLayout(sublayout){
+        this._sublayout_list.push(sublayout);
+    }
+    getSubLayoutsNumber(){
+        return this._sublayout_list.length;
+    }
+    searchForSubLayouts(){
+        var iframe_el_arr = $("#iframe_panel").contents().find(".sub-layout-editable");
+        var sublayout_list_temp = [];
+        var parent_class = this._element_layout.replace(".","");
+
+        $(iframe_el_arr).each(function(){
+            var classes = $(this).parent().attr('class')
+            
+            // check if sublayout in under this layout class
+            if(classes.includes(parent_class)){
+                var sublayout = new LewSubLayout();
+                var sublayout_name = "";
+
+                sublayout.init();
+                sublayout.setSubLayoutNumber(sublayout_list_temp.length + 1);
+
+                sublayout_name = ".sub-layout-editable-" + String(sublayout_list_temp.length + 1);
+                sublayout.setSubLayout(sublayout_name);
+
+                $(this).addClass(sublayout_name.replace(".",""));
+
+                sublayout_list_temp.push(sublayout);
+            }
+        });
+
+        this._sublayout_list = sublayout_list_temp;
     }
     Update(){
         if(!this._is_updated){
@@ -129,6 +282,7 @@ class LewLayout{
         iframe_element.on("click", function(){
             LewDebug.log("<b>" + layout_el_temp + "</b> selected ...");
 
+            // adding style on edit
             iframe_element.attr("contenteditable","true");
             iframe_element.css("resize","both");
             iframe_element.css("border-style","double");
@@ -152,10 +306,7 @@ class LewLayout{
         // remove event on click
         iframe_element.unbind();
 
-        // iframe_element.hover(function(){
-        //     iframe_element.css("cursor", "default");
-        // });
-
+        // removing style added on edit
         iframe_element.css("cursor", "default");
         iframe_element.attr("contenteditable", "false");
         iframe_element.css("resize", "false");

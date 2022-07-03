@@ -25,6 +25,7 @@ var Lew = {
 
             var layout_name = ".layout-editable-" + String(index + 1);
             layout.setLayout(layout_name);
+            layout.searchForSubLayouts();
 
             // adding new class with index for every layout
             $(this).addClass(layout_name.replace(".", ""));
@@ -118,6 +119,10 @@ var Lew = {
                         layout_base.append(
                             "<div class='sub-layout-editable' style='width: 135px; height: 45px;; margin-left:0.5%; margin-top:0.5%; margin-bottom:0.5%; background-color:none;border-style:double;border-width:2px;border-color:orange;'></div>"
                         );
+
+                        // scanning for new added sublayouts
+                        Lew.searchForLayouts();
+                        Lew.editIframe();
                     },
                     hoverClass: function(){
                         LewDebug.log("sublayout: dragged over: ");
