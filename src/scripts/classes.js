@@ -217,7 +217,7 @@ class LewLayout{
         var parent_class = this._element_layout.replace(".","");
 
         $(iframe_el_arr).each(function(){
-            var classes = $(this).parent().attr('class')
+            var classes = $(this).parent().attr('class');
             
             // check if sublayout in under this layout class
             if(classes.includes(parent_class)){

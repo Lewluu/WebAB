@@ -102,11 +102,13 @@ var Lew = {
                 layout_temp.append(
                     "<div class='layout-editable-temp' style='margin-bottom:0.25%;width:100%;height:75px;display:flex;align-items:center;flex-wrap:wrap;background-color:none;border-style:double;border-width:2px;border-color:blue;'></div>"
                     );
-
+                
                 var layout_base = $("#iframe_panel").contents().find(".layout-editable");
                 $(layout_base).droppable({
                     drop: function(){
-                        LewDebug.log("sublayout: dropped in: ");
+                        var layout_class = $(this).attr('class').split(/\s+/)[1];
+
+                        LewDebug.log("sublayout dropped over <b>" + layout_class + "</b>");
 
                          // removing temporary layout, in case of overlapping
                         var layout_temp = $("#iframe_panel").contents().find(".layout-editable-temp");
@@ -116,8 +118,9 @@ var Lew = {
                         var layout_temp = $("#iframe_panel").contents().find(".sub-layout-editable-temp");
                         layout_temp.remove();
 
-                        layout_base.append(
-                            "<div class='sub-layout-editable' style='width: 135px; height: 45px;; margin-left:0.5%; margin-top:0.5%; margin-bottom:0.5%; background-color:none;border-style:double;border-width:2px;border-color:orange;'></div>"
+                        var layout_indexed = $("#iframe_panel").contents().find("." + layout_class);
+                        layout_indexed.append(
+                            "<div class='sub-layout-editable' style='width: 135px; height: 45px; margin-left:0.5%; margin-top:0.5%; margin-bottom:0.5%; background-color:none;border-style:double;border-width:2px;border-color:orange;'></div>"
                         );
 
                         // scanning for new added sublayouts
@@ -125,13 +128,16 @@ var Lew = {
                         Lew.editIframe();
                     },
                     hoverClass: function(){
-                        LewDebug.log("sublayout: dragged over: ");
+                        var layout_class = $(this).attr('class').split(/\s+/)[1];
+
+                        LewDebug.log("sublayout dragged over <b>" + layout_class + "</b>");
 
                         // disabling droping option of iframe for dropping into a layout
                         $("#iframe_panel").droppable("option", "disabled", true);
 
                         // adding temporary sublayout
-                        layout_base.append(
+                        var layout_indexed = $("#iframe_panel").contents().find("." + layout_class);
+                        layout_indexed.append(
                             "<div class='sub-layout-editable-temp' style='width: 135px; height: 45px; margin-left:0.5%; margin-top:0.5%; margin-bottom:0.5%; background-color:none;border-style:double;border-width:2px;border-color:blue;'></div>"
                         );
                     },
