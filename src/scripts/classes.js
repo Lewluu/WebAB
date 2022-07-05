@@ -153,8 +153,6 @@ class LewSubLayout{
             var selected_sublayout = parent_layout_temp + "-selected-sublayout-el-" + String(sublayout_nr_temp);
             $(selected_sublayout).css("display", "flex");
             $(selected_sublayout + " > img").css("display", "flex");
-
-            LewDebug.log(selected_sublayout);
         });
     }
     Unedit(){
@@ -233,7 +231,7 @@ class LewLayout{
         var layout_nr_temp = this._layout_nr;
         var parent_class = this._element_layout.replace(".","");
 
-        $(iframe_el_arr).each(function(index){
+        $(iframe_el_arr).each(function(){
             var classes = $(this).parent().attr('class');
             
             // check if sublayout in under this layout class
@@ -259,7 +257,7 @@ class LewLayout{
                         curr_html + 
                         "<div class='selected-sublayout-el " + parent_class
                         + "-selected-sublayout-el-"
-                        + String(index + 1) 
+                        + String(sublayout_list_temp.length + 1) 
                         +"' style='display:none'> <p>" + 
                         sublayout_name + 
                         "</p> <img style='display:none' src='src/icons/close.png'> </div>"
