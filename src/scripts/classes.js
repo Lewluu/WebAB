@@ -57,12 +57,16 @@ class LewSubLayout{
         this._sublayout_nr = 0;
         this._is_editable = false;
         this._is_updated = false;
+        this._parent_layout = "";
     }
     setSubLayout(element_sublayout){
         this._element_sublayout = element_sublayout;
     }
     setSubLayoutNumber(value){
         this._sublayout_nr = value;
+    }
+    setParentLayout(value){
+        this._parent_layout = value;
     }
     removeSubLayout(){
         var sel_sublayout = document.getElementsByClassName(
@@ -89,19 +93,20 @@ class LewSubLayout{
         if(!this._is_updated){
             var sublayout_nr_temp = this._sublayout_nr;
             var sublayout_el_temp = this._element_sublayout;
+            var selected_sublayout = this._parent_layout + "-selected-sublayout-el-" + String(sublayout_nr_temp);
 
-            $(".selected-sublayout-el-" + String(sublayout_nr_temp) + " > img").hover(function(){
+            $(selected_sublayout + " > img").hover(function(){
                 $(this).css("cursor", "pointer");
             }); 
-            $(".selected-sublayout-el-" + String(sublayout_nr_temp) + " > img").on("click", function(){
+            $(selected_sublayout + " > img").on("click", function(){
                 LewDebug.log("<b>" + sublayout_el_temp + "</b> unselected ...");
 
                 var iframe_element =
                 $("#iframe_panel").contents().find(sublayout_el_temp);
         
                 // remove selected layouts
-                $(".selected-sublayout-el-" + String(sublayout_nr_temp)).css("display", "none");
-                $(".selected-sublayout-el-" + String(sublayout_nr_temp ) + " > img").css("display", "none");
+                $(selected_sublayout).css("display", "none");
+                $(selected_sublayout + " > img").css("display", "none");
 
                 iframe_element.attr("contenteditable", "false");
                 iframe_element.css("resize", "false");
@@ -120,6 +125,9 @@ class LewSubLayout{
         var iframe_element =
             $("#iframe_panel").contents().find(this._element_sublayout);
         
+        // unbind already existed events, otherwise they'll stack
+        iframe_element.unbind();
+
         iframe_element.css("border-style","double");
         iframe_element.css("border-width","2px");
         iframe_element.css("border-color", "orange");
@@ -129,6 +137,7 @@ class LewSubLayout{
 
         var sublayout_nr_temp = this._sublayout_nr;
         var sublayout_el_temp = this._element_sublayout;
+        var parent_layout_temp = this._parent_layout;
         iframe_element.on("click", function(){
             LewDebug.log("<b>" + sublayout_el_temp + "</b> selected ...");
 
@@ -140,9 +149,12 @@ class LewSubLayout{
             iframe_element.css("border-color","rgb(137, 238, 183)");
             iframe_element.css("background-color","rgb(210, 253, 230)");
             iframe_element.css("overflow","hidden");
-            
-            $(".selected-sublayout-el-" + String(sublayout_nr_temp)).css("display", "flex");
-            $(".selected-sublayout-el-" + String(sublayout_nr_temp) + " > img").css("display", "flex");
+
+            var selected_sublayout = parent_layout_temp + "-selected-sublayout-el-" + String(sublayout_nr_temp);
+            $(selected_sublayout).css("display", "flex");
+            $(selected_sublayout + " > img").css("display", "flex");
+
+            LewDebug.log(selected_sublayout);
         });
     }
     Unedit(){
@@ -150,8 +162,9 @@ class LewSubLayout{
             $("#iframe_panel").contents().find(this._element_sublayout);
         
         // remove selected layouts
-        $(".selected-sublayout-el-" + String(this._sublayout_nr)).css("display", "none");
-        $(".selected-sublayout-el-" + String(this._sublayout_nr) + " > img").css("display", "none");
+        var selected_sublayout = this._parent_layout + "-selected-sublayout-el-" + String(this._sublayout_nr);
+        $(selected_sublayout).css("display", "none");
+        $(selected_sublayout + " > img").css("display", "none");
 
         // remove event on click
         iframe_element.unbind();
@@ -215,8 +228,9 @@ class LewLayout{
         return this._sublayout_list.length;
     }
     searchForSubLayouts(){
-        var iframe_el_arr = $("#iframe_panel").contents().find(".sub-layout-editable");
+        var iframe_el_arr = $("#iframe_panel").contents().find(".sublayout-editable");
         var sublayout_list_temp = [];
+        var layout_nr_temp = this._layout_nr;
         var parent_class = this._element_layout.replace(".","");
 
         $(iframe_el_arr).each(function(index){
@@ -230,8 +244,9 @@ class LewLayout{
                 sublayout.init();
                 sublayout.setSubLayoutNumber(sublayout_list_temp.length + 1);
 
-                sublayout_name = ".sub-layout-editable-" + String(sublayout_list_temp.length + 1);
+                sublayout_name = ".layout-" +String(layout_nr_temp ) + "-sublayout-editable-" + String(sublayout_list_temp.length + 1);
                 sublayout.setSubLayout(sublayout_name);
+                sublayout.setParentLayout("." + parent_class);
 
                 // adding sublayouts in parent class
                 $(this).addClass(sublayout_name.replace(".",""));
@@ -242,9 +257,10 @@ class LewLayout{
                     var curr_html = $(sel_sublayout).html();
                     $(sel_sublayout).html(
                         curr_html + 
-                        "<div class='selected-sublayout-el selected-sublayout-el-"
-                        + String(index + 1) + 
-                        "' style='display:none'> <p>" + 
+                        "<div class='selected-sublayout-el " + parent_class
+                        + "-selected-sublayout-el-"
+                        + String(index + 1) 
+                        +"' style='display:none'> <p>" + 
                         sublayout_name + 
                         "</p> <img style='display:none' src='src/icons/close.png'> </div>"
                     );
@@ -295,6 +311,9 @@ class LewLayout{
         var iframe_element =
             $("#iframe_panel").contents().find(this._element_layout);
         
+        // unbind already existed events, otherwise they'll stack
+        iframe_element.unbind();
+
         iframe_element.css("border-style","double");
         iframe_element.css("border-width","2px");
         iframe_element.css("border-color", "orange");
@@ -304,6 +323,7 @@ class LewLayout{
 
         var layout_nr_temp = this._layout_nr;
         var layout_el_temp = this._element_layout;
+
         iframe_element.on("click", function(){
             LewDebug.log("<b>" + layout_el_temp + "</b> selected ...");
 

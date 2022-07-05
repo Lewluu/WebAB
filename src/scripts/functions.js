@@ -47,8 +47,6 @@ var Lew = {
             }
         });
 
-        LewDebug.log("Current layouts number: " + String(layout_arr_temp.length));
-
         this.layouts_arr = layout_arr_temp;
     },
     resetLayouts: function(){
@@ -115,12 +113,12 @@ var Lew = {
                         layout_temp.remove();
 
                         // removing temporary sublayout
-                        var layout_temp = $("#iframe_panel").contents().find(".sub-layout-editable-temp");
+                        var layout_temp = $("#iframe_panel").contents().find(".sublayout-editable-temp");
                         layout_temp.remove();
 
                         var layout_indexed = $("#iframe_panel").contents().find("." + layout_class);
                         layout_indexed.append(
-                            "<div class='sub-layout-editable' style='width: 135px; height: 45px; margin-left:0.5%; margin-top:0.5%; margin-bottom:0.5%; background-color:none;border-style:double;border-width:2px;border-color:orange;'></div>"
+                            "<div class='sublayout-editable' style='width: 135px; height: 45px; margin-left:0.5%; margin-top:0.5%; margin-bottom:0.5%; background-color:none;border-style:double;border-width:2px;border-color:orange;'></div>"
                         );
 
                         // scanning for new added sublayouts
@@ -138,14 +136,14 @@ var Lew = {
                         // adding temporary sublayout
                         var layout_indexed = $("#iframe_panel").contents().find("." + layout_class);
                         layout_indexed.append(
-                            "<div class='sub-layout-editable-temp' style='width: 135px; height: 45px; margin-left:0.5%; margin-top:0.5%; margin-bottom:0.5%; background-color:none;border-style:double;border-width:2px;border-color:blue;'></div>"
+                            "<div class='sublayout-editable-temp' style='width: 135px; height: 45px; margin-left:0.5%; margin-top:0.5%; margin-bottom:0.5%; background-color:none;border-style:double;border-width:2px;border-color:blue;'></div>"
                         );
                     },
                     out: function(){
                         LewDebug.log("sublayout: leaving:");
 
                         // removing temporary sublayout
-                        var layout_temp = $("#iframe_panel").contents().find(".sub-layout-editable-temp");
+                        var layout_temp = $("#iframe_panel").contents().find(".sublayout-editable-temp");
                         layout_temp.remove();
 
                         // enabling iframe droppable again
@@ -157,7 +155,6 @@ var Lew = {
     },
     setDragAndDrop(value){
         $(".layout-draggable").draggable(value);
-        $(".sub-layout-draggable").draggable(value);
     },
     editIframe: function(){
         var iframe = document.getElementById("iframe_panel");
