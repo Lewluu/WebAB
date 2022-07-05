@@ -12,7 +12,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
         <script src="src/scripts/functions.js"></script>
-        <script src="src/scripts/classes.js"></script>
+        <script src="src/scripts/classes.js?v=3"></script>
         <script src="src/scripts/script.js"></script>
     </head>
     <body>
@@ -32,6 +32,9 @@
                         <p>Add Layout Element:</p>
                         <p>Selected layout:</p>
                         <div class="selected-layout">
+                        </div>
+                        <p>Selected sublayout:</p>
+                        <div class="selected-sublayout">
                         </div>
                         <p class="remove-layout">REMOVE LAYOUT</p>
                     </div>

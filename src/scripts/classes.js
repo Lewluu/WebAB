@@ -93,7 +93,7 @@ class LewSubLayout{
             $(".selected-sublayout-el-" + String(sublayout_nr_temp) + " > img").hover(function(){
                 $(this).css("cursor", "pointer");
             }); 
-            $(".selected-layout-el-" + String(sublayout_nr_temp) + " > img").on("click", function(){
+            $(".selected-sublayout-el-" + String(sublayout_nr_temp) + " > img").on("click", function(){
                 LewDebug.log("<b>" + sublayout_el_temp + "</b> unselected ...");
 
                 var iframe_element =
@@ -105,9 +105,9 @@ class LewSubLayout{
 
                 iframe_element.attr("contenteditable", "false");
                 iframe_element.css("resize", "false");
-                iframe_element.css("border-style","");
-                iframe_element.css("border-width","");
-                iframe_element.css("border-color","");
+                iframe_element.css("border-style","double");
+                iframe_element.css("border-width","2px");
+                iframe_element.css("border-color","orange");
                 iframe_element.css("background-color","");
                 iframe_element.css("overflow","");
             });
@@ -120,6 +120,9 @@ class LewSubLayout{
         var iframe_element =
             $("#iframe_panel").contents().find(this._element_sublayout);
         
+        iframe_element.css("border-style","double");
+        iframe_element.css("border-width","2px");
+        iframe_element.css("border-color", "orange");
         iframe_element.hover(function(){
             $(this).css("cursor", "pointer");
         });
@@ -216,7 +219,7 @@ class LewLayout{
         var sublayout_list_temp = [];
         var parent_class = this._element_layout.replace(".","");
 
-        $(iframe_el_arr).each(function(){
+        $(iframe_el_arr).each(function(index){
             var classes = $(this).parent().attr('class');
             
             // check if sublayout in under this layout class
@@ -230,7 +233,22 @@ class LewLayout{
                 sublayout_name = ".sub-layout-editable-" + String(sublayout_list_temp.length + 1);
                 sublayout.setSubLayout(sublayout_name);
 
+                // adding sublayouts in parent class
                 $(this).addClass(sublayout_name.replace(".",""));
+
+                var sel_sublayout = document.getElementsByClassName("selected-sublayout");
+                var sel_sublayout_str = $(sel_sublayout).html();
+                if(!sel_sublayout_str.includes(sublayout_name)){
+                    var curr_html = $(sel_sublayout).html();
+                    $(sel_sublayout).html(
+                        curr_html + 
+                        "<div class='selected-sublayout-el selected-sublayout-el-"
+                        + String(index + 1) + 
+                        "' style='display:none'> <p>" + 
+                        sublayout_name + 
+                        "</p> <img style='display:none' src='src/icons/close.png'> </div>"
+                    );
+            }
 
                 sublayout_list_temp.push(sublayout);
             }
@@ -258,12 +276,16 @@ class LewLayout{
 
                 iframe_element.attr("contenteditable", "false");
                 iframe_element.css("resize", "false");
-                iframe_element.css("border-style","");
-                iframe_element.css("border-width","");
-                iframe_element.css("border-color","");
+                iframe_element.css("border-style","double");
+                iframe_element.css("border-width","2px");
+                iframe_element.css("border-color","orange");
                 iframe_element.css("background-color","");
                 iframe_element.css("overflow","");
             });
+
+            for(var i=0;i<this._sublayout_list.length;i++){
+                this._sublayout_list[i].Update();
+            }
 
             this._is_updated = true;
         }
@@ -273,6 +295,9 @@ class LewLayout{
         var iframe_element =
             $("#iframe_panel").contents().find(this._element_layout);
         
+        iframe_element.css("border-style","double");
+        iframe_element.css("border-width","2px");
+        iframe_element.css("border-color", "orange");
         iframe_element.hover(function(){
             $(this).css("cursor", "pointer");
         });
@@ -294,6 +319,11 @@ class LewLayout{
             $(".selected-layout-el-" + String(layout_nr_temp)).css("display", "flex");
             $(".selected-layout-el-" + String(layout_nr_temp) + " > img").css("display", "flex");
         });
+
+        // updating each sublayout under this layout
+        for(var i=0;i<this._sublayout_list.length;i++){
+            this._sublayout_list[i].Edit();
+        }
     }
     Unedit(){
         var iframe_element =
@@ -315,6 +345,10 @@ class LewLayout{
         iframe_element.css("border-color","");
         iframe_element.css("background-color","");
         iframe_element.css("overflow","");
+
+        for(var i=0;i<this._sublayout_list.length;i++){
+            this._sublayout_list[i].Unedit();
+        }
 
         this._is_editable = false;
     }
