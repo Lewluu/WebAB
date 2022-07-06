@@ -99,7 +99,7 @@ var Lew = {
     
                 layout_temp.remove();
                 
-                Lew.resetLayouts();
+                // scanning for new added layouts
                 Lew.searchForLayouts();
                 Lew.editIframe();
             },

@@ -223,9 +223,6 @@ class LewLayout{
 
             LewDebug.log("<b>" + $(sel_layout).text() + "</b> removed ...");
 
-            // removing all selected sublayouts
-            //$(".selected-sublayout-el").remove();
-
             iframe_element.remove();
             $(sel_layout).remove();
 
