@@ -70,7 +70,7 @@ class LewSubLayout{
     }
     removeSubLayout(){
         var sel_sublayout = document.getElementsByClassName(
-            "selected-sublayout-el-" + String(this._sublayout_nr)
+            String(this._parent_layout).replace(".","") + "-selected-sublayout-el-" + String(this._sublayout_nr)
             );
             
         if($(sel_sublayout).css("display") == "flex"){
@@ -154,6 +154,8 @@ class LewSubLayout{
             $(selected_sublayout).css("display", "flex");
             $(selected_sublayout + " > img").css("display", "flex");
         });
+
+        this._is_editable = true;
     }
     Unedit(){
         var iframe_element =
@@ -202,9 +204,14 @@ class LewLayout{
         var sel_layout = document.getElementsByClassName(
             "selected-layout-el-" + String(this._layout_nr)
             );
-            
+        
         if($(sel_layout).css("display") == "flex"){
             var iframe_element = $("#iframe_panel").contents().find(this._element_layout);
+
+            // removing sublayouts under this layout
+            for(var i=0;i<this._sublayout_list.length;i++){
+                this._sublayout_list[i].removeSubLayout();
+            }
 
             LewDebug.log("<b>" + $(sel_layout).text() + "</b> removed ...");
 
@@ -212,6 +219,12 @@ class LewLayout{
             $(sel_layout).remove();
 
             return true;
+        }
+        else{
+            // removing sublayouts under this layout
+            for(var i=0;i<this._sublayout_list.length;i++){
+                this._sublayout_list[i].removeSubLayout();
+            }
         }
 
         return false;
