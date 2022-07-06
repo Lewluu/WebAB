@@ -50,7 +50,7 @@ var Lew = {
         this.layouts_arr = layout_arr_temp;
     },
     resetLayouts: function(){
-        var iframe_div = $("#iframe_panel").contents().find("div");
+        var iframe_div = $("#iframe_panel").contents().find(".layout-editable");
         for(var i=0;i<iframe_div.length+1;i++){
             var class_name = "layout-editable-" + String(i + 1);
             iframe_div.removeClass(class_name);
