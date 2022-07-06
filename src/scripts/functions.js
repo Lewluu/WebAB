@@ -23,12 +23,11 @@ var Lew = {
             layout.init();
             layout.setLayoutNumber(index + 1);
 
+            // adding new class with index and setting name for every layout
             var layout_name = ".layout-editable-" + String(index + 1);
             layout.setLayout(layout_name);
-            layout.searchForSubLayouts();
-
-            // adding new class with index for every layout
             $(this).addClass(layout_name.replace(".", ""));
+            layout.searchForSubLayouts();
 
             layout_arr_temp.push(layout);
 
@@ -50,11 +49,29 @@ var Lew = {
         this.layouts_arr = layout_arr_temp;
     },
     resetLayouts: function(){
-        var iframe_div = $("#iframe_panel").contents().find(".layout-editable");
-        for(var i=0;i<iframe_div.length+1;i++){
-            var class_name = "layout-editable-" + String(i + 1);
-            iframe_div.removeClass(class_name);
-        }
+        // removing layouts classes
+        var layouts = $("#iframe_panel").contents().find(".layout-editable");
+        $(layouts).each(function(){
+            var layout_classes = $(this).attr('class').split(/\s+/);
+            for(var i=0;i<layout_classes.length;i++){
+                if(layout_classes[i].includes("layout-editable-")){
+                    $(this).removeClass(layout_classes[i]);
+                    break;
+                }
+            }
+        })
+
+        // removing sublayouts classes
+        var sublayouts = $("#iframe_panel").contents().find(".sublayout-editable");
+        $(sublayouts).each(function(){
+            var sublayout_classes = $(this).attr('class').split(/\s+/);
+            for(var i=0;i<sublayout_classes.length;i++){
+                if(sublayout_classes[i].includes("-sublayout-editable-")){
+                    $(this).removeClass(sublayout_classes[i]);
+                    break;
+                }
+            }
+        });
     },
     // drag and drop method
     updateDragAndDrop: function(){
@@ -81,7 +98,8 @@ var Lew = {
                 var layout_temp = $("#iframe_panel").contents().find(".layout-editable-temp");
     
                 layout_temp.remove();
-
+                
+                Lew.resetLayouts();
                 Lew.searchForLayouts();
                 Lew.editIframe();
             },

@@ -92,7 +92,7 @@ $(document).ready(function(){
         else{
             Lew.clearEdit();
             Lew.setDragAndDrop('disable');
-            Lew.resetLayouts();
+            // Lew.resetLayouts();
         }
     });
 
