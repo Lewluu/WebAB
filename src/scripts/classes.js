@@ -200,6 +200,19 @@ class LewLayout{
     setLayoutNumber(value){
         this._layout_nr = value;
     }
+    removeSubLayouts(){
+        var something_removed = false;
+
+        // removing sublayouts under this layout
+        for(var i=0;i<this._sublayout_list.length;i++){
+            if(this._sublayout_list[i].removeSubLayout()){
+                this._sublayout_list.pop(this._sublayout_list[i]);
+                if(!something_removed)  something_removed = true;
+            }
+        }
+
+        return something_removed;
+    }
     removeLayout(){
         var sel_layout = document.getElementsByClassName(
             "selected-layout-el-" + String(this._layout_nr)
@@ -208,23 +221,15 @@ class LewLayout{
         if($(sel_layout).css("display") == "flex"){
             var iframe_element = $("#iframe_panel").contents().find(this._element_layout);
 
-            // removing sublayouts under this layout
-            for(var i=0;i<this._sublayout_list.length;i++){
-                this._sublayout_list[i].removeSubLayout();
-            }
-
             LewDebug.log("<b>" + $(sel_layout).text() + "</b> removed ...");
+
+            // removing all selected sublayouts
+            //$(".selected-sublayout-el").remove();
 
             iframe_element.remove();
             $(sel_layout).remove();
 
             return true;
-        }
-        else{
-            // removing sublayouts under this layout
-            for(var i=0;i<this._sublayout_list.length;i++){
-                this._sublayout_list[i].removeSubLayout();
-            }
         }
 
         return false;
@@ -287,19 +292,21 @@ class LewLayout{
         if(!this._is_updated){
             var layout_nr_temp = this._layout_nr;
             var layout_el_temp = this._element_layout;
+            var selected_el = ".selected-layout-el-" + String(layout_nr_temp);
 
-            $(".selected-layout-el-" + String(layout_nr_temp) + " > img").hover(function(){
+            $(selected_el).unbind();
+            $(selected_el + " > img").unbind();
+
+            $(selected_el + " > img").hover(function(){
                 $(this).css("cursor", "pointer");
             }); 
-            $(".selected-layout-el-" + String(layout_nr_temp) + " > img").on("click", function(){
-                LewDebug.log("<b>" + layout_el_temp + "</b> unselected ...");
-
+            $(selected_el + " > img").on("click", function(){
                 var iframe_element =
                 $("#iframe_panel").contents().find(layout_el_temp);
         
                 // remove selected layouts
-                $(".selected-layout-el-" + String(layout_nr_temp)).css("display", "none");
-                $(".selected-layout-el-" + String(layout_nr_temp ) + " > img").css("display", "none");
+                $(selected_el).css("display", "none");
+                $(selected_el + String(layout_nr_temp ) + " > img").css("display", "none");
 
                 iframe_element.attr("contenteditable", "false");
                 iframe_element.css("resize", "false");
@@ -308,6 +315,8 @@ class LewLayout{
                 iframe_element.css("border-color","orange");
                 iframe_element.css("background-color","");
                 iframe_element.css("overflow","");
+
+                LewDebug.log("<b>" + layout_el_temp + "</b> unselected ...");
             });
 
             for(var i=0;i<this._sublayout_list.length;i++){

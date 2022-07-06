@@ -203,6 +203,9 @@ var Lew = {
                 layout_arr_temp.pop(this);
                 found_layouts = true;
             }
+            if(this.removeSubLayouts()){
+                found_layouts = true;
+            }
         });
 
         this.layouts_arr = layout_arr_temp;
