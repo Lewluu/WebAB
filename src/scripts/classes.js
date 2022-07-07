@@ -98,8 +98,6 @@ class LewSubLayout{
                 $(this).css("cursor", "pointer");
             }); 
             $(selected_sublayout + " > img").on("click", function(){
-                LewDebug.log("<b>" + sublayout_el_temp + "</b> unselected ...");
-
                 var iframe_element =
                 $("#iframe_panel").contents().find(sublayout_el_temp);
         
@@ -111,7 +109,11 @@ class LewSubLayout{
                 iframe_element.css("border-style","double");
                 iframe_element.css("border-width","2px");
                 iframe_element.css("border-color","orange");
-                iframe_element.css("background-color","");
+                if(iframe_element.css("background-color") == "rgb(210, 253, 230)"){
+                    iframe_element.css("background-color","");
+                }
+
+                LewDebug.log("<b>" + sublayout_el_temp + "</b> unselected ...");
             });
 
             this._is_updated = true;
@@ -134,22 +136,26 @@ class LewSubLayout{
         });
 
         var sublayout_nr_temp = this._sublayout_nr;
-        var sublayout_el_temp = this._element_sublayout;
         var parent_layout_temp = this._parent_layout;
-        iframe_element.on("click", function(){
-            LewDebug.log("<b>" + sublayout_el_temp + "</b> selected ...");
+        var sublayout_name_temp = this._element_sublayout;
 
-            // adding style on edit
+        iframe_element.on("click", function(){
+            // adding style sublayout on edit
             iframe_element.attr("contenteditable","true");
             iframe_element.css("border-style","double");
             iframe_element.css("border-width","2px");
             iframe_element.css("border-color","rgb(137, 238, 183)");
             iframe_element.css("background-color","rgb(210, 253, 230)");
-            // iframe_element.css("overflow","hidden");
 
             var selected_sublayout = parent_layout_temp + "-selected-sublayout-el-" + String(sublayout_nr_temp);
             $(selected_sublayout).css("display", "flex");
             $(selected_sublayout + " > img").css("display", "flex");
+
+            LewDebug.log("<b>" + sublayout_name_temp + "</b> selected ...");
+
+            // setting the selected element on styling section
+            var style_el_name = document.getElementsByClassName("style-element")[0];
+            $(style_el_name).html("<p>" + sublayout_name_temp + "</p>");
         });
 
         this._is_editable = true;
@@ -172,7 +178,9 @@ class LewSubLayout{
         iframe_element.css("border-style","");
         iframe_element.css("border-width","");
         iframe_element.css("border-color","");
-        iframe_element.css("background-color","");
+        if(iframe_element.css("background-color") == "#D2FDE6"){
+            iframe_element.css("background-color","");
+        }
 
         this._is_editable = false;
     }
@@ -303,7 +311,9 @@ class LewLayout{
                 iframe_element.css("border-style","double");
                 iframe_element.css("border-width","2px");
                 iframe_element.css("border-color","orange");
-                iframe_element.css("background-color","");
+                if(iframe_element.css("background-color") == "rgb(210, 253, 230)"){
+                    iframe_element.css("background-color","");
+                }
 
                 LewDebug.log("<b>" + layout_el_temp + "</b> unselected ...");
             });
@@ -320,7 +330,36 @@ class LewLayout{
         var iframe_layout = $("#iframe_panel").contents().find(this._element_layout);
         var layout_nr_temp = this._layout_nr;
 
-        this.setLayoutEvents(iframe_layout, layout_nr_temp);
+        // unbind already existed events, otherwise they'll stack
+        $(iframe_layout).unbind();
+
+        $(iframe_layout).css("border-style","double");
+        $(iframe_layout).css("border-width","2px");
+        $(iframe_layout).css("border-color", "orange");
+        $(iframe_layout).hover(function(){
+            $(this).css("cursor", "pointer");
+        });
+
+        var layout_name_temp = this._element_layout;
+
+        $(iframe_layout).on("click", function(){
+            // adding style on edit
+            $(iframe_layout).css("border-style","double");
+            $(iframe_layout).css("border-width","2px");
+            $(iframe_layout).css("border-color","rgb(137, 238, 183)");
+            if(iframe_layout.css("background-color") == "rgba(0, 0, 0, 0)"){
+                iframe_layout.css("background-color","rgb(210, 253, 230)");
+            }
+            
+            $(".selected-layout-el-" + String(layout_nr_temp)).css("display", "flex");
+            $(".selected-layout-el-" + String(layout_nr_temp) + " > img").css("display", "flex");
+
+            LewDebug.log("<b>" + layout_name_temp + "</b> selected ...");
+
+            // setting the selected element on styling section
+            var style_el_name = document.getElementsByClassName("style-element")[0];
+            $(style_el_name).html("<p>" + layout_name_temp + "</p>");
+        });
 
         // updating each sublayout under this layout
         for(var i=0;i<this._sublayout_list.length;i++){
@@ -342,54 +381,27 @@ class LewLayout{
                     $(this).css("cursor", "pointer");
                 });
 
-                var layout_el_temp = iframe_layout;
-
                 iframe_layout.on("click", function(){
-                    // LewDebug.log("<b>" + layout_el_temp + "</b> selected ...");
-
-                    // setting the selected element on styling section
-                    var style_el_name = document.getElementsByClassName("style-element")[0];
-                    $(style_el_name).html("<p>" + layout_el_temp + "</p>");
-
                     // adding style on edit
                     iframe_layout.css("border-style","double");
                     iframe_layout.css("border-width","2px");
                     iframe_layout.css("border-color","rgb(137, 238, 183)");
-                    iframe_layout.css("background-color","rgb(210, 253, 230)");
+                    if(iframe_layout.css("background-color") == "rgba(0, 0, 0, 0)"){
+                        iframe_layout.css("background-color","rgb(210, 253, 230)");
+                    }
             
                     $(".selected-layout-el-" + String(layout_nr_temp)).css("display", "flex");
                     $(".selected-layout-el-" + String(layout_nr_temp) + " > img").css("display", "flex");
+
+                    LewDebug.log("<b>" + layout_name_temp + "</b> selected ...");
+
+                    // setting the selected element on styling section
+                    var style_el_name = document.getElementsByClassName("style-element")[0];
+                    $(style_el_name).html("<p>" + layout_name_temp + "</p>");
+
                 });
             });
         }
-    }
-    setLayoutEvents(iframe_layout, layout_nr){        
-        // unbind already existed events, otherwise they'll stack
-        $(iframe_layout).unbind();
-
-        $(iframe_layout).css("border-style","double");
-        $(iframe_layout).css("border-width","2px");
-        $(iframe_layout).css("border-color", "orange");
-        $(iframe_layout).hover(function(){
-            $(this).css("cursor", "pointer");
-        });
-
-        $(iframe_layout).on("click", function(){
-            // LewDebug.log("<b>" + layout_el_temp + "</b> selected ...");
-
-            // setting the selected element on styling section
-            var style_el_name = document.getElementsByClassName("style-element")[0];
-            $(style_el_name).html("<p>" + iframe_layout + "</p>");
-
-            // adding style on edit
-            $(iframe_layout).css("border-style","double");
-            $(iframe_layout).css("border-width","2px");
-            $(iframe_layout).css("border-color","rgb(137, 238, 183)");
-            $(iframe_layout).css("background-color","rgb(210, 253, 230)");
-            
-            $(".selected-layout-el-" + String(layout_nr)).css("display", "flex");
-            $(".selected-layout-el-" + String(layout_nr) + " > img").css("display", "flex");
-        });
     }
     Unedit(){
         var iframe_element =
@@ -408,7 +420,9 @@ class LewLayout{
         iframe_element.css("border-style","");
         iframe_element.css("border-width","");
         iframe_element.css("border-color","");
-        iframe_element.css("background-color","");
+        if(iframe_element.css("background-color") == "rgb(210, 253, 230)"){
+            iframe_element.css("background-color","");
+        }
 
         for(var i=0;i<this._sublayout_list.length;i++){
             this._sublayout_list[i].Unedit();

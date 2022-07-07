@@ -57,6 +57,23 @@ body{
     width: 65%;
 }
 
+.style-element-bg-color{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.style-element-bg-color p{
+    width: 45%;
+    margin: auto;
+    margin-left: 7%;
+}
+
+.style-element-bg-color input{
+    width: 25%;
+    margin-right: 17%;
+}
+
 #debug_section{
     background-color:burlywood;
     position:absolute;

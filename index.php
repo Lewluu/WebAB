@@ -11,8 +11,8 @@
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-        <script src="src/scripts/functions.js?v=1"></script>
-        <script src="src/scripts/classes.js?v=1"></script>
+        <script src="src/scripts/functions.js?v=3"></script>
+        <script src="src/scripts/classes.js?v=2"></script>
         <script src="src/scripts/script.js"></script>
     </head>
     <body>
@@ -50,22 +50,23 @@
                         <div class="style-element">
                             <p>No element/elements selected</p>
                         </div>
-                        <div class="style-element">
+                        <div class="style-element style-element-size">
                             <p>Size:</p>
                             <div class="style-element-slider-width">
                                 <p>Width</p>
-                                <input type="range" min="10" max="100" name="width-value" id="slider_wval">
+                                <input type="range" min="10" max="100" name="widthValue" id="slider_wval">
                             </div>
                             <div class="style-element-slider-height">
                                 <p>Height</p>
-                                <input type="range" min="50" max="250" name="height-value" id="slider_hval">
+                                <input type="range" min="50" max="250" name="heightValue" id="slider_hval">
                             </div>
                         </div>
                         <div class="style-element">
                             <p>Position:</p>
                         </div>
-                        <div class="style-element">
+                        <div class="style-element style-element-bg-color">
                             <p>Background-Color:</p>
+                            <input type="color" id="bg_color_val" value="#FFFFFF"> 
                         </div>
                         <div class="style-element">
                             <p>Border: style, width, color</p>

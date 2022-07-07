@@ -152,7 +152,7 @@ var Lew = {
 
                         var layout_indexed = $("#iframe_panel").contents().find("." + layout_parent);
                         layout_indexed.append(
-                            "<div class='sublayout-editable' style='width: 135px; height: 45px; margin-left:0.5%; margin-top:0.5%; margin-bottom:0.5%; background-color:none;border-style:double;border-width:2px;border-color:orange;'></div>"
+                            "<div class='sublayout-editable' style='width: 135px; height: 45px; margin-left:0.5%; margin-top:0.5%; margin-bottom:0.5%; background-color:#FFFFFF;border-style:double;border-width:2px;border-color:orange;'></div>"
                         );
 
                         // scanning for new added sublayouts
@@ -196,24 +196,27 @@ var Lew = {
         var style_el = document.getElementsByClassName("style-element")[0];
 
         $("#slider_wval").on("input", function(){
-            var sel_layout = document.getElementsByClassName("selected-layout-el");
-            $(sel_layout).each(function(){
-                LewDebug.log($(sel_layout).text());
-            })
-
             var style_el_name = style_el.textContent;
-            var iframe_el_name = $("#iframe_panel").contents().find(style_el_name);
+            var iframe_el = $("#iframe_panel").contents().find(style_el_name);
             var w_val = String($("#slider_wval").val()) + "%";
 
-            iframe_el_name.css("width", w_val);
+            iframe_el.css("width", w_val);
         });
 
         $("#slider_hval").on("input", function(){
             var style_el_name = style_el.textContent;
-            var iframe_el_name = $("#iframe_panel").contents().find(style_el_name);
+            var iframe_el = $("#iframe_panel").contents().find(style_el_name);
             var h_val = String($("#slider_hval").val()) + "px";
 
-            iframe_el_name.css("height", h_val);
+            iframe_el.css("height", h_val);
+        });
+
+        $("#bg_color_val").on("input", function(){
+            var style_el_name = style_el.textContent;
+            var iframe_el = $("#iframe_panel").contents().find(style_el_name);
+            var bg_color_val = String($("#bg_color_val").val());
+
+            iframe_el.css("background-color", bg_color_val);
         });
     },
     setDragAndDrop(value){
