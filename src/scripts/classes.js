@@ -128,6 +128,7 @@ class LewSubLayout{
         iframe_element.css("border-style","double");
         iframe_element.css("border-width","2px");
         iframe_element.css("border-color", "orange");
+
         iframe_element.hover(function(){
             $(this).css("cursor", "pointer");
         });
@@ -316,44 +317,79 @@ class LewLayout{
         else    return;
     }
     Edit(){
-        var iframe_element =
-            $("#iframe_panel").contents().find(this._element_layout);
-        
-        // unbind already existed events, otherwise they'll stack
-        iframe_element.unbind();
-
-        iframe_element.css("border-style","double");
-        iframe_element.css("border-width","2px");
-        iframe_element.css("border-color", "orange");
-        iframe_element.hover(function(){
-            $(this).css("cursor", "pointer");
-        });
-
+        var iframe_layout = $("#iframe_panel").contents().find(this._element_layout);
         var layout_nr_temp = this._layout_nr;
-        var layout_el_temp = this._element_layout;
 
-        iframe_element.on("click", function(){
-            LewDebug.log("<b>" + layout_el_temp + "</b> selected ...");
-
-            // setting the selected element on styling section
-            var style_el_name = document.getElementsByClassName("style-element")[0];
-            $(style_el_name).html("<p>" + layout_el_temp + "</p>");
-
-            // adding style on edit
-            // iframe_element.attr("contenteditable","true");
-            iframe_element.css("border-style","double");
-            iframe_element.css("border-width","2px");
-            iframe_element.css("border-color","rgb(137, 238, 183)");
-            iframe_element.css("background-color","rgb(210, 253, 230)");
-            
-            $(".selected-layout-el-" + String(layout_nr_temp)).css("display", "flex");
-            $(".selected-layout-el-" + String(layout_nr_temp) + " > img").css("display", "flex");
-        });
+        this.setLayoutEvents(iframe_layout, layout_nr_temp);
 
         // updating each sublayout under this layout
         for(var i=0;i<this._sublayout_list.length;i++){
+            // testing is mouse is over sublayouts, disabling editing the parent layout
             this._sublayout_list[i].Edit();
+            var iframe_sublayout = $("#iframe_panel").contents().find(this._sublayout_list[i].getSelectedSubLayout());
+            $(iframe_sublayout).hover(function(){
+                $(iframe_layout).unbind();
+            });
+
+            iframe_sublayout.mouseleave(function(){
+                 // unbind already existed events, otherwise they'll stack
+                iframe_layout.unbind();
+
+                iframe_layout.css("border-style","double");
+                iframe_layout.css("border-width","2px");
+                iframe_layout.css("border-color", "orange");
+                iframe_layout.hover(function(){
+                    $(this).css("cursor", "pointer");
+                });
+
+                var layout_el_temp = iframe_layout;
+
+                iframe_layout.on("click", function(){
+                    // LewDebug.log("<b>" + layout_el_temp + "</b> selected ...");
+
+                    // setting the selected element on styling section
+                    var style_el_name = document.getElementsByClassName("style-element")[0];
+                    $(style_el_name).html("<p>" + layout_el_temp + "</p>");
+
+                    // adding style on edit
+                    iframe_layout.css("border-style","double");
+                    iframe_layout.css("border-width","2px");
+                    iframe_layout.css("border-color","rgb(137, 238, 183)");
+                    iframe_layout.css("background-color","rgb(210, 253, 230)");
+            
+                    $(".selected-layout-el-" + String(layout_nr_temp)).css("display", "flex");
+                    $(".selected-layout-el-" + String(layout_nr_temp) + " > img").css("display", "flex");
+                });
+            });
         }
+    }
+    setLayoutEvents(iframe_layout, layout_nr){        
+        // unbind already existed events, otherwise they'll stack
+        $(iframe_layout).unbind();
+
+        $(iframe_layout).css("border-style","double");
+        $(iframe_layout).css("border-width","2px");
+        $(iframe_layout).css("border-color", "orange");
+        $(iframe_layout).hover(function(){
+            $(this).css("cursor", "pointer");
+        });
+
+        $(iframe_layout).on("click", function(){
+            // LewDebug.log("<b>" + layout_el_temp + "</b> selected ...");
+
+            // setting the selected element on styling section
+            var style_el_name = document.getElementsByClassName("style-element")[0];
+            $(style_el_name).html("<p>" + iframe_layout + "</p>");
+
+            // adding style on edit
+            $(iframe_layout).css("border-style","double");
+            $(iframe_layout).css("border-width","2px");
+            $(iframe_layout).css("border-color","rgb(137, 238, 183)");
+            $(iframe_layout).css("background-color","rgb(210, 253, 230)");
+            
+            $(".selected-layout-el-" + String(layout_nr)).css("display", "flex");
+            $(".selected-layout-el-" + String(layout_nr) + " > img").css("display", "flex");
+        });
     }
     Unedit(){
         var iframe_element =
