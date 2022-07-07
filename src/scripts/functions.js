@@ -152,7 +152,7 @@ var Lew = {
 
                         var layout_indexed = $("#iframe_panel").contents().find("." + layout_parent);
                         layout_indexed.append(
-                            "<div class='sublayout-editable' style='width: 135px; height: 45px; margin-left:0.5%; margin-top:0.5%; margin-bottom:0.5%; background-color:#FFFFFF;border-style:double;border-width:2px;border-color:orange;'></div>"
+                            "<div class='sublayout-editable' style='width: 135px; height: 45px; margin-left:0.5%; margin-top:0.5%; margin-bottom:0.5%; background-color:#FFFFFF;border-style:double;border-width:2px;border-color:orange;'><p>add content here ...</p></div>"
                         );
 
                         // scanning for new added sublayouts

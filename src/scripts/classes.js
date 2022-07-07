@@ -105,7 +105,10 @@ class LewSubLayout{
                 $(selected_sublayout).css("display", "none");
                 $(selected_sublayout + " > img").css("display", "none");
 
-                iframe_element.attr("contenteditable", "false");
+                // initiating editable paragraphs
+                var iframe_element_p = $("#iframe_panel").contents().find(sublayout_el_temp + " > p");
+                iframe_element_p.attr("contenteditable", "false");
+
                 iframe_element.css("border-style","double");
                 iframe_element.css("border-width","2px");
                 iframe_element.css("border-color","orange");
@@ -140,8 +143,13 @@ class LewSubLayout{
         var sublayout_name_temp = this._element_sublayout;
 
         iframe_element.on("click", function(){
+            // initiating editable paragraphs
+            var iframe_element_p = $("#iframe_panel").contents().find(sublayout_name_temp + " > p");
+            iframe_element_p.attr("contenteditable", "true");
+
+            LewDebug.log(iframe_element_p.html());
+
             // adding style sublayout on edit
-            iframe_element.attr("contenteditable","true");
             iframe_element.css("border-style","double");
             iframe_element.css("border-width","2px");
             iframe_element.css("border-color","rgb(137, 238, 183)");
@@ -172,9 +180,11 @@ class LewSubLayout{
         // remove event on click
         iframe_element.unbind();
 
+        // initiating editable paragraphs
+        var iframe_element_p = $("#iframe_panel").contents().find(this._element_sublayou + " > p");
+        iframe_element_p.attr("contenteditable", "false");
+
         // removing style added on edit
-        iframe_element.css("cursor", "default");
-        iframe_element.attr("contenteditable", "false");
         iframe_element.css("border-style","");
         iframe_element.css("border-width","");
         iframe_element.css("border-color","");
