@@ -13,7 +13,7 @@
         <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
         <script src="src/scripts/functions.js?v=1"></script>
         <script src="src/scripts/classes.js?v=1"></script>
-        <script src="src/scripts/script.js?v=1"></script>
+        <script src="src/scripts/script.js"></script>
     </head>
     <body>
         <div id="interface">
@@ -46,16 +46,45 @@
                             <img src="src/icons/arrow.png" class="arrow-rotate">
                         </div>
                     </div>
-                    <div class="tool-section-display">
-                        <p>No element/elements selected</p>
-                        <p>Size:</p>
-                        <p>Position:</p>
-                        <p>Color:</p>
-                        <p>Border:</p>
-                        <p>Font style: </p>
-                        <p>Rotation: </p>
-                        <p>Animation: </p>
-                        <p>Type of position: </p>
+                    <div class="tool-section-display tool-section-styling">
+                        <div class="style-element">
+                            <p>No element/elements selected</p>
+                        </div>
+                        <div class="style-element">
+                            <p>Size:</p>
+                            <div class="style-element-slider-width">
+                                <p>Width</p>
+                                <input type="range" min="15" max="100" name="width-value" id="slider_wval">
+                            </div>
+                            <div class="style-element-slider-height">
+                                <p>Height</p>
+                                <input type="range" min="50" max="250" name="height-value" id="slider_hval">
+                            </div>
+                        </div>
+                        <div class="style-element">
+                            <p>Position:</p>
+                        </div>
+                        <div class="style-element">
+                            <p>Background-Color:</p>
+                        </div>
+                        <div class="style-element">
+                            <p>Border: style, width, color</p>
+                        </div>
+                        <div class="style-element">
+                            <p>Text type: paragraph / header</p>
+                        </div>
+                        <div class="style-element">
+                            <p>Font style: </p>
+                        </div>
+                        <div class="style-element">
+                            <p>Rotation: </p>
+                        </div>
+                        <div class="style-element">
+                            <p>Animation: </p>
+                        </div>
+                        <div class="style-element">
+                            <p>Type of position: </p>
+                        </div>
                     </div>
                 </div>
                 <div class="tool-section">

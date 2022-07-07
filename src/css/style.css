@@ -23,6 +23,40 @@ body{
     /*line-height: 100px; */
 }
 
+.tool-section-styling{
+
+}
+
+.style-element-slider-width{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: auto;
+}
+
+.style-element-slider-height{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: auto;
+}
+
+.style-element-slider-width p{
+    width: 25%;
+}
+
+.style-element-slider-height p{
+    width: 25%;
+}
+
+.style-element-slider-width input{
+    width: 65%;
+}
+
+.style-element-slider-height input{
+    width: 65%;
+}
+
 #debug_section{
     background-color:burlywood;
     position:absolute;

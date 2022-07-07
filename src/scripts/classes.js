@@ -342,6 +342,10 @@ class LewLayout{
         iframe_element.on("click", function(){
             LewDebug.log("<b>" + layout_el_temp + "</b> selected ...");
 
+            // setting the selected element on styling section
+            var style_el_name = document.getElementsByClassName("style-element")[0];
+            $(style_el_name).html("<p>" + layout_el_temp + "</p>");
+
             // adding style on edit
             iframe_element.attr("contenteditable","true");
             iframe_element.css("resize","both");

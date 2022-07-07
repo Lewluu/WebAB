@@ -17,6 +17,9 @@ $(document).ready(function(){
     Lew.updateDragAndDrop();
     Lew.setDragAndDrop('disable');
 
+    // styling module
+    Lew.updateStyling();
+
     // remove layouts option
     $(".remove-layout").on("click", function(){
         if(Lew.removeLayouts()){

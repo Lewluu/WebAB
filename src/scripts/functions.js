@@ -192,6 +192,25 @@ var Lew = {
             }
         });
     },
+    updateStyling(){
+        var style_el = document.getElementsByClassName("style-element")[0];
+
+        $("#slider_wval").on("input", function(){
+            var style_el_name = style_el.textContent;
+            var iframe_el_name = $("#iframe_panel").contents().find(style_el_name);
+            var w_val = String($("#slider_wval").val()) + "%";
+
+            iframe_el_name.css("width", w_val);
+        });
+
+        $("#slider_hval").on("input", function(){
+            var style_el_name = style_el.textContent;
+            var iframe_el_name = $("#iframe_panel").contents().find(style_el_name);
+            var h_val = String($("#slider_hval").val()) + "px";
+
+            iframe_el_name.css("height", h_val);
+        });
+    },
     setDragAndDrop(value){
         $(".layout-draggable").draggable(value);
     },
