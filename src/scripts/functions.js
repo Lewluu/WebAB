@@ -61,6 +61,11 @@ var Lew = {
             }
         })
 
+        // removing selected layouts
+        $(".selected-layout-el").each(function(){
+            $(this).remove();
+        });
+
         // removing sublayouts classes
         var sublayouts = $("#iframe_panel").contents().find(".sublayout-editable");
         $(sublayouts).each(function(){
@@ -71,6 +76,11 @@ var Lew = {
                     break;
                 }
             }
+        });
+
+        // removing selected sublayouts
+        $(".selected-sublayout-el").each(function(){
+            $(this).remove();
         });
     },
     // drag and drop method

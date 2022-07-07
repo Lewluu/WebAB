@@ -79,7 +79,6 @@ class LewSubLayout{
             LewDebug.log("<b>" + $(sel_sublayout).text() + "</b> removed ...");
 
             iframe_element.remove();
-            $(sel_sublayout).remove();
 
             return true;
         }
@@ -224,7 +223,6 @@ class LewLayout{
             LewDebug.log("<b>" + $(sel_layout).text() + "</b> removed ...");
 
             iframe_element.remove();
-            $(sel_layout).remove();
 
             return true;
         }
