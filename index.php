@@ -54,7 +54,7 @@
                             <p>Size:</p>
                             <div class="style-element-slider-width">
                                 <p>Width</p>
-                                <input type="range" min="15" max="100" name="width-value" id="slider_wval">
+                                <input type="range" min="10" max="100" name="width-value" id="slider_wval">
                             </div>
                             <div class="style-element-slider-height">
                                 <p>Height</p>

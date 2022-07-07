@@ -108,12 +108,10 @@ class LewSubLayout{
                 $(selected_sublayout + " > img").css("display", "none");
 
                 iframe_element.attr("contenteditable", "false");
-                iframe_element.css("resize", "false");
                 iframe_element.css("border-style","double");
                 iframe_element.css("border-width","2px");
                 iframe_element.css("border-color","orange");
                 iframe_element.css("background-color","");
-                iframe_element.css("overflow","");
             });
 
             this._is_updated = true;
@@ -142,12 +140,11 @@ class LewSubLayout{
 
             // adding style on edit
             iframe_element.attr("contenteditable","true");
-            iframe_element.css("resize","both");
             iframe_element.css("border-style","double");
             iframe_element.css("border-width","2px");
             iframe_element.css("border-color","rgb(137, 238, 183)");
             iframe_element.css("background-color","rgb(210, 253, 230)");
-            iframe_element.css("overflow","hidden");
+            // iframe_element.css("overflow","hidden");
 
             var selected_sublayout = parent_layout_temp + "-selected-sublayout-el-" + String(sublayout_nr_temp);
             $(selected_sublayout).css("display", "flex");
@@ -171,12 +168,10 @@ class LewSubLayout{
         // removing style added on edit
         iframe_element.css("cursor", "default");
         iframe_element.attr("contenteditable", "false");
-        iframe_element.css("resize", "false");
         iframe_element.css("border-style","");
         iframe_element.css("border-width","");
         iframe_element.css("border-color","");
         iframe_element.css("background-color","");
-        iframe_element.css("overflow","");
 
         this._is_editable = false;
     }
@@ -303,13 +298,11 @@ class LewLayout{
                 $(selected_el).css("display", "none");
                 $(selected_el + String(layout_nr_temp ) + " > img").css("display", "none");
 
-                iframe_element.attr("contenteditable", "false");
-                iframe_element.css("resize", "false");
+                // iframe_element.attr("contenteditable", "false");
                 iframe_element.css("border-style","double");
                 iframe_element.css("border-width","2px");
                 iframe_element.css("border-color","orange");
                 iframe_element.css("background-color","");
-                iframe_element.css("overflow","");
 
                 LewDebug.log("<b>" + layout_el_temp + "</b> unselected ...");
             });
@@ -347,13 +340,11 @@ class LewLayout{
             $(style_el_name).html("<p>" + layout_el_temp + "</p>");
 
             // adding style on edit
-            iframe_element.attr("contenteditable","true");
-            iframe_element.css("resize","both");
+            // iframe_element.attr("contenteditable","true");
             iframe_element.css("border-style","double");
             iframe_element.css("border-width","2px");
             iframe_element.css("border-color","rgb(137, 238, 183)");
             iframe_element.css("background-color","rgb(210, 253, 230)");
-            iframe_element.css("overflow","hidden");
             
             $(".selected-layout-el-" + String(layout_nr_temp)).css("display", "flex");
             $(".selected-layout-el-" + String(layout_nr_temp) + " > img").css("display", "flex");
@@ -377,13 +368,11 @@ class LewLayout{
 
         // removing style added on edit
         iframe_element.css("cursor", "default");
-        iframe_element.attr("contenteditable", "false");
-        iframe_element.css("resize", "false");
+        // iframe_element.attr("contenteditable", "false");
         iframe_element.css("border-style","");
         iframe_element.css("border-width","");
         iframe_element.css("border-color","");
         iframe_element.css("background-color","");
-        iframe_element.css("overflow","");
 
         for(var i=0;i<this._sublayout_list.length;i++){
             this._sublayout_list[i].Unedit();

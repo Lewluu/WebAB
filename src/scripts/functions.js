@@ -101,7 +101,7 @@ var Lew = {
                 var iframe_body = $("#iframe_panel").contents().find("body");
 
                 iframe_body.append(
-                    "<div class='layout-editable' style='margin-bottom:0.25%;width:100%;height:75px;display:flex;align-items:center;flex-wrap:wrap;background-color:none;border-style:double;border-width:2px;border-color:orange;'></div>"
+                    "<div class='layout-editable' style='margin-bottom:0.25%;width:100%;height:75px;display:flex;align-items:center;background-color:none;border-style:double;border-width:2px;border-color:orange;'></div>"
                     );
 
                 // removing temporary layout
@@ -196,6 +196,11 @@ var Lew = {
         var style_el = document.getElementsByClassName("style-element")[0];
 
         $("#slider_wval").on("input", function(){
+            var sel_layout = document.getElementsByClassName("selected-layout-el");
+            $(sel_layout).each(function(){
+                LewDebug.log($(sel_layout).text());
+            })
+
             var style_el_name = style_el.textContent;
             var iframe_el_name = $("#iframe_panel").contents().find(style_el_name);
             var w_val = String($("#slider_wval").val()) + "%";
