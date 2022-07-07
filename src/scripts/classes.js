@@ -147,7 +147,13 @@ class LewSubLayout{
             var iframe_element_p = $("#iframe_panel").contents().find(sublayout_name_temp + " > p");
             iframe_element_p.attr("contenteditable", "true");
 
-            LewDebug.log(iframe_element_p.html());
+            // div adding prevention on pressing enter
+            iframe_element_p.keydown(function(event){
+                if(event.keyCode == 16){
+                    document.execCommand("bold");
+                    event.preventDefault();
+                }
+            });
 
             // adding style sublayout on edit
             iframe_element.css("border-style","double");
