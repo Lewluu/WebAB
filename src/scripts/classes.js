@@ -105,13 +105,10 @@ class LewSubLayout{
                 $(selected_sublayout).css("display", "none");
                 $(selected_sublayout + " > img").css("display", "none");
 
-                // initiating editable paragraphs
-                var iframe_element_p = $("#iframe_panel").contents().find(sublayout_el_temp + " > p");
-                iframe_element_p.attr("contenteditable", "false");
-
                 iframe_element.css("border-style","double");
                 iframe_element.css("border-width","2px");
                 iframe_element.css("border-color","orange");
+                iframe_element.attr("contenteditable", "false");
                 if(iframe_element.css("background-color") == "rgb(210, 253, 230)"){
                     iframe_element.css("background-color","");
                 }
@@ -143,23 +140,16 @@ class LewSubLayout{
         var sublayout_name_temp = this._element_sublayout;
 
         iframe_element.on("click", function(){
-            // initiating editable paragraphs
-            var iframe_element_p = $("#iframe_panel").contents().find(sublayout_name_temp + " > p");
-            iframe_element_p.attr("contenteditable", "true");
-
-            // div adding prevention on pressing enter
-            iframe_element_p.keydown(function(event){
-                if(event.keyCode == 16){
-                    document.execCommand("bold");
-                    event.preventDefault();
-                }
-            });
-
             // adding style sublayout on edit
             iframe_element.css("border-style","double");
             iframe_element.css("border-width","2px");
             iframe_element.css("border-color","rgb(137, 238, 183)");
-            iframe_element.css("background-color","rgb(210, 253, 230)");
+            iframe_element.attr("contenteditable", "true");
+            if(iframe_element.css("background-color") == "rgb(255, 255, 255)"){
+                iframe_element.css("background-color","rgb(210, 253, 230)");
+            }
+
+            LewDebug.log(iframe_element.attr("background-color"));
 
             var selected_sublayout = parent_layout_temp + "-selected-sublayout-el-" + String(sublayout_nr_temp);
             $(selected_sublayout).css("display", "flex");
@@ -185,16 +175,14 @@ class LewSubLayout{
 
         // remove event on click
         iframe_element.unbind();
-
-        // initiating editable paragraphs
-        var iframe_element_p = $("#iframe_panel").contents().find(this._element_sublayou + " > p");
-        iframe_element_p.attr("contenteditable", "false");
+        iframe_element.css("cursor", "default");
 
         // removing style added on edit
         iframe_element.css("border-style","");
         iframe_element.css("border-width","");
         iframe_element.css("border-color","");
-        if(iframe_element.css("background-color") == "#D2FDE6"){
+        iframe_element.attr("contenteditable", "false");
+        if(iframe_element.css("background-color") == "rgb(210, 253, 230)"){
             iframe_element.css("background-color","");
         }
 
@@ -382,6 +370,7 @@ class LewLayout{
             // testing is mouse is over sublayouts, disabling editing the parent layout
             this._sublayout_list[i].Edit();
             var iframe_sublayout = $("#iframe_panel").contents().find(this._sublayout_list[i].getSelectedSubLayout());
+
             $(iframe_sublayout).hover(function(){
                 $(iframe_layout).unbind();
             });
