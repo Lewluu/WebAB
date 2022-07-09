@@ -93,13 +93,47 @@
                             </div>
                         </div>
                         <div class="style-element">
-                            <p class="style-element-title">Text type: paragraph / header</p>
+                            <p class="style-element-title">Text:</p>
+                            <div class="style-element-text-type">
+                                <div class="style-element-text-type-el">
+                                    <p>Text type:</p>
+                                    <select name="textType" id="text_type">
+                                        <option value="paragraph">Paragraph</option>
+                                        <option value="header">Header</option>
+                                    </select>
+                                </div>
+                                <div class="style-element-text-type-el">
+                                    <p>Text align:</p>
+                                    <select name="textAlign" id="text_align">
+                                        <option value="left">Left</option>
+                                        <option value="center">Center</option>
+                                        <option value="right">Right</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class="style-element">
-                            <p class="style-element-title">Font style: </p>
+                            <p class="style-element-title">Font: </p>
+                            <div class="style-element-font-family">
+                                <p>Font family:</p>
+                                <select name="fontFamily" id="font_family">
+                                </select>
+                                <p>Font color:</p>
+                                <input type="color" id="font_color_val" value="rgb(0, 0, 0)">
+                                <p>Font format:</p>
+                                <select name="fontFormat" id="font_format">
+                                    <option value="normal">Normal</option>
+                                    <option value="italic">Italic</option>
+                                    <option value="oblique">Oblique</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="style-element">
                             <p class="style-element-title">Rotation: </p>
+                            <div class="style-element-rotation">
+                                <p>Value:</p>
+                                <input type="range" min="0" max="360" name="rotationValue" id="rotation_value">
+                            </div>
                         </div>
                         <div class="style-element">
                             <p class="style-element-title">Animation: </p>
