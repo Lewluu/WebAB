@@ -27,6 +27,13 @@ body{
 
 }
 
+.style-element{
+}
+
+.style-element-title{
+    font-weight: bold;
+}
+
 .style-element-slider-width{
     display: flex;
     flex-direction: row;
@@ -59,19 +66,40 @@ body{
 
 .style-element-bg-color{
     width: 100%;
-    display: flex;
-    flex-direction: row;
 }
 
 .style-element-bg-color p{
-    width: 45%;
-    margin: auto;
-    margin-left: 7%;
 }
 
 .style-element-bg-color input{
-    width: 25%;
-    margin-right: 17%;
+    width: 35%;
+}
+
+.style-element-border{
+    width: 100%;
+    margin: auto;
+}
+
+.style-element-border-el{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin:auto;
+}
+
+.style-element-border-el p{
+    width: 50%;;
+    text-align: center;
+}
+
+/* .style-element-border-el select{
+    width: 50%;
+    margin: auto;
+}*/
+
+.style-element-border-el input{
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 #debug_section{

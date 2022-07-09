@@ -48,10 +48,10 @@
                     </div>
                     <div class="tool-section-display tool-section-styling">
                         <div class="style-element">
-                            <p>No element/elements selected</p>
+                            <p class="style-element-title">No element/elements selected</p>
                         </div>
-                        <div class="style-element style-element-size">
-                            <p>Size:</p>
+                        <div class="style-element">
+                            <p class="style-element-title">Size:</p>
                             <div class="style-element-slider-width">
                                 <p>Width</p>
                                 <input type="range" min="10" max="100" name="widthValue" id="slider_wval">
@@ -62,29 +62,47 @@
                             </div>
                         </div>
                         <div class="style-element">
-                            <p>Position:</p>
+                            <p class="style-element-title">Position:</p>
                         </div>
-                        <div class="style-element style-element-bg-color">
-                            <p>Background-Color:</p>
+                        <div class="style-element">
+                            <p class="style-element-title">Background-Color:</p>
                             <input type="color" id="bg_color_val" value="#FFFFFF"> 
                         </div>
                         <div class="style-element">
-                            <p>Border: style, width, color</p>
+                            <p class="style-element-title">Border: </p>
+                            <div class="style-element-border">
+                                <div class="style-element-border-el">
+                                    <p>style: </p>
+                                    <select name="borderStyle" id="border_style">
+                                        <option value="none">None</option>
+                                        <option value="hidden">Hidden</option>
+                                        <option value="dotted">Dotted</option>
+                                        <option value="dashed">Dashed</option>
+                                        <option value="solid">Solid</option>
+                                        <option value="double">Double</option>
+                                    </select>
+                                </div>
+                                <div class="style-element-border-el">
+                                    <p>width: </p>
+                                    <input type="range" min="1" max="50" value="1" name="borderWidthValue" id="slider_border_wval">
+                                </div>
+                                <div class="style-element-border-el">
+                                    <p>color: </p>
+                                    <input type="color" id="border_color_val" value="#FFFFFF"> 
+                                </div>
+                            </div>
                         </div>
                         <div class="style-element">
-                            <p>Text type: paragraph / header</p>
+                            <p class="style-element-title">Text type: paragraph / header</p>
                         </div>
                         <div class="style-element">
-                            <p>Font style: </p>
+                            <p class="style-element-title">Font style: </p>
                         </div>
                         <div class="style-element">
-                            <p>Rotation: </p>
+                            <p class="style-element-title">Rotation: </p>
                         </div>
                         <div class="style-element">
-                            <p>Animation: </p>
-                        </div>
-                        <div class="style-element">
-                            <p>Type of position: </p>
+                            <p class="style-element-title">Animation: </p>
                         </div>
                     </div>
                 </div>
