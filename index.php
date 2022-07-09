@@ -62,9 +62,6 @@
                             </div>
                         </div>
                         <div class="style-element">
-                            <p class="style-element-title">Position:</p>
-                        </div>
-                        <div class="style-element">
                             <p class="style-element-title">Background-Color:</p>
                             <input type="color" id="bg_color_val" value="#FFFFFF"> 
                         </div>
@@ -114,18 +111,29 @@
                         </div>
                         <div class="style-element">
                             <p class="style-element-title">Font: </p>
-                            <div class="style-element-font-family">
-                                <p>Font family:</p>
-                                <select name="fontFamily" id="font_family">
-                                </select>
-                                <p>Font color:</p>
-                                <input type="color" id="font_color_val" value="rgb(0, 0, 0)">
-                                <p>Font format:</p>
-                                <select name="fontFormat" id="font_format">
-                                    <option value="normal">Normal</option>
-                                    <option value="italic">Italic</option>
-                                    <option value="oblique">Oblique</option>
-                                </select>
+                            <div class="style-element-font">
+                                <div class="style-element-font-el">
+                                    <p>Font family:</p>
+                                    <select name="fontFamily" id="font_family">
+                                        <option value="Times New Roman">Times New Roman</option>
+                                        <option value="Courier New">Courier New</option>
+                                        <option value="Arial">Arial</option>
+                                        <option value="Lucida Console">Lucida Console</option>
+                                        <option value="Lucida Handwriting">Lucida Handwriting</option>
+                                    </select>
+                                </div>
+                                <div class="style-element-font-el">
+                                    <p>Font color:</p>
+                                    <input type="color" id="font_color_val" value="rgb(0, 0, 0)">
+                                </div>
+                                <div class="style-element-font-el">
+                                    <p>Font format:</p>
+                                    <select name="fontFormat" id="font_format">
+                                        <option value="normal">Normal</option>
+                                        <option value="italic">Italic</option>
+                                        <option value="oblique">Oblique</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         <div class="style-element">
@@ -137,6 +145,32 @@
                         </div>
                         <div class="style-element">
                             <p class="style-element-title">Animation: </p>
+                            <div class="style-element-animation-el">
+                                <p>Type:</p>
+                                <select name="animationType" id="animation-type">
+                                    <option value="spawncenter">Spawn Center</option>
+                                    <option value="spawnleft">Spawn Left</option>
+                                    <option value="spawnright">Spawn Right</option>
+                                    <option value="spawntop">Spawn Top</option>
+                                    <option value="spawnbot">Spawn Bottom</option>
+                                    <option value="rotate">Rotate</option>
+                                </select>
+                            </div>
+                            <div class="style-element-animation-el">
+                                <p>Animation duration:</p>
+                                <input type="text" name="animationDuration" id="animation_duration">
+                            </div>
+                            <div class="style-element-animation-el">
+                                <p>Fading:</p>
+                                <select name="animationFading" id="animation-fading">
+                                    <option value="no">No</option>
+                                    <option value="yes">Yes</option>
+                                </select>
+                            </div>
+                            <div class="style-element-animation-el">
+                                <p>Fading duration:</p>
+                                <input type="text" name="fadingDuration" id="fading_duration">
+                            </div>
                         </div>
                     </div>
                 </div>

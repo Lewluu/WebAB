@@ -68,23 +68,19 @@ body{
     width: 100%;
 }
 
-.style-element-bg-color p{
-}
-
-.style-element-bg-color input{
-    width: 35%;
-}
-
 .style-element-border{
     width: 100%;
     margin: auto;
 }
 
+.style-element-border{
+    width: 100%;
+    margin:auto;
+}
+
 .style-element-border-el{
     display: flex;
     flex-direction: row;
-    width: 100%;
-    margin:auto;
 }
 
 .style-element-border-el p{
@@ -92,14 +88,84 @@ body{
     text-align: center;
 }
 
-/* .style-element-border-el select{
-    width: 50%;
-    margin: auto;
-}*/
-
 .style-element-border-el input{
     margin-top: auto;
     margin-bottom: auto;
+}
+
+.style-element-text-type-el{
+    display: flex;
+    flex-direction: row;;
+}
+
+.style-element-text-type-el p{
+    width: 50%;
+    text-align: center;
+}
+
+.style-element-text-type-el select{
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+.style-element-font-el{
+    display: flex;
+    flex-direction: row;
+}
+
+.style-element-font-el p{
+    width: 50%;;
+    text-align: center;
+}
+
+.style-element-font-el select{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.style-element-font-el input{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.style-element-rotation{
+    display: flex;
+    flex-direction: row;
+}
+
+.style-element-rotation p{
+    width: 50%;
+    text-align: center;
+}
+
+.style-element-rotation input{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.style-element-animation-el{
+    display: flex;
+    flex-direction: row;
+}
+
+.style-element-animation-el p{
+    width: 50%;
+    text-align: center;
+}
+
+.style-element-animation-el select{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.style-element-animation-el input[type="select"]{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.style-element-animation-el input[type="text"]{
+    width: 25%;
+    margin: auto;
 }
 
 #debug_section{
