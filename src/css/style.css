@@ -88,7 +88,7 @@ body{
     text-align: center;
 }
 
-.style-element-border-el input{
+.style-element-border-el select{
     margin-top: auto;
     margin-bottom: auto;
 }
@@ -208,6 +208,12 @@ body{
     margin:0.25%;
     width: 18vw;
     min-width: 175px;
+    overflow-y:scroll;
+    max-height: 100vh;
+}
+
+#tool_panel_1::-webkit-scrollbar{
+    display:none;
 }
 
 .add-layout{

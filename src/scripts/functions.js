@@ -218,6 +218,31 @@ var Lew = {
 
             iframe_el.css("background-color", bg_color_val);
         });
+
+        $("#border_style").on("change", function(){
+            var style_el_name = style_el.textContent;
+            var iframe_el = $("#iframe_panel").contents().find(style_el_name);
+            var border_style = String($("#border_style").val());
+
+            iframe_el.css("border-style", border_style);
+        });
+
+        $("#slider_border_wval").on("input", function(){
+            var style_el_name = style_el.textContent;
+            var iframe_el = $("#iframe_panel").contents().find(style_el_name);
+            var border_wval = String($("#slider_border_wval").val());
+
+            iframe_el.css("border-width", border_wval);
+        });
+
+        $("#border_color_val").on("input", function(){
+            var style_el_name = style_el.textContent;
+            var iframe_el = $("#iframe_panel").contents().find(style_el_name);
+            var border_color = String($("#border_color_val").val());
+
+            iframe_el.css("border-color", border_color);
+        });
+
     },
     setDragAndDrop(value){
         $(".layout-draggable").draggable(value);
