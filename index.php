@@ -126,7 +126,7 @@
                                 </div>
                                 <div class="style-element-font-el">
                                     <p>Font color:</p>
-                                    <input type="color" id="font_color_val" value="rgb(0, 0, 0)">
+                                    <input type="color" id="font_color" value="rgb(0, 0, 0)">
                                 </div>
                                 <div class="style-element-font-el">
                                     <p>Font format:</p>
