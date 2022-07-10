@@ -11,7 +11,7 @@
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-        <script src="src/scripts/functions.js?v=1"></script>
+        <script src="src/scripts/functions.js"></script>
         <script src="src/scripts/classes.js?v=1"></script>
         <script src="src/scripts/script.js"></script>
     </head>
@@ -102,11 +102,19 @@
                                     </select>
                                 </div>
                                 <div class="style-element-text-type-el">
-                                    <p>Text align:</p>
-                                    <select name="textAlign" id="text_align">
+                                    <p>Text align horizontal:</p>
+                                    <select name="textAlignH" id="text_align_horizontal">
                                         <option value="left">Left</option>
                                         <option value="center">Center</option>
                                         <option value="right">Right</option>
+                                    </select>
+                                </div>
+                                <div class="style-element-text-type-el">
+                                    <p>Text align vertical:</p>
+                                    <select name="textAlignV" id="text_align_vertical">
+                                        <option value="text-top">Top</option>
+                                        <option value="baseline">Center</option>
+                                        <option value="text-bottom">Bottom</option>
                                     </select>
                                 </div>
                             </div>

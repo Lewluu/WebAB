@@ -209,7 +209,8 @@ var Lew = {
         this.stylingElementFunc(style_el, "change", "#border_style", "border-style", "");
         this.stylingElementFunc(style_el, "input", "#slider_border_wval", "border-width", "");
         this.stylingElementFunc(style_el, "input", "#border_color_val", "border-color", "");
-        this.stylingElementFunc(style_el, "change", "#text_align", "text-align", "");
+        this.stylingElementFunc(style_el, "change", "#text_align_horizontal", "text-align", "");
+        this.stylingElementFunc(style_el, "change", "#text_align_vertical", "vertical-align", "");
         this.stylingElementFunc(style_el, "change", "#font_family", "font-family", "");
         this.stylingElementFunc(style_el, "input", "#font_color", "color", "");
         this.stylingElementFunc(style_el, "change", "#font_format", "font-style", "");
