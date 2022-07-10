@@ -149,7 +149,12 @@ class LewSubLayout{
                 iframe_element.css("background-color","rgb(210, 253, 230)");
             }
 
-            LewDebug.log(iframe_element.attr("background-color"));
+            // managing introduced text
+            // iframe_element.on("keypress", function(e){
+            //     if(e.keyCode == 13){
+            //         iframe_element.html(iframe_element.val());
+            //     }
+            // });
 
             var selected_sublayout = parent_layout_temp + "-selected-sublayout-el-" + String(sublayout_nr_temp);
             $(selected_sublayout).css("display", "flex");

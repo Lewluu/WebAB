@@ -90,13 +90,18 @@ var Lew = {
             revertDuration: 250,
             iframeFix:true,
             drag: function(){
-                // LewDebug.log("Layous: <i>layout_name</i> selected for dragging");
+                $(".layout-draggable").css("position", "absolute");
+            },
+            stop: function(){
+                $(".layout-draggable").css("position", "static");
             }
         });
 
         $("#iframe_panel").droppable({
             drop: function(){
                 LewDebug.log("layout: dropped in: ");
+
+                $(".layout-draggable").css("position", "static");
 
                 var iframe_body = $("#iframe_panel").contents().find("body");
 
@@ -114,6 +119,7 @@ var Lew = {
                 Lew.editIframe();
             },
             out: function(){
+
                 LewDebug.log("layout leaving panel ");
 
                 // removing temporary layout
@@ -132,6 +138,8 @@ var Lew = {
                 var layout_base = $("#iframe_panel").contents().find(".layout-editable");
                 $(layout_base).droppable({
                     drop: function(){
+                        $(".layout-draggable").css("position", "static");
+
                         var layout_classes = $(this).attr('class').split(/\s+/);
                         for(var i=0;i<layout_classes.length;i++){
                             if(layout_classes[i].includes("layout-editable-")){
@@ -152,7 +160,7 @@ var Lew = {
 
                         var layout_indexed = $("#iframe_panel").contents().find("." + layout_parent);
                         layout_indexed.append(
-                            "<div class='sublayout-editable' style='width: 135px; height: 45px; margin-left:0.5%; margin-top:0.5%; margin-bottom:0.5%; background-color:#FFFFFF;border-style:double;border-width:2px;border-color:orange;'><p></p></div>"
+                            "<div class='sublayout-editable' style='width: 135px; height: 45px; margin-left:0.5%; margin-top:0.5%; margin-bottom:0.5%; background-color:#FFFFFF;border-style:double;border-width:2px;border-color:orange; resize:none; '></div>"
                         );
 
                         // scanning for new added sublayouts
@@ -241,6 +249,15 @@ var Lew = {
             var border_color = String($("#border_color_val").val());
 
             iframe_el.css("border-color", border_color);
+        });
+
+        $("#text_type").on("change", function(){
+            var style_el_name = style_el.textContent;
+            var iframe_el = $("#iframe_panel").contents().find(style_el_name);
+            var text_type = $("#text_type").val();
+            
+            var new_html = "<" + text_type + ">" + iframe_el.text() + "</" + text_type + ">";
+            iframe_el.html(new_html);
         });
 
     },

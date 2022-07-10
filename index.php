@@ -11,8 +11,8 @@
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-        <script src="src/scripts/functions.js"></script>
-        <script src="src/scripts/classes.js?v=2"></script>
+        <script src="src/scripts/functions.js?v=1"></script>
+        <script src="src/scripts/classes.js?v=1"></script>
         <script src="src/scripts/script.js"></script>
     </head>
     <body>
@@ -95,8 +95,10 @@
                                 <div class="style-element-text-type-el">
                                     <p>Text type:</p>
                                     <select name="textType" id="text_type">
-                                        <option value="paragraph">Paragraph</option>
-                                        <option value="header">Header</option>
+                                        <option value="p">Paragraph</option>
+                                        <option value="h1">Header1</option>
+                                        <option value="h2">Header2</option>
+                                        <option value="h3">Header3</option>
                                     </select>
                                 </div>
                                 <div class="style-element-text-type-el">
