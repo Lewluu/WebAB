@@ -113,7 +113,7 @@
                                     <p>Text align vertical:</p>
                                     <select name="textAlignV" id="text_align_vertical">
                                         <option value="text-top">Top</option>
-                                        <option value="baseline">Center</option>
+                                        <option value="center">Center</option>
                                         <option value="text-bottom">Bottom</option>
                                     </select>
                                 </div>
