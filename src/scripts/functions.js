@@ -223,6 +223,14 @@ var Lew = {
             iframe_el.html(new_html);
         });
 
+        $("#rotation_value").on("input", function(){
+            var style_el_name = style_el.textContent;
+            var iframe_el = $("#iframe_panel").contents().find(style_el_name);
+            var rotation_val = $("#rotation_value").val();
+
+            iframe_el.css("transform", "rotate(" + rotation_val + "deg)");
+        });
+
     },
     stylingElementFunc(selectedElement ,action, id, attribute, valueFormat){
         $(id).on(action, function(){
