@@ -203,53 +203,16 @@ var Lew = {
     updateStyling(){
         var style_el = document.getElementsByClassName("style-element")[0];
 
-        $("#slider_wval").on("input", function(){
-            var style_el_name = style_el.textContent;
-            var iframe_el = $("#iframe_panel").contents().find(style_el_name);
-            var w_val = String($("#slider_wval").val()) + "%";
-
-            iframe_el.css("width", w_val);
-        });
-
-        $("#slider_hval").on("input", function(){
-            var style_el_name = style_el.textContent;
-            var iframe_el = $("#iframe_panel").contents().find(style_el_name);
-            var h_val = String($("#slider_hval").val()) + "px";
-
-            iframe_el.css("height", h_val);
-        });
-
-        $("#bg_color_val").on("input", function(){
-            var style_el_name = style_el.textContent;
-            var iframe_el = $("#iframe_panel").contents().find(style_el_name);
-            var bg_color_val = String($("#bg_color_val").val());
-
-            iframe_el.css("background-color", bg_color_val);
-        });
-
-        $("#border_style").on("change", function(){
-            var style_el_name = style_el.textContent;
-            var iframe_el = $("#iframe_panel").contents().find(style_el_name);
-            var border_style = String($("#border_style").val());
-
-            iframe_el.css("border-style", border_style);
-        });
-
-        $("#slider_border_wval").on("input", function(){
-            var style_el_name = style_el.textContent;
-            var iframe_el = $("#iframe_panel").contents().find(style_el_name);
-            var border_wval = String($("#slider_border_wval").val());
-
-            iframe_el.css("border-width", border_wval);
-        });
-
-        $("#border_color_val").on("input", function(){
-            var style_el_name = style_el.textContent;
-            var iframe_el = $("#iframe_panel").contents().find(style_el_name);
-            var border_color = String($("#border_color_val").val());
-
-            iframe_el.css("border-color", border_color);
-        });
+        this.stylingElementFunc(style_el, "input", "#slider_wval", "width", "%");
+        this.stylingElementFunc(style_el, "input", "#slider_hval", "height", "px");
+        this.stylingElementFunc(style_el, "input", "#bg_color_val", "background-color", "");
+        this.stylingElementFunc(style_el, "change", "#border_style", "border-style", "");
+        this.stylingElementFunc(style_el, "input", "#slider_border_wval", "border-width", "");
+        this.stylingElementFunc(style_el, "input", "#border_color_val", "border-color", "");
+        this.stylingElementFunc(style_el, "change", "#text_align", "text-align", "");
+        this.stylingElementFunc(style_el, "change", "#font_family", "font-family", "");
+        this.stylingElementFunc(style_el, "input", "#font_color", "color", "");
+        this.stylingElementFunc(style_el, "change", "#font_format", "font-style", "");
 
         $("#text_type").on("change", function(){
             var style_el_name = style_el.textContent;
@@ -260,44 +223,12 @@ var Lew = {
             iframe_el.html(new_html);
         });
 
-        $("#text_align").on("change", function(){
-            var style_el_name = style_el.textContent;
-            var iframe_el = $("#iframe_panel").contents().find(style_el_name);
-            var text_align_val = $("#text_align").val();
-
-            iframe_el.css("text-align", text_align_val)
-        });
-
-        $("#font_family").on("change", function(){
-            var style_el_name = style_el.textContent;
-            var iframe_el = $("#iframe_panel").contents().find(style_el_name);
-            var font_family_val = $("#font_family").val();
-
-            iframe_el.css("font-family", font_family_val)
-        });
-
-        $("#font_color").on("input", function(){
-            var style_el_name = style_el.textContent;
-            var iframe_el = $("#iframe_panel").contents().find(style_el_name);
-            var font_color_val = $("#font_color").val();
-
-            iframe_el.css("font-color", font_color_val);
-        });
-
-        $("#font_format").on("change", function(){
-            var style_el_name = style_el.textContent;
-            var iframe_el = $("#iframe_panel").contents().find(style_el_name);
-            var font_format_val = $("#font_format").val();
-
-            iframe_el.css("font-color", font_format_val);
-        });
-
     },
-    stylingElementFunc(selectedElement ,action, id, attribute){
+    stylingElementFunc(selectedElement ,action, id, attribute, valueFormat){
         $(id).on(action, function(){
             var style_el_name = selectedElement.textContent;
             var iframe_el = $("#iframe_panel").contents().find(style_el_name);
-            var value = $(id).val();
+            var value = $(id).val() + valueFormat;
 
             iframe_el.css(attribute, value);
         })

@@ -121,7 +121,7 @@
                                         <option value="Courier New">Courier New</option>
                                         <option value="Arial">Arial</option>
                                         <option value="Lucida Console">Lucida Console</option>
-                                        <option value="Lucida Handwriting">Lucida Handwriting</option>
+                                        <option value="Lucida Handwriting, cursive">Lucida Handwriting</option>
                                     </select>
                                 </div>
                                 <div class="style-element-font-el">
