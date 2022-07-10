@@ -29,7 +29,6 @@
                         <p class="add-layout">Add Layout:</p>
                         <div class="layout-draggable" draggable="true">
                         </div>
-                        <p>Add Layout Element:</p>
                         <p>Selected layout:</p>
                         <div class="selected-layout">
                         </div>
@@ -113,7 +112,7 @@
                                     <p>Text align vertical:</p>
                                     <select name="textAlignV" id="text_align_vertical">
                                         <option value="text-top">Top</option>
-                                        <option value="center">Center</option>
+                                        <option value="baseline">Center</option>
                                         <option value="text-bottom">Bottom</option>
                                     </select>
                                 </div>
