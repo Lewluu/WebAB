@@ -28,7 +28,7 @@ class HtmlObject extends FileObject{
 
         fclose($html_file);
     }
-    public function generateSavedFile($path, $file_name, $title, $content){
+    public function generateSavedFile($path, $file_name, $content){
         $html_file=fopen($path.'/'.$file_name,"w");
 
         fwrite($html_file,"<!DOCTYPE html> \n");

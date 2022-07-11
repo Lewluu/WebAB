@@ -27,15 +27,6 @@ if(!empty($_POST)){
 
     $js=new ScriptObject();
     $js->createFile("src/scripts","script.js",null);
-
-    // $html_file=fopen("index.html","w");
-    // fclose($html_file);
-
-    // $css_file=fopen("src/css/style.css","w");
-    // fclose($css_file);
-
-    // $js_file=fopen("src/scripts/script.js","w");
-    // fclose($js_file);
 }
 
 ?>
