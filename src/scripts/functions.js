@@ -203,22 +203,10 @@ var Lew = {
     updateStyling(){
         var style_el = document.getElementsByClassName("style-element")[0];
 
-        this.stylingElementFunc(style_el, "input", "#slider_wval", "width", "%");
-        this.stylingElementFunc(style_el, "input", "#slider_hval", "height", "px");
-        this.stylingElementFunc(style_el, "input", "#bg_color_val", "background-color", "");
-        this.stylingElementFunc(style_el, "change", "#border_style", "border-style", "");
-        this.stylingElementFunc(style_el, "input", "#slider_border_wval", "border-width", "");
-        this.stylingElementFunc(style_el, "input", "#border_color_val", "border-color", "");
-        this.stylingElementFunc(style_el, "change", "#text_align_horizontal", "text-align", "");
-        this.stylingElementFunc(style_el, "change", "#text_align_vertical", "vertical-align", "");
-        this.stylingElementFunc(style_el, "change", "#font_family", "font-family", "");
-        this.stylingElementFunc(style_el, "input", "#font_color", "color", "");
-        this.stylingElementFunc(style_el, "change", "#font_format", "font-style", "");
-
         $("#text_type").on("change", function(){
             var style_el_name = style_el.textContent;
             var iframe_el = $("#iframe_panel").contents().find(style_el_name);
-            var text_type = $("#text_type").val();
+            text_type = $("#text_type").val();
             
             var new_html = "<" + text_type + ">" + iframe_el.text() + "</" + text_type + ">";
             iframe_el.html(new_html);
@@ -232,24 +220,51 @@ var Lew = {
             iframe_el.css("transform", "rotate(" + rotation_val + "deg)");
         });
 
+        $("#text_align_vertical").on("input", function(){
+            var style_el_name = style_el.textContent;
+            var iframe_el = "";
+            var vertical_val = "";
+
+            iframe_el = $("#iframe_panel").contents().find(style_el_name + " > p");
+            vertical_val = $("#text_align_vertical").val() + "%";
+
+            iframe_el.css("margin-top", vertical_val);
+
+            iframe_el = $("#iframe_panel").contents().find(style_el_name + " > h1");
+            vertical_val = $("#text_align_vertical").val() + "%";
+
+            iframe_el.css("margin-top", vertical_val);
+
+            iframe_el = $("#iframe_panel").contents().find(style_el_name + " > h2");
+            vertical_val = $("#text_align_vertical").val() + "%";
+
+            iframe_el.css("margin-top", vertical_val);
+
+            iframe_el = $("#iframe_panel").contents().find(style_el_name + " > h3");
+            vertical_val = $("#text_align_vertical").val() + "%";
+
+            iframe_el.css("margin-top", vertical_val);
+        });
+
+        this.stylingElementFunc(style_el, "input", "#slider_wval", "width", "%");
+        this.stylingElementFunc(style_el, "input", "#slider_hval", "height", "px");
+        this.stylingElementFunc(style_el, "input", "#bg_color_val", "background-color", "");
+        this.stylingElementFunc(style_el, "change", "#border_style", "border-style", "");
+        this.stylingElementFunc(style_el, "input", "#slider_border_wval", "border-width", "");
+        this.stylingElementFunc(style_el, "input", "#border_color_val", "border-color", "");
+        this.stylingElementFunc(style_el, "change", "#text_align_horizontal", "text-align", "");
+        this.stylingElementFunc(style_el, "change", "#font_family", "font-family", "");
+        this.stylingElementFunc(style_el, "input", "#font_color", "color", "");
+        this.stylingElementFunc(style_el, "change", "#font_format", "font-style", "");
+
     },
     stylingElementFunc(selectedElement ,action, id, attribute, valueFormat){
-        var layouts_arr_temp = this.layouts_arr;
-
         $(id).on(action, function(){
             var style_el_name = selectedElement.textContent;
             var iframe_el = $("#iframe_panel").contents().find(style_el_name);
             var value = $(id).val() + valueFormat;
 
             iframe_el.css(attribute, value);
-
-            for(var i=0; i<layouts_arr_temp.length; i++){
-                if(layouts_arr_temp[i].getSelectedLayout() == selectedElement){
-                    LewDebug.log("hi");
-                    this.layouts_arr_temp[i].setAttributeEdited(attribute);
-                    break;
-                }
-            }
         });
     }
     ,

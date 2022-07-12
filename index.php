@@ -11,7 +11,7 @@
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-        <script src="src/scripts/functions.js?v=1"></script>
+        <script src="src/scripts/functions.js?v=2"></script>
         <script src="src/scripts/classes.js"></script>
         <script src="src/scripts/script.js"></script>
     </head>
@@ -110,11 +110,7 @@
                                 </div>
                                 <div class="style-element-text-type-el">
                                     <p>Text align vertical:</p>
-                                    <select name="textAlignV" id="text_align_vertical">
-                                        <option value="text-top">Top</option>
-                                        <option value="baseline">Center</option>
-                                        <option value="text-bottom">Bottom</option>
-                                    </select>
+                                    <input type="range" min="0" max="100" name="textAlignV" id="text_align_vertical">
                                 </div>
                             </div>
                         </div>
@@ -140,7 +136,7 @@
                                     <select name="fontFormat" id="font_format">
                                         <option value="normal">Normal</option>
                                         <option value="italic">Italic</option>
-                                        <option value="oblique">Oblique</option>
+                                        <option value="bold">Bold</option>
                                     </select>
                                 </div>
                             </div>

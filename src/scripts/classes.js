@@ -121,8 +121,8 @@ class LewSubLayout{
         else    return;
     }
     Edit(){
-        var iframe_element =
-            $("#iframe_panel").contents().find(this._element_sublayout);
+        var iframe_element = $("#iframe_panel").contents().find(this._element_sublayout);
+        var parent_iframe_element = $("#iframe_panel").contents().find(this._parent_layout);
         
         // unbind already existed events, otherwise they'll stack
         iframe_element.unbind();
@@ -147,6 +147,11 @@ class LewSubLayout{
                 iframe_element.css("border-style","double");
                 iframe_element.css("border-width","2px");
                 iframe_element.css("border-color","rgb(137, 238, 183)");
+            }
+
+            // edit parent layout
+            if(parent_iframe_element.css("border-color") == "rgb(137, 238, 183)" && parent_iframe_element.css("border-style") == "double" && parent_iframe_element.css("border-width") == "2px"){
+                parent_iframe_element.css("border-color","orange");
             }
 
             iframe_element.attr("contenteditable", "true");
@@ -353,6 +358,7 @@ class LewLayout{
         });
 
         var layout_name_temp = this._element_layout;
+        var sublayout_list_temp = this._sublayout_list;
 
         $(iframe_layout).on("click", function(){
             // adding style on edit
@@ -390,19 +396,13 @@ class LewLayout{
                  // unbind already existed events, otherwise they'll stack
                 iframe_layout.unbind();
 
-                if((iframe_element.css("border-color") == "rgb(255, 165, 0)" || iframe_element.css("border-color") == "rgb(137, 238, 183)") && iframe_element.css("border-style") == "double" && iframe_element.css("border-width") == "2px"){
-                    iframe_layout.css("border-style","double");
-                    iframe_layout.css("border-width","2px");
-                    iframe_layout.css("border-color", "orange");
-                }
-
                 iframe_layout.hover(function(){
                     $(this).css("cursor", "pointer");
                 });
 
                 iframe_layout.on("click", function(){
                     // adding style on edit
-                    if(iframe_element.css("border-color") == "rgb(255, 165, 0)" && iframe_element.css("border-style") == "double" && iframe_element.css("border-width") == "2px"){
+                    if(iframe_layout.css("border-color") == "rgb(255, 165, 0)" && iframe_layout.css("border-style") == "double" && iframe_layout.css("border-width") == "2px"){
                         iframe_layout.css("border-style","double");
                         iframe_layout.css("border-width","2px");
                         iframe_layout.css("border-color","rgb(137, 238, 183)");
@@ -410,6 +410,14 @@ class LewLayout{
 
                     if(iframe_layout.css("background-color") == "rgba(0, 0, 0, 0)"){
                         iframe_layout.css("background-color","rgb(210, 253, 230)");
+                    }
+
+                    // removing border of sublayouts
+                    for(var i=0;i<sublayout_list_temp.length;i++){
+                        var iframe_sublayout = $("#iframe_panel").contents().find(sublayout_list_temp[i].getSelectedSubLayout());
+                        if(iframe_sublayout.css("border-color") == "rgb(137, 238, 183)" && iframe_sublayout.css("border-style") == "double" && iframe_sublayout.css("border-width") == "2px"){
+                            iframe_sublayout.css("border-color","orange");
+                        }
                     }
             
                     $(".selected-layout-el-" + String(layout_nr_temp)).css("display", "flex");
