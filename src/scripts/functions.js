@@ -234,13 +234,23 @@ var Lew = {
 
     },
     stylingElementFunc(selectedElement ,action, id, attribute, valueFormat){
+        var layouts_arr_temp = this.layouts_arr;
+
         $(id).on(action, function(){
             var style_el_name = selectedElement.textContent;
             var iframe_el = $("#iframe_panel").contents().find(style_el_name);
             var value = $(id).val() + valueFormat;
 
             iframe_el.css(attribute, value);
-        })
+
+            for(var i=0; i<layouts_arr_temp.length; i++){
+                if(layouts_arr_temp[i].getSelectedLayout() == selectedElement){
+                    LewDebug.log("hi");
+                    this.layouts_arr_temp[i].setAttributeEdited(attribute);
+                    break;
+                }
+            }
+        });
     }
     ,
     setDragAndDrop(value){
