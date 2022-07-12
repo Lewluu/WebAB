@@ -202,9 +202,19 @@ $(document).ready(function(){
             data: form_data,
             success: function(){
                 closePopUp(2);
-                Lew.loadProject(form_val["project_name"]);
+
                 sp = form_val["project_name"];
-                alert("Project "+form_val["project_name"]+" was created!");
+                alert("Project " + sp + " was created!");
+
+                Lew.loadProject(sp);
+
+                LewDebug.log("Loading project: "+sp);
+                Lew.loadProject(sp);
+
+                Lew.searchForLayouts();
+
+                Lew.layouts_searched = false;
+                Lew.project_is_selected = true;
             },
             error: function(){
                 alert("Project creation failed!");

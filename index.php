@@ -13,7 +13,7 @@
         <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
         <script src="src/scripts/functions.js?v=2"></script>
         <script src="src/scripts/classes.js"></script>
-        <script src="src/scripts/script.js"></script>
+        <script src="src/scripts/script.js?v=1"></script>
     </head>
     <body>
         <div id="interface">
@@ -136,7 +136,7 @@
                                     <select name="fontFormat" id="font_format">
                                         <option value="normal">Normal</option>
                                         <option value="italic">Italic</option>
-                                        <option value="bold">Bold</option>
+                                        <option value="oblique">Oblique</option>
                                     </select>
                                 </div>
                             </div>
