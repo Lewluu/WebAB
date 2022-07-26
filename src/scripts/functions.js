@@ -14,7 +14,7 @@ var Lew = {
         $(document.getElementById("iframe_panel")).css("background-color","white");
     },
     searchForLayouts: function(){
-        var iframe_el_arr = $("#iframe_panel").contents().find(".layout-editable");
+        var iframe_el_arr = $("#iframe_panel").contents().find(".layout-editable > div");
         var layout_arr_temp = [];
 
         $(iframe_el_arr).each(function(index){
@@ -106,7 +106,7 @@ var Lew = {
                 var iframe_body = $("#iframe_panel").contents().find("body");
 
                 iframe_body.append(
-                    "<div class='layout-editable' style='margin-bottom:0.25%;width:100%;height:75px;display:flex;align-items:center;background-color:none;border-style:double;border-width:2px;border-color:orange;'></div>"
+                    "<div class='layout-editable' style='background-color:none;border-style:double;border-width:2px;border-color:orange;'><div style='height:75px;display:flex;align-items:center;'></div></div>"
                     );
 
                 // removing temporary layout
@@ -203,6 +203,23 @@ var Lew = {
     updateStyling(){
         var style_el = document.getElementsByClassName("style-element")[0];
 
+        $("#slider_wval").on("input", function(){
+            var style_el_name = style_el.textContent;
+            var iframe_el = $("#iframe_panel").contents().find(style_el_name);
+
+            var wval = $(this).val() + "%";
+            $(iframe_el).parent().css("width", wval);
+        });
+
+        $("#slider_hval").on("input", function(){
+            var style_el_name = style_el.textContent;
+            var iframe_el = $("#iframe_panel").contents().find(style_el_name);
+
+            var hval = $(this).val() + "px";
+            $(iframe_el).parent().css("height", hval*1.5);
+            $(iframe_el).css("height", hval);
+        });
+
         $("#text_type").on("change", function(){
             var style_el_name = style_el.textContent;
             var iframe_el = $("#iframe_panel").contents().find(style_el_name);
@@ -246,8 +263,7 @@ var Lew = {
             iframe_el.css("margin-top", vertical_val);
         });
 
-        this.stylingElementFunc(style_el, "input", "#slider_wval", "width", "%");
-        this.stylingElementFunc(style_el, "input", "#slider_hval", "height", "px");
+
         this.stylingElementFunc(style_el, "input", "#bg_color_val", "background-color", "");
         this.stylingElementFunc(style_el, "change", "#border_style", "border-style", "");
         this.stylingElementFunc(style_el, "input", "#slider_border_wval", "border-width", "");
